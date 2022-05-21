@@ -1,0 +1,6 @@
+{
+    "makefile.extensionOutputFolder": "./.vscode",
+    "terminal.integrated.env.linux": {
+        "PATH": "${env:PATH}:/opt/xpack-riscv-none-embed-gcc-10.2.0-1.2/bin/"
+    }
+}
