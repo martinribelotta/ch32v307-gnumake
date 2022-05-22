@@ -20,7 +20,7 @@ DEPS:=$(patsubst %.o, %.d, $(OBJS))
 
 SPECS_FLAGS:=$(addsuffix .specs, $(addprefix -specs=, $(SPECS)))
 CFLAGS:=$(ARCH) 
-CFLAGS+=$(OPT)
+CFLAGS+=$(OPT) -ffunction-sections -fdata-sections
 CFLAGS+=$(SPECS_FLAGS)
 CFLAGS+=$(EXTRA_CFLAGS)
 CFLAGS+=$(addprefix -I, $(INCLUDES))
