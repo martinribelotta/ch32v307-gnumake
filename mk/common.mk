@@ -1,17 +1,18 @@
 
 TARGET_ELF:=$(OUT)/$(PROJECT).elf
-TARGET_BIN:=$(patsubst %.elf, %.bin, $(TARGET_ELF))
-TARGET_HEX:=$(patsubst %.elf, %.hex, $(TARGET_ELF))
-TARGET_MAP:=$(patsubst %.elf, %.map, $(TARGET_ELF))
-TARGET_LST:=$(patsubst %.elf, %.lst, $(TARGET_ELF))
+TARGET_BIN:=$(strip $(patsubst %.elf, %.bin, $(TARGET_ELF)))
+TARGET_HEX:=$(strip $(patsubst %.elf, %.hex, $(TARGET_ELF)))
+TARGET_MAP:=$(strip $(patsubst %.elf, %.map, $(TARGET_ELF)))
+TARGET_LST:=$(strip $(patsubst %.elf, %.lst, $(TARGET_ELF)))
 
 CROSS:=riscv-none-embed-
 
 CC:=$(CROSS)gcc
 LD:=$(CROSS)gcc
 DUMP:=$(CROSS)objdump
+COPY:=$(CROSS)objcopy
 
-all: $(TARGET_ELF) $(TARGET_LST)
+all: $(TARGET_ELF) $(TARGET_LST) $(TARGET_HEX)
 
 include wch/wch.mk
 
@@ -34,6 +35,7 @@ LDFLAGS+=$(addprefix -l, $(LIBS))
 LDFLAGS+=$(addprefix -T, $(LINKER_SCRIPTS))
 LDFLAGS+=-Wl,--print-memory-usage
 LDFLAGS+=$(EXTRA_LDFLAGS)
+LDFLAGS+=-Wl,-Map=$(TARGET_MAP)
 
 DUMP_FLAGS:=-dxfSs
 
@@ -55,6 +57,12 @@ $(TARGET_LST): $(TARGET_ELF)
 	@echo DISASM $@
 	@$(DUMP) $(DUMP_FLAGS) $< > $@
 
+$(TARGET_HEX): $(TARGET_ELF)
+	@echo GEN $@
+	@$(COPY) -O ihex $< $@
+
 clean:
 	@echo CLEAN
 	@rm -fr $(OUT)
+
+.PHONY: all clean

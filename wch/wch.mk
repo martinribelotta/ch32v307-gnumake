@@ -18,3 +18,4 @@ DEFINES+=
 LINKER_SCRIPTS:=$(current_dir)/Link.ld
 
 ARCH:=-march=rv32imafc -mabi=ilp32
+ARCH+=-msmall-data-limit=8 -mno-save-restore 
