@@ -10,7 +10,7 @@
             "executable": "${workspaceFolder}/build/firmware.elf",
             "request": "launch",
             "type": "cortex-debug",
-            "runToEntryPoint": "handle_reset",
+            "runToEntryPoint": "main",
             "servertype": "openocd",
             "gdbPath": "riscv-none-embed-gdb",
             "configFiles": [
