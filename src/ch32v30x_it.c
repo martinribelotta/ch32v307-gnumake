@@ -1,37 +1,50 @@
 /********************************** (C) COPYRIGHT *******************************
-* File Name          : ch32v30x_it.c
+* File Name          : ch32v10x_it.c
 * Author             : WCH
 * Version            : V1.0.0
-* Date               : 2021/06/06
+* Date               : 2020/04/30
 * Description        : Main Interrupt Service Routines.
 *******************************************************************************/
-
 #include "ch32v30x_it.h"
-#include "debug.h"
+#include "board.h"
+#include <rtthread.h>
+#include "riscv-ops.h"
 
-void NMI_Handler(void) __attribute__((naked));
-void HardFault_Handler(void) __attribute__((naked));
 
-void NMI_Handler(void) { __asm__ volatile("call doNMI_Handler; mret"); }
-void HardFault_Handler(void) { __asm__ volatile("call doHardFault_Handler; mret"); }
+void NMI_Handler(void) __attribute__((interrupt()));
+void HardFault_Handler(void) __attribute__((interrupt()));
 
-/*******************************************************************************
-* Function Name  : NMI_Handler
-* Description    : This function handles NMI exception.
-* Input          : None
-* Return         : None
-*******************************************************************************/
-void doNMI_Handler(void)
+/*********************************************************************
+ * @fn      NMI_Handler
+ *
+ * @brief   This function handles NMI exception.
+ *
+ * @return  none
+ */
+void NMI_Handler(void)
 {
+    GET_INT_SP();
+    rt_interrupt_enter();
+    rt_kprintf(" NMI Handler\r\n");
+    rt_interrupt_leave();
+    FREE_INT_SP();
 }
 
-/*******************************************************************************
-* Function Name  : HardFault_Handler
-* Description    : This function handles Hard Fault exception.
-* Input          : None
-* Return         : None
-*******************************************************************************/
-void doHardFault_Handler(void)
+/*********************************************************************
+ * @fn      HardFault_Handler
+ *
+ * @brief   This function handles Hard Fault exception.
+ *
+ * @return  none
+ */
+void HardFault_Handler(void)
 {
-    while(1);
+    GET_INT_SP();
+    rt_interrupt_enter();
+    rt_kprintf(" hardfult\r\n");
+    rt_interrupt_leave();
+    FREE_INT_SP();
+
 }
+
+

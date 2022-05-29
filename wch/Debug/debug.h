@@ -12,12 +12,6 @@
 #include "stdio.h"
 #include "ch32v30x.h"
 
-#ifdef  CH32V307_DEBUG
-#define PRINT(X...) printf(X)
-#else
-#define PRINT(X...)
-#endif
-
 /* UART Printf Definition */
 #define DEBUG_UART1    1
 #define DEBUG_UART2    2

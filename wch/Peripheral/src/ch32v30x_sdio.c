@@ -229,13 +229,6 @@ void SDIO_SendCommand(SDIO_CmdInitTypeDef *SDIO_CmdInitStruct)
   SDIO->CMD = tmpreg;
 }
 
-/*******************************************************************************
-* Function Name  : SDIO_CmdStructInit
-* Description    : Fills each SDIO_CmdInitStruct member with its default value.
-* Input          : SDIO_CmdInitStruct - pointer to an SDIO_CmdInitTypeDef
-*        structure which will be initialized.
-* Return         : None
-*******************************************************************************/
 /*********************************************************************
  * @fn      SDIO_CmdStructInit
  *
@@ -357,18 +350,12 @@ uint32_t SDIO_ReadData(void)
   return SDIO->FIFO;
 }
 
-/*******************************************************************************
-* Function Name  : SDIO_WriteData
-* Description    : Write one data word to Tx FIFO.
-* Input          : Data - 32-bit data word to write.
-* Return         : None
-*******************************************************************************/
 /*********************************************************************
- * @fn      RTC_SetCounter
+ * @fn      SDIO_WriteData
  *
- * @brief   Sets the RTC counter value.
+ * @brief   Write one data word to Tx FIFO.
  *
- * @param   CounterValue - RTC counter new value.
+ * @param   Data - 32-bit data word to write.
  *
  * @return  RTC counter value
  */

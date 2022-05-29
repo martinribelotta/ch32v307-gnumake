@@ -1,5 +1,9 @@
 ENTRY( _start )
+/* 
+__stack_size = 2048;
 
+PROVIDE( _stack_size = __stack_size );
+ */
 
 MEMORY
 {
@@ -36,7 +40,32 @@ SECTIONS
 		*(.glue_7)
 		*(.glue_7t)
 		*(.gnu.linkonce.t.*)
+		
+		 /* section information for finsh shell */
+    . = ALIGN(4);
+    __fsymtab_start = .;
+    KEEP(*(FSymTab))
+    __fsymtab_end = .;
+    . = ALIGN(4);
+    __vsymtab_start = .;
+    KEEP(*(VSymTab))
+    __vsymtab_end = .;
+    . = ALIGN(4);
+    
+    /* section information for initial. */
+    . = ALIGN(4);
+    __rt_init_start = .;
+    KEEP(*(SORT(.rti_fn*)))
+    __rt_init_end = .;
+    . = ALIGN(4);
+
+    /* section information for modules */
+    . = ALIGN(4);
+    __rtmsymtab_start = .;
+    KEEP(*(RTMSymTab))
+    __rtmsymtab_end = .;
 		. = ALIGN(4);
+			
 	} >FLASH AT>FLASH 
 
 	.fini :
@@ -150,7 +179,15 @@ SECTIONS
 	PROVIDE( _end = _ebss);
 	PROVIDE( end = . );
 
-	_eusrstack = ORIGIN(RAM) + LENGTH(RAM);
+    /* .stack ORIGIN(RAM) + LENGTH(RAM) - __stack_size :
+    {
+        . = ALIGN(4);
+        PROVIDE(_susrstack = . );
+        . = . + __stack_size;
+        PROVIDE( _eusrstack = .);
+    } >RAM  */
+
+	PROVIDE(_eusrstack = ORIGIN(RAM) + LENGTH(RAM));
 }
 
 

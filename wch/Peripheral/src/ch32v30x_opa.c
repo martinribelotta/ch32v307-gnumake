@@ -10,25 +10,31 @@
 
 #define OPA_MASK        ((uint32_t)0x000F)
 #define OPA_Total_NUM   4
-/********************************************************************************
-* Function Name  : OPA_DeInit
-* Description    : Deinitializes the OPA peripheral registers to their default
-*                  reset values.
-* Input          : None
-* Return         : None
-*********************************************************************************/	
+
+
+/*********************************************************************
+ * @fn      OPA_DeInit
+ *
+ * @brief   Deinitializes the OPA peripheral registers to their default
+ *        reset values.
+ *
+ * @return  none
+ */
 void OPA_DeInit(void)
 {
    OPA->CR=0;
 }
 
-/********************************************************************************
-* Function Name  : OPA_Init
-* Description    : Initializes the OPA peripheral according to the specified
-*                  parameters in the OPA_InitStruct.
-* Input          : OPA_InitStruct - pointer to a OPA_InitTypeDef structure
-* Return         : None
-*********************************************************************************/	
+/*********************************************************************
+ * @fn      OPA_Init
+ *
+ * @brief   Initializes the OPA peripheral according to the specified
+ *        parameters in the OPA_InitStruct.
+ *
+ * @param   OPA_InitStruct - pointer to a OPA_InitTypeDef structure
+ *
+ * @return  none
+ */
 void OPA_Init(OPA_InitTypeDef* OPA_InitStruct)
 {
     uint32_t tmp=0;
@@ -40,12 +46,15 @@ void OPA_Init(OPA_InitTypeDef* OPA_InitStruct)
     OPA->CR=tmp;
 }
 
-/********************************************************************************
-* Function Name  : OPA_StructInit
-* Description    : Fills each OPA_StructInit member with its reset value.
-* Input          : OPA_StructInit - pointer to a OPA_InitTypeDef structure
-* Return         : None
-*********************************************************************************/
+/*********************************************************************
+ * @fn      OPA_StructInit
+ *
+ * @brief   Fills each OPA_StructInit member with its reset value.
+ *
+ * @param   OPA_StructInit - pointer to a OPA_InitTypeDef structure
+ *
+ * @return  none
+ */
 void OPA_StructInit(OPA_InitTypeDef* OPA_InitStruct)
 {
     OPA_InitStruct->Mode    = OUT_IO;
@@ -54,13 +63,16 @@ void OPA_StructInit(OPA_InitTypeDef* OPA_InitStruct)
     OPA_InitStruct->OPA_NUM = OPA1;
 }
 
-/********************************************************************************
-* Function Name  : OPA_Cmd
-* Description    : Enables or disables the specified OPA peripheral.
-* Input          : OPA_NUM - Select OPA
-*                  NewState - ENABLE or DISABLE.
-* Return         : None
-*********************************************************************************/
+/*********************************************************************
+ * @fn      OPA_Cmd
+ *
+ * @brief   Enables or disables the specified OPA peripheral.
+ *
+ * @param   OPA_NUM - Select OPA
+ *            NewState - ENABLE or DISABLE.
+ *
+ * @return  none
+ */
 void OPA_Cmd(OPA_Num_TypeDef OPA_NUM, FunctionalState NewState)
 {
     if(NewState==ENABLE)
