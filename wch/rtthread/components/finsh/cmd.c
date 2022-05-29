@@ -66,7 +66,7 @@ MSH_CMD_EXPORT(hello, say hello world);
 
 
 
-/* ∏¥Œª√¸¡Ó */
+/* Â§ç‰ΩçÂëΩ‰ª§ */
 long reboot(void)
 {
     NVIC_SystemReset();

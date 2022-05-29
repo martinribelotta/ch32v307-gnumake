@@ -24,7 +24,7 @@
 #define REGBYTES                4
 #endif
 
-/* Ôö¼Ó¸¡µã¼Ä´æÆ÷ */
+/* å¢žåŠ æµ®ç‚¹å¯„å­˜å™¨ */
 #ifdef ARCH_RISCV_FPU
 #ifdef ARCH_RISCV_FPU_D
 #define FSTORE                  fsd

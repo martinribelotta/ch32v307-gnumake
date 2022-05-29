@@ -54,7 +54,7 @@ struct rt_hw_stack_frame
     rt_ubase_t t5;         /* x30 - t5     - temporary register 5                */
     rt_ubase_t t6;         /* x31 - t6     - temporary register 6                */
 
-/* Ôö¼Ó¸¡µã¼Ä´æÆ÷×é */
+/* å¢åŠ æµ®ç‚¹å¯„å­˜å™¨ç»„ */
 #ifdef ARCH_RISCV_FPU
     rv_floatreg_t f0;      /* f0  */
     rv_floatreg_t f1;      /* f1  */
@@ -123,11 +123,11 @@ rt_uint8_t *rt_hw_stack_init(void       *tentry,
 
     frame->ra      = (rt_ubase_t)texit;
     frame->a0      = (rt_ubase_t)parameter;
-    frame->epc     = (rt_ubase_t)tentry;     /* ³õÊ¼»¯ÎªÈë¿Ú£¬ÕâÑùmretÖ®ºóµÚÒ»´ÎÇĞ»»Ó¦¸ÃÇĞµ½Èë¿ÚÖ´ĞĞ  */
+    frame->epc     = (rt_ubase_t)tentry;     /* åˆå§‹åŒ–ä¸ºå…¥å£ï¼Œè¿™æ ·mretä¹‹åç¬¬ä¸€æ¬¡åˆ‡æ¢åº”è¯¥åˆ‡åˆ°å…¥å£æ‰§è¡Œ  */
 
     /* force to machine mode(MPP=11) and set MPIE to 1 */
    // frame->mstatus = 0x00007880;
-     frame->mstatus = 0x00007888; //mstatus ³õÊ¼»¯
+     frame->mstatus = 0x00007888; //mstatus åˆå§‹åŒ–
     return stk;
 }
 

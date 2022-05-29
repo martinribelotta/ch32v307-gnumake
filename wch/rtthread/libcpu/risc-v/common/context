@@ -24,7 +24,7 @@
 rt_hw_interrupt_disable:
 #	csrr   a0, mstatus
 #  	csrci  mstatus,0x8
-    csrrci a0, mstatus, 8             /* mieÇåÁã */
+    csrrci a0, mstatus, 8             /* mieæ¸…é›¶ */
     ret
 
 /*
@@ -76,22 +76,22 @@ rt_hw_context_switch:
      *     mstatus.mie -> sp(2)
      *     x(i)        -> sp(i-4)
      */
-    addi  sp,  sp, -32 * REGBYTES  /* µ±Ç°spÏòÏÂÔö³¤32¸ö×Ö */
-    STORE sp,  (a0)                /* °Ñsp´æµ½´«ÈëµÄÖ¸ÕëÎ»ÖÃ */
+    addi  sp,  sp, -32 * REGBYTES  /* å½“å‰spå‘ä¸‹å¢é•¿32ä¸ªå­— */
+    STORE sp,  (a0)                /* æŠŠspå­˜åˆ°ä¼ å…¥çš„æŒ‡é’ˆä½ç½® */
 
 	csrr  a0,	mepc
-    STORE a0,   0 * REGBYTES(sp)   /* ±£´æmepc by ltp */
-    #STORE x1,   0 * REGBYTES(sp)  /* ±£´æmpec */
+    STORE a0,   0 * REGBYTES(sp)   /* ä¿å­˜mepc by ltp */
+    #STORE x1,   0 * REGBYTES(sp)  /* ä¿å­˜mpec */
 
-    STORE x1,   1 * REGBYTES(sp)   /* ±£´æra */
+    STORE x1,   1 * REGBYTES(sp)   /* ä¿å­˜ra */
 
-    csrr a0, mstatus               /* ¶Ámstatus */
+    csrr a0, mstatus               /* è¯»mstatus */
     andi a0, a0, 8
-    beqz a0, save_mpie             /* Èç¹ûmieÎ»Îª0£¬Ö±½Ó´æ£¬·ñÔò´æÒ»¸ö0x80 */
+    beqz a0, save_mpie             /* å¦‚æœmieä½ä¸º0ï¼Œç›´æ¥å­˜ï¼Œå¦åˆ™å­˜ä¸€ä¸ª0x80 */
     li   a0, 0x80
 
 save_mpie:
-    STORE a0,   2 * REGBYTES(sp)   /* ÕâÀï´æÁËmstatus */
+    STORE a0,   2 * REGBYTES(sp)   /* è¿™é‡Œå­˜äº†mstatus */
 
     STORE x4,   4 * REGBYTES(sp)
     STORE x5,   5 * REGBYTES(sp)
@@ -99,7 +99,7 @@ save_mpie:
     STORE x7,   7 * REGBYTES(sp)
     STORE x8,   8 * REGBYTES(sp)
     STORE x9,   9 * REGBYTES(sp)
-    STORE x10, 10 * REGBYTES(sp)	/* ÕâÀïÒ²ÊÇa0 */
+    STORE x10, 10 * REGBYTES(sp)	/* è¿™é‡Œä¹Ÿæ˜¯a0 */
     STORE x11, 11 * REGBYTES(sp)
     STORE x12, 12 * REGBYTES(sp)
     STORE x13, 13 * REGBYTES(sp)
@@ -127,7 +127,7 @@ save_mpie:
      * sp(1) -> ra;
      * sp(i) -> x(i+2)
      */
-    LOAD sp,  (a1)                 /* È¡toÏß³ÌµÄspÖµ */
+    LOAD sp,  (a1)                 /* å–toçº¿ç¨‹çš„spå€¼ */
 
 #ifdef RT_USING_SMP
     mv   a0,   a2
@@ -177,17 +177,17 @@ rt_hw_context_switch_exit:
 #endif
 #endif
     /* resw ra to mepc */
-    LOAD a0,   0 * REGBYTES(sp)  /* °ÑraµÄÖµ¸ømepc·µ»Ø  */
+    LOAD a0,   0 * REGBYTES(sp)  /* æŠŠraçš„å€¼ç»™mepcè¿”å›  */
     csrw mepc, a0
 
-    LOAD x1,   1 * REGBYTES(sp)  /* raÍ¬Ê±Ò²¸øra */
+    LOAD x1,   1 * REGBYTES(sp)  /* raåŒæ—¶ä¹Ÿç»™ra */
 
 
     li    t0, 0x00001800
     csrs  mstatus, t0
     LOAD a0,   2 * REGBYTES(sp)
 
-  #  csrw mstatus, a0     		/* »Ö¸´toÏß³ÌµÄmstatus by ltp */
+  #  csrw mstatus, a0     		/* æ¢å¤toçº¿ç¨‹çš„mstatus by ltp */
     csrs mstatus, a0
 
     LOAD x4,   4 * REGBYTES(sp)

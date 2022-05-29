@@ -17,7 +17,7 @@
 #include <rthw.h>
 #include <rtthread.h>
 
-/* ÖĞ¶ÏÕ»±£´æ */
+/* ä¸­æ–­æ ˆä¿å­˜ */
 //volatile unsigned long  interrupter_sp_saver=0;
 
 

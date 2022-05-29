@@ -267,10 +267,10 @@ void rt_schedule(void)
 
                 RT_DEBUG_LOG(RT_DEBUG_SCHEDULER, ("switch in interrupt\n"));
 
-                /* 这里如果需要切换线程会把rt_thread_switch_interrupt_flag置位 */
+                /* 杩欓噷濡傛灉闇�瑕佸垏鎹㈢嚎绋嬩細鎶妑t_thread_switch_interrupt_flag缃綅 */
                 rt_hw_context_switch_interrupt((rt_uint32_t)&from_thread->sp,
                                                (rt_uint32_t)&to_thread->sp);
-                NVIC_SetPendingIRQ(Software_IRQn);/* 调用软件中断切换线程 */
+                NVIC_SetPendingIRQ(Software_IRQn);/* 璋冪敤杞欢涓柇鍒囨崲绾跨▼ */
             }
         }
     }

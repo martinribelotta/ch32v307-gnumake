@@ -14,10 +14,10 @@
 SW_handler:
     /* save all from thread context */
     addi sp, sp, -32 * REGBYTES
-	/* ½øÖĞ¶ÏmepcµÄÖµ»á±»Ó²¼ş¸üĞÂ */
+	/* è¿›ä¸­æ–­mepcçš„å€¼ä¼šè¢«ç¡¬ä»¶æ›´æ–° */
 
     STORE x1,   1 * REGBYTES(sp)
-    li    t0,   0x80            /* ËûÕâÀïÏàµ±ÓÚÆÁ±ÎÁËÖĞ¶Ïmie=0 */
+    li    t0,   0x80            /* ä»–è¿™é‡Œç›¸å½“äºå±è”½äº†ä¸­æ–­mie=0 */
 
     STORE t0,   2 * REGBYTES(sp)
 
@@ -54,7 +54,7 @@ SW_handler:
 	csrrw sp,mscratch,sp
     call  rt_interrupt_enter
     /* interrupt handle */
-	/* ÕâÀï¿ÉÒÔÌí¼Ó¸ÃÖĞ¶ÏĞèÒª´¦ÀíµÄÊÂÎï,Èç¹û²»ĞèÒª,Á½¸ö¶ÑÕ»¿ÉÒÔ²»ÇĞ»»  */
+	/* è¿™é‡Œå¯ä»¥æ·»åŠ è¯¥ä¸­æ–­éœ€è¦å¤„ç†çš„äº‹ç‰©,å¦‚æœä¸éœ€è¦,ä¸¤ä¸ªå †æ ˆå¯ä»¥ä¸åˆ‡æ¢  */
     call  rt_interrupt_leave
     /* switch to from thread stack */
 	csrrw sp,mscratch,sp
@@ -62,20 +62,20 @@ SW_handler:
     /* need to switch new thread */
     la    s0, rt_thread_switch_interrupt_flag
     lw    s2, 0(s0)
-    beqz  s2, spurious_interrupt   /* if rt_thread_switch_interrupt_flag ==0 ²»ĞèÒªÇĞ»»Ïß³ÌÌø×ªspurious_interruptÒÔÍË³ö */
+    beqz  s2, spurious_interrupt   /* if rt_thread_switch_interrupt_flag ==0 ä¸éœ€è¦åˆ‡æ¢çº¿ç¨‹è·³è½¬spurious_interruptä»¥é€€å‡º */
     /* clear switch interrupt flag */
-    sw    zero, 0(s0) /* if rt_thread_switch_interrupt_flag ==1,½«ÆäÇåÁã£¬²¢ÇĞ»»Ïß³Ì */
+    sw    zero, 0(s0) /* if rt_thread_switch_interrupt_flag ==1,å°†å…¶æ¸…é›¶ï¼Œå¹¶åˆ‡æ¢çº¿ç¨‹ */
 
     csrr  a0, mepc
-    STORE a0, 0 * REGBYTES(sp) 	/* ±£´æµ±Ç°Ïß³ÌµÄ½øÖĞ¶ÏÊ±µÄÏÂÒ»ÌõpcÖµµ½±¾Ïß³ÌµÄ¶ÑÕ» */
+    STORE a0, 0 * REGBYTES(sp) 	/* ä¿å­˜å½“å‰çº¿ç¨‹çš„è¿›ä¸­æ–­æ—¶çš„ä¸‹ä¸€æ¡pcå€¼åˆ°æœ¬çº¿ç¨‹çš„å †æ ˆ */
 
     la    s0, rt_interrupt_from_thread
     LOAD  s1, 0(s0)
-    STORE sp, 0(s1)  			/* ±£´æµ±Ç°Ïß³ÌµÄspÖÁram */
+    STORE sp, 0(s1)  			/* ä¿å­˜å½“å‰çº¿ç¨‹çš„spè‡³ram */
 
     la    s0, rt_interrupt_to_thread
     LOAD  s1, 0(s0)
-    LOAD  sp, 0(s1) 			/* »ñÈ¡ĞèÒªÇĞ»»µÄÏß³ÌµÄspÖ¸Õë */
+    LOAD  sp, 0(s1) 			/* è·å–éœ€è¦åˆ‡æ¢çš„çº¿ç¨‹çš„spæŒ‡é’ˆ */
 
     LOAD  a0,  0 * REGBYTES(sp)
     csrw  mepc, a0
@@ -89,7 +89,7 @@ spurious_interrupt:
     LOAD  t0,   2 * REGBYTES(sp)
     csrs  mstatus, t0
 
-    LOAD  x4,   4 * REGBYTES(sp) /* »Ö¸´¼Ä´æÆ÷ */
+    LOAD  x4,   4 * REGBYTES(sp) /* æ¢å¤å¯„å­˜å™¨ */
     LOAD  x5,   5 * REGBYTES(sp)
     LOAD  x6,   6 * REGBYTES(sp)
     LOAD  x7,   7 * REGBYTES(sp)
@@ -118,5 +118,5 @@ spurious_interrupt:
     LOAD  x30, 30 * REGBYTES(sp)
     LOAD  x31, 31 * REGBYTES(sp)
 
-    addi  sp, sp, 32 * REGBYTES /* »Ö¸´spÖµ */
+    addi  sp, sp, 32 * REGBYTES /* æ¢å¤spå€¼ */
     mret

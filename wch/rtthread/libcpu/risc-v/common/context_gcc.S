@@ -42,18 +42,18 @@ rt_hw_interrupt_enable:
  * a1 --> to_thread
  */
     .globl rt_hw_context_switch_to
-rt_hw_context_switch_to:  /* ÓÃÓÚÖ±½ÓÇĞ»»£¬²»¹ØĞÄ'from',ÆäÖ÷ÒªÔÚ¿ªÊ¼Æô¶¯µ÷¶ÈÆ÷µÄÊ±ºòÔËÓÃ */
-	la t0, _eusrstack     /* Ê×´ÎÇĞ»»Ç°½«mainµÄsp´æÈë¼Ä´æÆ÷£¬ÒÔºóÓÃ×÷ÖĞ¶ÏÕ» */
+rt_hw_context_switch_to:  /* ç”¨äºç›´æ¥åˆ‡æ¢ï¼Œä¸å…³å¿ƒ'from',å…¶ä¸»è¦åœ¨å¼€å§‹å¯åŠ¨è°ƒåº¦å™¨çš„æ—¶å€™è¿ç”¨ */
+	la t0, _eusrstack     /* é¦–æ¬¡åˆ‡æ¢å‰å°†mainçš„spå­˜å…¥å¯„å­˜å™¨ï¼Œä»¥åç”¨ä½œä¸­æ–­æ ˆ */
     csrw mscratch,t0
 
-    LOAD sp, (a0)         /* ´«ÈëµÄ'to'Ïß³ÌµÄspÖ¸ÕëÖµ¸³¸ømcuµÄsp */
+    LOAD sp, (a0)         /* ä¼ å…¥çš„'to'çº¿ç¨‹çš„spæŒ‡é’ˆå€¼èµ‹ç»™mcuçš„sp */
 
-#ifdef RT_USING_SMP       /* ¶àºËµÄ£¬±¾µ¥Æ¬»ú²»¹ØĞÄ */
+#ifdef RT_USING_SMP       /* å¤šæ ¸çš„ï¼Œæœ¬å•ç‰‡æœºä¸å…³å¿ƒ */
     mv   a0,   a1
     jal  rt_cpus_lock_status_restore
 #endif
     LOAD a0,   2 * REGBYTES(sp)
-    csrw mstatus, a0      /* »Ö¸´'to'Ïß³ÌµÄmstatusÖµ */
+    csrw mstatus, a0      /* æ¢å¤'to'çº¿ç¨‹çš„mstatuså€¼ */
     j    rt_hw_context_switch_exit
 
 /*
@@ -74,8 +74,8 @@ rt_hw_context_switch:
      *     x1/ra       -> sp(1)
      *     mstatus.mie -> sp(2)
      *     x(i)        -> sp(i-4)
-     *     ÕâÀï±£´æ'from'Ïß³Ì
-     *     Ôö¼Ó¸¡µã¼Ä´æÆ÷£¬·ÅÔÚÍ¨ÓÃ¼Ä´æÆ÷µÄÇ°Ãæ
+     *     è¿™é‡Œä¿å­˜'from'çº¿ç¨‹
+     *     å¢åŠ æµ®ç‚¹å¯„å­˜å™¨ï¼Œæ”¾åœ¨é€šç”¨å¯„å­˜å™¨çš„å‰é¢
      */
 
 #ifdef ARCH_RISCV_FPU
@@ -115,13 +115,13 @@ rt_hw_context_switch:
     FSTORE  f31, 31 * FREGBYTES(sp)
 #endif
 
-    addi  sp,  sp, -32 * REGBYTES /* ÇĞ»»Ïß³ÌÇ°fromµÄspÏòÏÂ32¸ö×ÖÓÃÓÚ´æ´¢Æä¼Ä´æÆ÷Öµ */
-    STORE sp,  (a0)               /* fromµÄspÖµÒª¼°Ê±´æÈëram£¬±ãÓÚÏÂ´ÎÇĞ»ØÀ´Ê±ºòµ÷ÓÃ */
+    addi  sp,  sp, -32 * REGBYTES /* åˆ‡æ¢çº¿ç¨‹å‰fromçš„spå‘ä¸‹32ä¸ªå­—ç”¨äºå­˜å‚¨å…¶å¯„å­˜å™¨å€¼ */
+    STORE sp,  (a0)               /* fromçš„spå€¼è¦åŠæ—¶å­˜å…¥ramï¼Œä¾¿äºä¸‹æ¬¡åˆ‡å›æ¥æ—¶å€™è°ƒç”¨ */
 
-    STORE x1,   0 * REGBYTES(sp)  /* Ïß³ÌfromÍùtoµÄÇĞ»»£¬°Ñra´æµ½½á¹¹ÌåepcµÄÎ»ÖÃ */
-    STORE x1,   1 * REGBYTES(sp)  /* ra´æµ½»ú¹¹ÌåraÎ»ÖÃ */
+    STORE x1,   0 * REGBYTES(sp)  /* çº¿ç¨‹fromå¾€toçš„åˆ‡æ¢ï¼ŒæŠŠraå­˜åˆ°ç»“æ„ä½“epcçš„ä½ç½® */
+    STORE x1,   1 * REGBYTES(sp)  /* raå­˜åˆ°æœºæ„ä½“raä½ç½® */
 
-    csrr a0, mstatus              /* ÕâÀïĞŞ¸ÄÎªÖ±½Ó±£´æmstatus */
+    csrr a0, mstatus              /* è¿™é‡Œä¿®æ”¹ä¸ºç›´æ¥ä¿å­˜mstatus */
     andi a0, a0, 8
     beqz a0, save_mpie
     li   a0, 0x80
@@ -162,7 +162,7 @@ save_mpie:
      * sp(1) -> ra;
      * sp(i) -> x(i+2)
      */
-    LOAD sp,  (a1)	/* »ñÈ¡'to'Ïß³ÌspÖµ */
+    LOAD sp,  (a1)	/* è·å–'to'çº¿ç¨‹spå€¼ */
 
 #ifdef RT_USING_SMP
     mv   a0,   a2
@@ -212,15 +212,15 @@ rt_hw_context_switch_exit:
 #endif
 #endif
     /* resw ra to mepc */
-    LOAD a0,   0 * REGBYTES(sp)   /* ÕâÀïÏàµ±ÓÚ°Ñra¸³Öµ¸ømepc */
+    LOAD a0,   0 * REGBYTES(sp)   /* è¿™é‡Œç›¸å½“äºæŠŠraèµ‹å€¼ç»™mepc */
     csrw mepc, a0
 
-    LOAD x1,   1 * REGBYTES(sp)  /* »Ö¸´ra */
+    LOAD x1,   1 * REGBYTES(sp)  /* æ¢å¤ra */
 
     li    t0, 0x00001800
     csrs  mstatus, t0
     LOAD a0,   2 * REGBYTES(sp)
- #	csrw mstatus ,a0            /* »Ö¸´mstatus */
+ #	csrw mstatus ,a0            /* æ¢å¤mstatus */
     csrs mstatus, a0
 
     LOAD x4,   4 * REGBYTES(sp)
@@ -252,9 +252,9 @@ rt_hw_context_switch_exit:
     LOAD x30, 30 * REGBYTES(sp)
     LOAD x31, 31 * REGBYTES(sp)
 
-    addi sp,  sp, 32 * REGBYTES /* »Ö¸´sp */
+    addi sp,  sp, 32 * REGBYTES /* æ¢å¤sp */
 
-#ifdef ARCH_RISCV_FPU  /* ¸¡µã¼Ä´æÆ÷ÏÈÈëºó³ö£¬Èç¹û¶¨Òå¸¡µã¼Ä´æÆ÷£¬×¢ÒâÏß³ÌÕ»µÄ´óĞ¡ */
+#ifdef ARCH_RISCV_FPU  /* æµ®ç‚¹å¯„å­˜å™¨å…ˆå…¥åå‡ºï¼Œå¦‚æœå®šä¹‰æµ®ç‚¹å¯„å­˜å™¨ï¼Œæ³¨æ„çº¿ç¨‹æ ˆçš„å¤§å° */
     FLOAD   f0, 0 * FREGBYTES(sp)
     FLOAD   f1, 1 * FREGBYTES(sp)
     FLOAD   f2, 2 * FREGBYTES(sp)
@@ -291,4 +291,4 @@ rt_hw_context_switch_exit:
     addi    sp, sp, 32 * FREGBYTES
 #endif
 
-    mret                        /* ÕâÊ±ºò·µ»ØµÄÊÇmepc,¼´raµÄÖµ */
+    mret                        /* è¿™æ—¶å€™è¿”å›çš„æ˜¯mepc,å³raçš„å€¼ */
