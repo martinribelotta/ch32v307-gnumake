@@ -7,11 +7,11 @@ CSRC+=$(wildcard $(rt_thread_dir)/components/drivers/*/*.c)
 
 CSRC+=$(wildcard $(rt_thread_dir)/components/finsh/*.c)
 
-ASRC+=$(wildcard $(rt_thread_dir)/libcpu/risc-v/common/*.S)
-ASRC+=$(wildcard $(rt_thread_dir)/libcpu/risc-v/SW_Handler/*.S)
-
 CSRC+=$(wildcard $(rt_thread_dir)/libcpu/risc-v/common/*.c)
 CSRC+=$(wildcard $(rt_thread_dir)/libcpu/risc-v/SW_Handler/*.c)
+
+ASRC+=$(wildcard $(rt_thread_dir)/libcpu/risc-v/common/*.S)
+ASRC+=$(wildcard $(rt_thread_dir)/libcpu/risc-v/SW_Handler/*.S)
 
 INCLUDES+=$(rt_thread_dir)
 INCLUDES+=$(rt_thread_dir)/include
@@ -19,4 +19,5 @@ INCLUDES+=$(rt_thread_dir)/libcpu/risc-v/common/
 INCLUDES+=$(rt_thread_dir)/components/drivers/include
 INCLUDES+=$(rt_thread_dir)/components/finsh
 
-DEFINES+=
+DEFINES+=ARCH_RISCV_FPU
+DEFINES+=ARCH_RISCV_FPU_S

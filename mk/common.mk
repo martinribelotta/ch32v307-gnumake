@@ -65,4 +65,10 @@ clean:
 	@echo CLEAN
 	@rm -fr $(OUT)
 
+openocd:
+	openocd -f wch/wch-riscv.cfg
+
+gdb: $(TARGET_ELF)
+	$(CROSS)gdb $(TARGET_ELF) -ex "target remote :3333" -ex "mon reset halt" -ex "load"
+
 .PHONY: all clean
