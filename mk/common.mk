@@ -51,7 +51,7 @@ $(OUT)/%.o: %.S
 
 $(TARGET_ELF): $(OBJS)
 	@echo LD $@
-	@$(LD) $(LDFLAGS) $(OBJS) -o $@
+	@$(LD) -o $@ $(OBJS) $(LDFLAGS)
 
 $(TARGET_LST): $(TARGET_ELF)
 	@echo DISASM $@

@@ -7,7 +7,7 @@ DEFINES:=
 OPT:=-Og -g3
 SPECS:=nosys nano
 LIBPATH:=
-LIBS:=
+LIBS:=m
 EXTRA_CFLAGS:=
 EXTRA_LDFLAGS:=
 
