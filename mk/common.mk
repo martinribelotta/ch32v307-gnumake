@@ -68,10 +68,16 @@ clean:
 openocd:
 	openocd -f wch/wch-riscv.cfg
 
-run: $(TARGET_ELF)
+run: all
 	$(CROSS)gdb $(TARGET_ELF) -ex "target remote :3333" -ex "mon reset halt" -ex "load" -ex "continue"
 
-debug: $(TARGET_ELF)
+debug: all
 	$(CROSS)gdb $(TARGET_ELF) -ex "target remote :3333" -ex "mon reset halt" -ex "load"
+
+flash: all
+	@echo "Erasing flash..."
+	@openocd -f wch/wch-riscv.cfg -c init -c halt -c "flash erase_sector wch_riscv 0 last " -c exit
+	@echo "Programming..."
+	@openocd -f wch/wch-riscv.cfg -c init -c halt -c "program $(TARGET_ELF) verify reset exit" -c exit
 
 .PHONY: all clean
