@@ -18,7 +18,7 @@ DEFINES+=
 
 LINKER_SCRIPTS:=$(wch_dir)/Link.ld
 
-ARCH:=-march=rv32imafc -mabi=ilp32f
+ARCH:=-march=rv32imfc -mabi=ilp32f
 ARCH+=-msmall-data-limit=8 -mno-save-restore 
 
 include $(wch_dir)/rtthread/rtthread.mk

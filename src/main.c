@@ -94,6 +94,32 @@ int led(void)
 MSH_CMD_EXPORT(led,  led sample by using I/O drivers);
 
 
+static float tsin[2048];
+static float tcos[2048];
+
+static float precalc_sin(float v)
+{
+    int idx = v / (2*M_PI) * 2048;
+    int i = idx % 2048;
+    return tsin[idx];
+}
+
+static float precalc_cos(float v)
+{
+    int idx = v / (2*M_PI) * 2048;
+    int i = idx % 2048;
+    return tcos[i];
+}
+
+void precalc()
+{
+    for (int i=0; i<2048; i++) {
+        tsin[i] = sin(2 * i * M_PI / 2048);
+        tcos[i] = cos(2 * i * M_PI / 2048);
+    }
+}
+
+
 int donut(void)
 {
     int k;
@@ -101,21 +127,22 @@ int donut(void)
     static float z[1760];
     static char b[1760];
     printf("\x1b[2J"); 
+    precalc();
     for(; ; ) {
         memset(b,32,1760);
         memset(z,0,7040);
-        for(j=0; 6.28>j; j+=0.07) {
-            for(i=0; 6.28 >i; i+=0.02) {
-                float sini=sin(i),
-                      cosj=cos(j),
-                      sinA=sin(A),
-                      sinj=sin(j),
-                      cosA=cos(A),
+        for(j=0; 6.28f>j; j+=0.07f) {
+            for(i=0; 6.28f >i; i+=0.02f) {
+                float sini=precalc_sin(i),
+                      cosj=precalc_cos(j),
+                      sinA=precalc_sin(A),
+                      sinj=precalc_sin(j),
+                      cosA=precalc_cos(A),
                       cosj2=cosj+2,
-                      mess=1/(sini*cosj2*sinA+sinj*cosA+5),
-                      cosi=cos(i),
-                      cosB=cos(B),
-                      sinB=sin(B),
+                      mess=1.0f/(sini*cosj2*sinA+sinj*cosA+5),
+                      cosi=precalc_cos(i),
+                      cosB=precalc_cos(B),
+                      sinB=precalc_sin(B),
                       t=sini*cosj2*cosA-sinj* sinA;
                 int x=40+30*mess*(cosi*cosj2*cosB-t*sinB),
                     y= 12+15*mess*(cosi*cosj2*sinB +t*cosB),
