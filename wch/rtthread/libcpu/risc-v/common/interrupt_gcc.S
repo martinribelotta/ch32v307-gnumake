@@ -5,17 +5,17 @@
  *
  * Change Logs:
  * Date           Author       Notes
+ * 2021-09-09     WCH        the first version
  */
  
 #include "cpuport.h"
 
 .global SW_handler
-.align 6
+.align 2
 SW_handler:
-
+    /* save all from thread context */
 #ifdef ARCH_RISCV_FPU
     addi    sp, sp, -32 * FREGBYTES
-
     FSTORE  f0, 0 * FREGBYTES(sp)
     FSTORE  f1, 1 * FREGBYTES(sp)
     FSTORE  f2, 2 * FREGBYTES(sp)
@@ -50,17 +50,19 @@ SW_handler:
     FSTORE  f31, 31 * FREGBYTES(sp)
 #endif
 
-    /* save all from thread context */
     addi sp, sp, -32 * REGBYTES
-	/* 进中断mepc的值会被硬件更新 */
+    STORE x5,   5 * REGBYTES(sp)
 
-    STORE x1,   1 * REGBYTES(sp)
-    li    t0,   0x80            /* 他这里相当于屏蔽了中断mie=0 */
-
+    /* saved MPIE */
+ 	li    t0,   0x80
     STORE t0,   2 * REGBYTES(sp)
 
+	/* Temporarily disable HPE  */
+	li   t0,    0x20
+	csrs 0x804, t0
+
+    STORE x1,   1 * REGBYTES(sp)
     STORE x4,   4 * REGBYTES(sp)
-    STORE x5,   5 * REGBYTES(sp)
     STORE x6,   6 * REGBYTES(sp)
     STORE x7,   7 * REGBYTES(sp)
     STORE x8,   8 * REGBYTES(sp)
@@ -91,43 +93,40 @@ SW_handler:
     /* switch to interrupt stack */
 	csrrw sp,mscratch,sp
     call  rt_interrupt_enter
-    /* interrupt handle */
-	/* 这里可以添加该中断需要处理的事物,如果不需要,两个堆栈可以不切换  */
+    /* clear interrupt */
+    jal   sw_clearpend
     call  rt_interrupt_leave
     /* switch to from thread stack */
 	csrrw sp,mscratch,sp
 
-    /* need to switch new thread */
+    /* if rt_thread_switch_interrupt_flag=1,then clear it  */
     la    s0, rt_thread_switch_interrupt_flag
     lw    s2, 0(s0)
-    beqz  s2, spurious_interrupt   /* if rt_thread_switch_interrupt_flag ==0 不需要切换线程跳转spurious_interrupt以退出 */
-    /* clear switch interrupt flag */
-    sw    zero, 0(s0) /* if rt_thread_switch_interrupt_flag ==1,将其清零，并切换线程 */
-
+    beqz  s2, 1f
+    sw    zero, 0(s0)
+#1:
     csrr  a0, mepc
-    STORE a0, 0 * REGBYTES(sp) 	/* 保存当前线程的进中断时的下一条pc值到本线程的堆栈 */
+    STORE a0, 0 * REGBYTES(sp)
 
     la    s0, rt_interrupt_from_thread
     LOAD  s1, 0(s0)
-    STORE sp, 0(s1)  			/* 保存当前线程的sp至ram */
+    STORE sp, 0(s1)
 
     la    s0, rt_interrupt_to_thread
     LOAD  s1, 0(s0)
-    LOAD  sp, 0(s1) 			/* 获取需要切换的线程的sp指针 */
+    LOAD  sp, 0(s1)
 
     LOAD  a0,  0 * REGBYTES(sp)
     csrw  mepc, a0
 
-spurious_interrupt:
-    LOAD  x1,   1 * REGBYTES(sp)
+1:  LOAD  x1,   1 * REGBYTES(sp)
 
-    /* Remain in M-mode after mret */
-    li    t0, 0x00001800
-    csrs  mstatus, t0
-    LOAD  t0,   2 * REGBYTES(sp)
-    csrs  mstatus, t0
+	li t0,0x7800
+	csrs mstatus, t0
+	LOAD t0, 2*REGBYTES(sp)
+	csrs mstatus, t0
 
-    LOAD  x4,   4 * REGBYTES(sp) /* 恢复寄存器 */
+    LOAD  x4,   4 * REGBYTES(sp)
     LOAD  x5,   5 * REGBYTES(sp)
     LOAD  x6,   6 * REGBYTES(sp)
     LOAD  x7,   7 * REGBYTES(sp)
@@ -155,10 +154,10 @@ spurious_interrupt:
     LOAD  x29, 29 * REGBYTES(sp)
     LOAD  x30, 30 * REGBYTES(sp)
     LOAD  x31, 31 * REGBYTES(sp)
+    addi  sp, sp, 32 * REGBYTES
 
-    addi  sp, sp, 32 * REGBYTES /* 恢复sp值 */
-
-#ifdef ARCH_RISCV_FPU  /* 浮点寄存器先入后出，如果定义浮点寄存器，注意线程栈的大小 */
+    /* load float reg */
+#ifdef ARCH_RISCV_FPU
     FLOAD   f0, 0 * FREGBYTES(sp)
     FLOAD   f1, 1 * FREGBYTES(sp)
     FLOAD   f2, 2 * FREGBYTES(sp)
@@ -191,8 +190,6 @@ spurious_interrupt:
     FLOAD   f29, 29 * FREGBYTES(sp)
     FLOAD   f30, 30 * FREGBYTES(sp)
     FLOAD   f31, 31 * FREGBYTES(sp)
-
     addi    sp, sp, 32 * FREGBYTES
 #endif
-
     mret

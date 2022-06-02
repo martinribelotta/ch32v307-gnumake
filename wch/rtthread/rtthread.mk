@@ -19,5 +19,5 @@ INCLUDES+=$(rt_thread_dir)/libcpu/risc-v/common/
 INCLUDES+=$(rt_thread_dir)/components/drivers/include
 INCLUDES+=$(rt_thread_dir)/components/finsh
 
-DEFINES+=ARCH_RISCV_FPU
-DEFINES+=ARCH_RISCV_FPU_S
+# DEFINES+=ARCH_RISCV_FPU
+# DEFINES+=ARCH_RISCV_FPU_S

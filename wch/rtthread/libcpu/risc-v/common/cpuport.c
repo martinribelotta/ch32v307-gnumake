@@ -5,12 +5,12 @@
  *
  * Change Logs:
  * Date           Author       Notes
- * 2018/10/28     Bernard      The unify RISC-V porting code.
+ * 2021-09-09     WCH        the first version
  */
 
 #include <rthw.h>
 #include <rtthread.h>
-
+#include "ch32v30x.h"
 #include "cpuport.h"
 
 #ifndef RT_USING_SMP
@@ -54,7 +54,7 @@ struct rt_hw_stack_frame
     rt_ubase_t t5;         /* x30 - t5     - temporary register 5                */
     rt_ubase_t t6;         /* x31 - t6     - temporary register 6                */
 
-/* 增加浮点寄存器组 */
+/* float register */
 #ifdef ARCH_RISCV_FPU
     rv_floatreg_t f0;      /* f0  */
     rv_floatreg_t f1;      /* f1  */
@@ -91,7 +91,7 @@ struct rt_hw_stack_frame
 #endif
 };
 
-/**
+/*
  * This function will initialize thread stack
  *
  * @param tentry the entry of thread
@@ -123,13 +123,47 @@ rt_uint8_t *rt_hw_stack_init(void       *tentry,
 
     frame->ra      = (rt_ubase_t)texit;
     frame->a0      = (rt_ubase_t)parameter;
-    frame->epc     = (rt_ubase_t)tentry;     /* 初始化为入口，这样mret之后第一次切换应该切到入口执行  */
+    frame->epc     = (rt_ubase_t)tentry;
 
-    /* force to machine mode(MPP=11) and set MPIE to 1 */
-   // frame->mstatus = 0x00007880;
-     frame->mstatus = 0x00007888; //mstatus 初始化
+    /* force to machine mode(MPP=11) and set MPIE to 1 and FS=11 */
+    frame->mstatus = 0x00007880;
     return stk;
 }
+
+/*
+ * trigger soft interrupt
+ */
+void sw_setpend(void)
+{
+    SysTick->CTLR |= (1<<31);
+}
+
+/*
+ * clear soft interrupt
+ */
+void sw_clearpend(void)
+{
+    SysTick->CTLR &= ~(1<<31);
+}
+
+/*
+ * disable interrupt and save mstatus
+ */
+rt_base_t rt_hw_interrupt_disable(void)
+{
+    rt_base_t value=0;
+    asm("csrrw %0, mstatus, %1":"=r"(value):"r"(0x7800));
+    return value;
+}
+
+/*
+ * enable interrupt and resume mstatus
+ */
+void rt_hw_interrupt_enable(rt_base_t level)
+{
+    asm("csrw mstatus, %0": :"r"(level));
+}
+
 
 /*
  * #ifdef RT_USING_SMP
@@ -138,7 +172,6 @@ rt_uint8_t *rt_hw_stack_init(void       *tentry,
  * void rt_hw_context_switch_interrupt(rt_ubase_t from, rt_ubase_t to);
  * #endif
  */
-#ifndef RT_USING_SMP
 void rt_hw_context_switch_interrupt(rt_ubase_t from, rt_ubase_t to)
 {
     if (rt_thread_switch_interrupt_flag == 0)
@@ -146,13 +179,12 @@ void rt_hw_context_switch_interrupt(rt_ubase_t from, rt_ubase_t to)
 
     rt_interrupt_to_thread = to;
     rt_thread_switch_interrupt_flag = 1;
-
-    return ;
+    /* switch just in sw_handler */
+    sw_setpend();
 }
-#endif /* end of RT_USING_SMP */
 
-/** shutdown CPU */
-void rt_hw_cpu_shutdown()
+/* shutdown CPU */
+void rt_hw_cpu_shutdown(void)
 {
     rt_uint32_t level;
     rt_kprintf("shutdown...\n");

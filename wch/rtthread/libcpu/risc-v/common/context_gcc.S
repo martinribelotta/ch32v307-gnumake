@@ -5,32 +5,10 @@
  *
  * Change Logs:
  * Date           Author       Notes
- * 2018/10/28     Bernard      The unify RISC-V porting implementation
- * 2018/12/27     Jesven       Add SMP support
+ * 2021-09-09     WCH        the first version
  */
 
 #include "cpuport.h"
-
-#ifdef RT_USING_SMP
-#define rt_hw_interrupt_disable rt_hw_local_irq_disable
-#define rt_hw_interrupt_enable  rt_hw_local_irq_enable
-#endif
-
-/*
- * rt_base_t rt_hw_interrupt_disable(void);
- */
-    .globl rt_hw_interrupt_disable
-rt_hw_interrupt_disable:
-    csrrci a0, mstatus, 8
-    ret
-
-/*
- * void rt_hw_interrupt_enable(rt_base_t level);
- */
-    .globl rt_hw_interrupt_enable
-rt_hw_interrupt_enable:
-    csrw mstatus, a0
-    ret
 
 /*
  * #ifdef RT_USING_SMP
@@ -42,44 +20,29 @@ rt_hw_interrupt_enable:
  * a1 --> to_thread
  */
     .globl rt_hw_context_switch_to
-rt_hw_context_switch_to:  /* 用于直接切换，不关心'from',其主要在开始启动调度器的时候运用 */
-	la t0, _eusrstack     /* 首次切换前将main的sp存入寄存器，以后用作中断栈 */
+rt_hw_context_switch_to:
+    /* first save interrupt stack */
+	la t0, _eusrstack
+	addi t0, t0, -512
     csrw mscratch,t0
 
-    LOAD sp, (a0)         /* 传入的'to'线程的sp指针值赋给mcu的sp */
-
-#ifdef RT_USING_SMP       /* 多核的，本单片机不关心 */
-    mv   a0,   a1
-    jal  rt_cpus_lock_status_restore
-#endif
+    LOAD sp, (a0)
     LOAD a0,   2 * REGBYTES(sp)
-    csrw mstatus, a0      /* 恢复'to'线程的mstatus值 */
+    csrw mstatus, a0
     j    rt_hw_context_switch_exit
 
+
+
 /*
- * #ifdef RT_USING_SMP
- * void rt_hw_context_switch(rt_ubase_t from, rt_ubase_t to, struct rt_thread *to_thread);
- * #else
  * void rt_hw_context_switch(rt_ubase_t from, rt_ubase_t to);
- * #endif
- *
  * a0 --> from
  * a1 --> to
- * a2 --> to_thread
  */
-    .globl rt_hw_context_switch
+	.globl rt_hw_context_switch
 rt_hw_context_switch:
-    /* saved from thread context
-     *     x1/ra       -> sp(0)
-     *     x1/ra       -> sp(1)
-     *     mstatus.mie -> sp(2)
-     *     x(i)        -> sp(i-4)
-     *     这里保存'from'线程
-     *     增加浮点寄存器，放在通用寄存器的前面
-     */
-
+	/* switch in thread */
 #ifdef ARCH_RISCV_FPU
-    addi    sp, sp, -32 * FREGBYTES
+	addi sp, sp, -32*FREGBYTES
 
     FSTORE  f0, 0 * FREGBYTES(sp)
     FSTORE  f1, 1 * FREGBYTES(sp)
@@ -115,22 +78,24 @@ rt_hw_context_switch:
     FSTORE  f31, 31 * FREGBYTES(sp)
 #endif
 
-    addi  sp,  sp, -32 * REGBYTES /* 切换线程前from的sp向下32个字用于存储其寄存器值 */
-    STORE sp,  (a0)               /* from的sp值要及时存入ram，便于下次切回来时候调用 */
+	addi sp, sp, -32 * REGBYTES
+	/* save from sp */
+	STORE sp,   0(a0)
+	/* save ra to epc */
+	STORE x1,   0 * REGBYTES(sp)
+	STORE x1,   1 * REGBYTES(sp)
+	STORE x5,   5 * REGBYTES(sp)
 
-    STORE x1,   0 * REGBYTES(sp)  /* 线程from往to的切换，把ra存到结构体epc的位置 */
-    STORE x1,   1 * REGBYTES(sp)  /* ra存到机构体ra位置 */
+	csrr  t0,  mstatus
+	andi  t0, t0, 8
+	/* if MIE be enabled,set MPIE */
+	beqz  t0, 1f
+	li    t0, 0x80
 
-    csrr a0, mstatus              /* 这里修改为直接保存mstatus */
-    andi a0, a0, 8
-    beqz a0, save_mpie
-    li   a0, 0x80
-save_mpie:
-    STORE a0,   2 * REGBYTES(sp)
+1:  STORE t0,   2 * REGBYTES(sp)
+	STORE x4,   4 * REGBYTES(sp)
 
-    STORE x4,   4 * REGBYTES(sp)
-    STORE x5,   5 * REGBYTES(sp)
-    STORE x6,   6 * REGBYTES(sp)
+	STORE x6,   6 * REGBYTES(sp)
     STORE x7,   7 * REGBYTES(sp)
     STORE x8,   8 * REGBYTES(sp)
     STORE x9,   9 * REGBYTES(sp)
@@ -157,71 +122,26 @@ save_mpie:
     STORE x30, 30 * REGBYTES(sp)
     STORE x31, 31 * REGBYTES(sp)
 
-    /* restore to thread context
-     * sp(0) -> epc;
-     * sp(1) -> ra;
-     * sp(i) -> x(i+2)
-     */
-    LOAD sp,  (a1)	/* 获取'to'线程sp值 */
+	/* get "to" thread sp */
+	LOAD  sp,  0(a1)
+	j  rt_hw_context_switch_exit
 
-#ifdef RT_USING_SMP
-    mv   a0,   a2
-    jal  rt_cpus_lock_status_restore
-#endif /*RT_USING_SMP*/
 
-    j rt_hw_context_switch_exit
-
-#ifdef RT_USING_SMP
-/*
- * void rt_hw_context_switch_interrupt(void *context, rt_ubase_t from, rt_ubase_t to, struct rt_thread *to_thread);
- *
- * a0 --> context
- * a1 --> from
- * a2 --> to
- * a3 --> to_thread
- */
-    .globl rt_hw_context_switch_interrupt
-rt_hw_context_switch_interrupt:
-
-    STORE a0, 0(a1)
-
-    LOAD  sp, 0(a2)
-    move  a0, a3
-    call rt_cpus_lock_status_restore
-
-    j rt_hw_context_switch_exit
-
-#endif
 
 .global rt_hw_context_switch_exit
 rt_hw_context_switch_exit:
-#ifdef RT_USING_SMP
-#ifdef RT_USING_SIGNALS
-    mv a0, sp
-
-    csrr  t0, mhartid
-    /* switch interrupt stack of current cpu */
-    la    sp, __stack_start__
-    addi  t1, t0, 1
-    li    t2, __STACKSIZE__
-    mul   t1, t1, t2
-    add   sp, sp, t1 /* sp = (cpuid + 1) * __STACKSIZE__ + __stack_start__ */
-
-    call rt_signal_check
-    mv sp, a0
-#endif
-#endif
     /* resw ra to mepc */
-    LOAD a0,   0 * REGBYTES(sp)   /* 这里相当于把ra赋值给mepc */
+    LOAD a0,   0 * REGBYTES(sp)
     csrw mepc, a0
 
-    LOAD x1,   1 * REGBYTES(sp)  /* 恢复ra */
+    LOAD x1,   1 * REGBYTES(sp)
 
-    li    t0, 0x00001800
-    csrs  mstatus, t0
-    LOAD a0,   2 * REGBYTES(sp)
- #	csrw mstatus ,a0            /* 恢复mstatus */
-    csrs mstatus, a0
+	/* keep machine mode */
+	li    a0,      0x7800
+	csrs  mstatus, a0
+	/* resume MPIE */
+	LOAD  a0,      2*REGBYTES(sp)
+    csrs  mstatus, a0
 
     LOAD x4,   4 * REGBYTES(sp)
     LOAD x5,   5 * REGBYTES(sp)
@@ -251,10 +171,11 @@ rt_hw_context_switch_exit:
     LOAD x29, 29 * REGBYTES(sp)
     LOAD x30, 30 * REGBYTES(sp)
     LOAD x31, 31 * REGBYTES(sp)
+    addi sp,  sp, 32 * REGBYTES
 
-    addi sp,  sp, 32 * REGBYTES /* 恢复sp */
+ /* load float reg */
+#ifdef ARCH_RISCV_FPU
 
-#ifdef ARCH_RISCV_FPU  /* 浮点寄存器先入后出，如果定义浮点寄存器，注意线程栈的大小 */
     FLOAD   f0, 0 * FREGBYTES(sp)
     FLOAD   f1, 1 * FREGBYTES(sp)
     FLOAD   f2, 2 * FREGBYTES(sp)
@@ -287,8 +208,7 @@ rt_hw_context_switch_exit:
     FLOAD   f29, 29 * FREGBYTES(sp)
     FLOAD   f30, 30 * FREGBYTES(sp)
     FLOAD   f31, 31 * FREGBYTES(sp)
-
     addi    sp, sp, 32 * FREGBYTES
 #endif
 
-    mret                        /* 这时候返回的是mepc,即ra的值 */
+    mret

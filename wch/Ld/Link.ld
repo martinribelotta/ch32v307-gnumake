@@ -179,13 +179,15 @@ SECTIONS
 	PROVIDE( _end = _ebss);
 	PROVIDE( end = . );
 
-    /* .stack ORIGIN(RAM) + LENGTH(RAM) - __stack_size :
+    /*
+    .stack ORIGIN(RAM) + LENGTH(RAM) - __stack_size :
     {
         . = ALIGN(4);
         PROVIDE(_susrstack = . );
         . = . + __stack_size;
         PROVIDE( _eusrstack = .);
-    } >RAM  */
+    } >RAM 
+    */
 
 	PROVIDE(_eusrstack = ORIGIN(RAM) + LENGTH(RAM));
 }

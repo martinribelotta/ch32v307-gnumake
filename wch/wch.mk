@@ -16,7 +16,7 @@ INCLUDES+=$(wch_dir)/drivers
 
 DEFINES+=
 
-LINKER_SCRIPTS:=$(wch_dir)/Link.ld
+LINKER_SCRIPTS:=$(wch_dir)/Ld/Link.ld
 
 ARCH:=-march=rv32imfc -mabi=ilp32f
 ARCH+=-msmall-data-limit=8 -mno-save-restore 

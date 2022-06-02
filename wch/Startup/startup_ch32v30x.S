@@ -4,6 +4,8 @@
 * Version            : V1.0.0
 * Date               : 2021/06/06
 * Description        : CH32V30x vector table for eclipse toolchain.
+* Copyright (c) 2021 Nanjing Qinheng Microelectronics Co., Ltd.
+* SPDX-License-Identifier: Apache-2.0
 *******************************************************************************/
 
 	.section	.init,"ax",@progbits
@@ -367,12 +369,12 @@ handle_reset:
     csrw 0xbc0, t0
 
     /* Enable nested and hardware stack */
-#	li t0, 0x1f
-#	csrw 0x804, t0
-	csrw 0x804, zero
+	li t0, 0x1f
+	csrw 0x804, t0
+#	csrw 0x804, zero
 
     /* Enable floating point and interrupt */
-   	li t0, 0x7888
+   	li t0, 0x7800
    	csrs mstatus, t0
 
  	la t0, _vector_base

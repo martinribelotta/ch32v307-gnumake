@@ -5,6 +5,8 @@
 * Date               : 2021/06/06
 * Description        : CH32V30x Device Peripheral Access Layer System Source File.
 *                      For HSE = 8Mhz
+* Copyright (c) 2021 Nanjing Qinheng Microelectronics Co., Ltd.
+* SPDX-License-Identifier: Apache-2.0
 *********************************************************************************/
 #include "ch32v30x.h" 
 
@@ -83,11 +85,24 @@ static void SetSysClock(void);
 void SystemInit (void)
 {
   RCC->CTLR |= (uint32_t)0x00000001;
+
+#ifdef CH32V30x_D8C
   RCC->CFGR0 &= (uint32_t)0xF8FF0000;
+#else
+  RCC->CFGR0 &= (uint32_t)0xF0FF0000;
+#endif 
+
   RCC->CTLR &= (uint32_t)0xFEF6FFFF;
   RCC->CTLR &= (uint32_t)0xFFFBFFFF;
   RCC->CFGR0 &= (uint32_t)0xFF80FFFF;
+
+#ifdef CH32V30x_D8C
+  RCC->CTLR &= (uint32_t)0xEBFFFFFF;
+  RCC->INTR = 0x00FF0000;
+  RCC->CFGR2 = 0x00000000;
+#else
   RCC->INTR = 0x009F0000;    
+#endif   
   SetSysClock();
 }
 
@@ -117,10 +132,9 @@ void SystemCoreClockUpdate (void)
       pllsource = RCC->CFGR0 & RCC_PLLSRC; 
       pllmull = ( pllmull >> 18) + 2;
 
-      if(((*(uint32_t*)0x1FFFF70C) & (1<<14)) != (1<<14)){ /* for other CH32V30x */
+#ifdef CH32V30x_D8
           if(pllmull == 17) pllmull = 18;
-      }
-      else{  /* for CH32V307 */
+#else
           if(pllmull == 2) pllmull = 18;
           if(pllmull == 15){
               pllmull = 13;  /* *6.5 */
@@ -128,7 +142,7 @@ void SystemCoreClockUpdate (void)
           }
           if(pllmull == 16) pllmull = 15;
           if(pllmull == 17) pllmull = 16;
-      }
+#endif
 
       if (pllsource == 0x00)
       {
@@ -290,12 +304,11 @@ static void SetSysClockTo24(void)
 
     RCC->CFGR0 &= (uint32_t)((uint32_t)~(RCC_PLLSRC | RCC_PLLXTPRE | RCC_PLLMULL));
 
-    if(((*(uint32_t*)0x1FFFF70C) & (1<<14)) != (1<<14)){
+#ifdef CH32V30x_D8
         RCC->CFGR0 |= (uint32_t)(RCC_PLLSRC_HSE | RCC_PLLXTPRE_HSE | RCC_PLLMULL3);
-    }
-    else{
+#else
         RCC->CFGR0 |= (uint32_t)(RCC_PLLSRC_HSE | RCC_PLLXTPRE_HSE | RCC_PLLMULL3_EXTEN);
-    }
+#endif
     /* Enable PLL */
     RCC->CTLR |= RCC_PLLON;
 
@@ -362,12 +375,11 @@ static void SetSysClockTo48(void)
     /*  PLL configuration: PLLCLK = HSE * 6 = 48 MHz */
     RCC->CFGR0 &= (uint32_t)((uint32_t)~(RCC_PLLSRC | RCC_PLLXTPRE | RCC_PLLMULL));
 
-    if(((*(uint32_t*)0x1FFFF70C) & (1<<14)) != (1<<14)){
+#ifdef CH32V30x_D8
         RCC->CFGR0 |= (uint32_t)(RCC_PLLSRC_HSE | RCC_PLLXTPRE_HSE | RCC_PLLMULL6);
-    }
-    else{
+#else
         RCC->CFGR0 |= (uint32_t)(RCC_PLLSRC_HSE | RCC_PLLXTPRE_HSE | RCC_PLLMULL6_EXTEN);
-    }
+#endif
 
     /* Enable PLL */
     RCC->CTLR |= RCC_PLLON;
@@ -435,12 +447,11 @@ static void SetSysClockTo56(void)
     /* PLL configuration: PLLCLK = HSE * 7 = 56 MHz */
     RCC->CFGR0 &= (uint32_t)((uint32_t)~(RCC_PLLSRC | RCC_PLLXTPRE | RCC_PLLMULL));
 
-    if(((*(uint32_t*)0x1FFFF70C) & (1<<14)) != (1<<14)){
+#ifdef CH32V30x_D8
         RCC->CFGR0 |= (uint32_t)(RCC_PLLSRC_HSE | RCC_PLLXTPRE_HSE | RCC_PLLMULL7);
-    }
-    else{
+#else
         RCC->CFGR0 |= (uint32_t)(RCC_PLLSRC_HSE | RCC_PLLXTPRE_HSE | RCC_PLLMULL7_EXTEN);
-    }
+#endif
 
     /* Enable PLL */
     RCC->CTLR |= RCC_PLLON;
@@ -510,12 +521,11 @@ static void SetSysClockTo72(void)
     RCC->CFGR0 &= (uint32_t)((uint32_t)~(RCC_PLLSRC | RCC_PLLXTPRE |
                                         RCC_PLLMULL));
 
-    if(((*(uint32_t*)0x1FFFF70C) & (1<<14)) != (1<<14)){
+#ifdef CH32V30x_D8
         RCC->CFGR0 |= (uint32_t)(RCC_PLLSRC_HSE | RCC_PLLXTPRE_HSE | RCC_PLLMULL9);
-    }
-    else{
+#else
         RCC->CFGR0 |= (uint32_t)(RCC_PLLSRC_HSE | RCC_PLLXTPRE_HSE | RCC_PLLMULL9_EXTEN);
-    }
+#endif
 
     /* Enable PLL */
     RCC->CTLR |= RCC_PLLON;
@@ -585,12 +595,11 @@ static void SetSysClockTo96(void)
     RCC->CFGR0 &= (uint32_t)((uint32_t)~(RCC_PLLSRC | RCC_PLLXTPRE |
                                         RCC_PLLMULL));
 
-    if(((*(uint32_t*)0x1FFFF70C) & (1<<14)) != (1<<14)){
+#ifdef CH32V30x_D8
         RCC->CFGR0 |= (uint32_t)(RCC_PLLSRC_HSE | RCC_PLLXTPRE_HSE | RCC_PLLMULL12);
-    }
-    else{
+#else
         RCC->CFGR0 |= (uint32_t)(RCC_PLLSRC_HSE | RCC_PLLXTPRE_HSE | RCC_PLLMULL12_EXTEN);
-    }
+#endif
 
     /* Enable PLL */
     RCC->CTLR |= RCC_PLLON;
@@ -660,12 +669,11 @@ static void SetSysClockTo120(void)
     RCC->CFGR0 &= (uint32_t)((uint32_t)~(RCC_PLLSRC | RCC_PLLXTPRE |
                                         RCC_PLLMULL));
 
-    if(((*(uint32_t*)0x1FFFF70C) & (1<<14)) != (1<<14)){
+#ifdef CH32V30x_D8
         RCC->CFGR0 |= (uint32_t)(RCC_PLLSRC_HSE | RCC_PLLXTPRE_HSE | RCC_PLLMULL15);
-    }
-    else{
+#else
         RCC->CFGR0 |= (uint32_t)(RCC_PLLSRC_HSE | RCC_PLLXTPRE_HSE | RCC_PLLMULL15_EXTEN);
-    }
+#endif
 
     /* Enable PLL */
     RCC->CTLR |= RCC_PLLON;
@@ -735,12 +743,11 @@ static void SetSysClockTo144(void)
     RCC->CFGR0 &= (uint32_t)((uint32_t)~(RCC_PLLSRC | RCC_PLLXTPRE |
                                         RCC_PLLMULL));
 
-    if(((*(uint32_t*)0x1FFFF70C) & (1<<14)) != (1<<14)){
+#ifdef CH32V30x_D8
         RCC->CFGR0 |= (uint32_t)(RCC_PLLSRC_HSE | RCC_PLLXTPRE_HSE | RCC_PLLMULL18);
-    }
-    else{
+#else
         RCC->CFGR0 |= (uint32_t)(RCC_PLLSRC_HSE | RCC_PLLXTPRE_HSE | RCC_PLLMULL18_EXTEN);
-    }
+#endif
 
     /* Enable PLL */
     RCC->CTLR |= RCC_PLLON;

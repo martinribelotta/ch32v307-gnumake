@@ -2,7 +2,6 @@
 
 #include <math.h>
 #include <string.h>
-#include <stdio.h>
 
 // Code from: https://gist.github.com/gszauer/5718433
 #define MAX_CIRCLE_ANGLE      512
@@ -54,7 +53,7 @@ int donut(void)
     float A=0, B=0, i, j;
     static float z[1760];
     static char b[1760];
-    printf("\x1b[2J"); 
+    rt_kprintf("\x1b[2J"); 
     fastsincos_build();
     for(; ; ) {
         memset(b,32,1760);
@@ -82,12 +81,11 @@ int donut(void)
                 }
             }
         }
-        printf("\x1b[d");
+        rt_kprintf("\x1b[d");
         for(k=0; 1761>k; k++)
-            putchar(k%80?b[k]:10);
+            rt_kprintf("%c", k%80?b[k]:10);
         A+=0.04;
         B+= 0.02;
-        fflush(stdout);
     }
     return 0;
 }

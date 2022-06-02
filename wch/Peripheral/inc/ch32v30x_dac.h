@@ -5,6 +5,8 @@
 * Date               : 2021/06/06
 * Description        : This file contains all the functions prototypes for the 
 *                      DAC firmware library.
+* Copyright (c) 2021 Nanjing Qinheng Microelectronics Co., Ltd.
+* SPDX-License-Identifier: Apache-2.0
 *******************************************************************************/
 #ifndef __CH32V30x_DAC_H
 #define __CH32V30x_DAC_H
@@ -40,12 +42,8 @@ typedef struct
 #define DAC_Trigger_T6_TRGO                ((uint32_t)0x00000004) /* TIM6 TRGO selected as external conversion trigger for DAC channel */
 #define DAC_Trigger_T8_TRGO                ((uint32_t)0x0000000C) /* TIM8 TRGO selected as external conversion trigger for DAC channel
                                                                      only in High-density devices*/
-#define DAC_Trigger_T3_TRGO                ((uint32_t)0x0000000C) /* TIM8 TRGO selected as external conversion trigger for DAC channel
-                                                                     only in Connectivity line, Medium-density and Low-density Value Line devices */
 #define DAC_Trigger_T7_TRGO                ((uint32_t)0x00000014) /* TIM7 TRGO selected as external conversion trigger for DAC channel */
 #define DAC_Trigger_T5_TRGO                ((uint32_t)0x0000001C) /* TIM5 TRGO selected as external conversion trigger for DAC channel */
-#define DAC_Trigger_T15_TRGO               ((uint32_t)0x0000001C) /* TIM15 TRGO selected as external conversion trigger for DAC channel 
-                                                                     only in Medium-density and Low-density Value Line devices*/
 #define DAC_Trigger_T2_TRGO                ((uint32_t)0x00000024) /* TIM2 TRGO selected as external conversion trigger for DAC channel */
 #define DAC_Trigger_T4_TRGO                ((uint32_t)0x0000002C) /* TIM4 TRGO selected as external conversion trigger for DAC channel */
 #define DAC_Trigger_Ext_IT9                ((uint32_t)0x00000034) /* EXTI Line9 event selected as external conversion trigger for DAC channel */

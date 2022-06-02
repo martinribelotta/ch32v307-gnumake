@@ -66,7 +66,7 @@ MSH_CMD_EXPORT(hello, say hello world);
 
 
 
-/* 复位命令 */
+/* žŽÎ»ÃüÁî */
 long reboot(void)
 {
     NVIC_SystemReset();

@@ -5,15 +5,16 @@
  *
  * Change Logs:
  * Date           Author       Notes
- * 2018-10-03     Bernard      The first version
+ * 2021-09-09     WCH        the first version
  */
 
 #ifndef CPUPORT_H__
 #define CPUPORT_H__
 
-#include <rtconfig.h>
-
 /* bytes of register width  */
+#define ARCH_RISCV_FPU
+#define ARCH_RISCV_FPU_S
+
 #ifdef ARCH_CPU_64BIT
 #define STORE                   sd
 #define LOAD                    ld
@@ -24,7 +25,7 @@
 #define REGBYTES                4
 #endif
 
-/* 增加浮点寄存器 */
+/* FPU */
 #ifdef ARCH_RISCV_FPU
 #ifdef ARCH_RISCV_FPU_D
 #define FSTORE                  fsd
@@ -39,6 +40,5 @@
 #define rv_floatreg_t           rt_int32_t
 #endif
 #endif
-
 
 #endif

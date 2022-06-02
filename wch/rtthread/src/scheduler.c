@@ -25,7 +25,6 @@
 
 #include <rtthread.h>
 #include <rthw.h>
-#include "ch32v30x.h"
 static rt_int16_t rt_scheduler_lock_nest;
 extern volatile rt_uint8_t rt_interrupt_nest;
 
@@ -267,10 +266,9 @@ void rt_schedule(void)
 
                 RT_DEBUG_LOG(RT_DEBUG_SCHEDULER, ("switch in interrupt\n"));
 
-                /* 这里如果需要切换线程会把rt_thread_switch_interrupt_flag置位 */
+                /* ÕâÀïÈç¹ûÐèÒªÇÐ»»Ïß³Ì»á°Ñrt_thread_switch_interrupt_flagÖÃÎ» */
                 rt_hw_context_switch_interrupt((rt_uint32_t)&from_thread->sp,
                                                (rt_uint32_t)&to_thread->sp);
-                NVIC_SetPendingIRQ(Software_IRQn);/* 调用软件中断切换线程 */
             }
         }
     }

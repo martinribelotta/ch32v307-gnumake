@@ -5,6 +5,8 @@
 * Date               : 2021/06/06
 * Description        : This file contains all the functions prototypes for the 
 *                      EXTI firmware library.
+* Copyright (c) 2021 Nanjing Qinheng Microelectronics Co., Ltd.
+* SPDX-License-Identifier: Apache-2.0
 *******************************************************************************/ 
 #ifndef __CH32V30x_EXTI_H
 #define __CH32V30x_EXTI_H
@@ -66,10 +68,10 @@ typedef struct
 #define EXTI_Line15      ((uint32_t)0x08000)  /* External interrupt line 15 */
 #define EXTI_Line16      ((uint32_t)0x10000)  /* External interrupt line 16 Connected to the PVD Output */
 #define EXTI_Line17      ((uint32_t)0x20000)  /* External interrupt line 17 Connected to the RTC Alarm event */
-#define EXTI_Line18      ((uint32_t)0x40000)  /* External interrupt line 18 Connected to the USB Device/USB OTG FS
+#define EXTI_Line18      ((uint32_t)0x40000)  /* External interrupt line 18 Connected to the USBD/USBFS OTG
                                                  Wakeup from suspend event */                                    
 #define EXTI_Line19      ((uint32_t)0x80000)  /* External interrupt line 19 Connected to the Ethernet Wakeup event */
-#define EXTI_Line20      ((uint32_t)0x100000) /* External interrupt line 20 Connected to the USBHD Wakeup event */
+#define EXTI_Line20      ((uint32_t)0x100000) /* External interrupt line 20 Connected to the USBHS Wakeup event */
 
 void EXTI_DeInit(void);
 void EXTI_Init(EXTI_InitTypeDef* EXTI_InitStruct);

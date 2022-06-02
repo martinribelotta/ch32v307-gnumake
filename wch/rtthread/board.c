@@ -10,35 +10,20 @@
  */
  
 #include "board.h"
-
 #include <stdint.h>
 #include "drv_usart.h"
 
 #include <rthw.h>
 #include <rtthread.h>
 
-/* 中断栈保存 */
-//volatile unsigned long  interrupter_sp_saver=0;
 
-
-// Updates the variable SystemCoreClock and must be called 
-// whenever the core clock is changed during program execution.
-//extern void SystemCoreClockUpdate(void);
-
-// Holds the system core clock, which is the system clock 
-// frequency supplied to the SysTick timer and the processor 
 // core clock.
 extern uint32_t SystemCoreClock;
 
 static uint32_t _SysTick_Config(rt_uint32_t ticks)
 {
-    if ((ticks - 1) > 0xFFFFFFFF)
-    {
-        return 1;
-    }
-
-    NVIC_SetPriority(SysTicK_IRQn,0xff);
-    NVIC_SetPriority(Software_IRQn,0xff);
+    NVIC_SetPriority(SysTicK_IRQn,0xf0);
+    NVIC_SetPriority(Software_IRQn,0xf0);
     NVIC_EnableIRQ(SysTicK_IRQn);
     NVIC_EnableIRQ(Software_IRQn);
     SysTick->CTLR=0;
@@ -68,9 +53,6 @@ RT_WEAK void *rt_heap_end_get(void)
  */
 void rt_hw_board_init()
 {
-    /* System Clock Update */
-//    SystemCoreClockUpdate();
-
     /* System Tick Configuration */
     _SysTick_Config(SystemCoreClock / RT_TICK_PER_SECOND);
     /* Call components board initial (use INIT_BOARD_EXPORT()) */
@@ -87,7 +69,7 @@ void rt_hw_board_init()
 }
 
 
-void SysTick_Handler(void) __attribute__((interrupt()));
+void SysTick_Handler(void) __attribute__((interrupt("WCH-Interrupt-fast")));
 void SysTick_Handler(void)
 {
     GET_INT_SP();
