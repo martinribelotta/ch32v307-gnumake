@@ -51,7 +51,7 @@ $(OUT)/%.o: %.S
 
 $(TARGET_ELF): $(OBJS)
 	@echo LD $@
-	@$(LD) $(LDFLAGS) $(OBJS) -o $@
+	@$(LD) -o $@ $(OBJS) $(LDFLAGS)
 
 $(TARGET_LST): $(TARGET_ELF)
 	@echo DISASM $@
@@ -64,5 +64,18 @@ $(TARGET_HEX): $(TARGET_ELF)
 clean:
 	@echo CLEAN
 	@rm -fr $(OUT)
+
+openocd:
+	openocd -f wch/wch-riscv.cfg
+
+run: all
+	$(CROSS)gdb $(TARGET_ELF) -ex "target remote :3333" -ex "mon reset halt" -ex "load" -ex "continue"
+
+debug: all
+	$(CROSS)gdb $(TARGET_ELF) -ex "target remote :3333" -ex "mon reset halt" -ex "load"
+
+flash: all
+	@echo "Programming..."
+	@openocd -f wch/wch-riscv.cfg -c init -c halt -c "flash erase_sector wch_riscv 0 last" -c "program $(TARGET_ELF) verify" -c wlink_reset_resume -c exit
 
 .PHONY: all clean

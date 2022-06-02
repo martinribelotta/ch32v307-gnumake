@@ -4,6 +4,8 @@
 * Version            : V1.0.0
 * Date               : 2021/06/06
 * Description        : This file provides all the RCC firmware functions.
+* Copyright (c) 2021 Nanjing Qinheng Microelectronics Co., Ltd.
+* SPDX-License-Identifier: Apache-2.0
 *******************************************************************************/ 
 #ifndef __CH32V30x_RCC_H
 #define __CH32V30x_RCC_H
@@ -31,9 +33,18 @@ typedef struct
 
 /* PLL_entry_clock_source */
 #define RCC_PLLSource_HSI_Div2           ((uint32_t)0x00000000)
+
+#ifdef CH32V30x_D8
+#define RCC_PLLSource_HSE_Div1           ((uint32_t)0x00010000)
+#define RCC_PLLSource_HSE_Div2           ((uint32_t)0x00030000)
+
+#else
 #define RCC_PLLSource_PREDIV1            ((uint32_t)0x00010000)
 
-/* PLL_multiplication_factor for other CH32V30x  */
+#endif
+
+/* PLL_multiplication_factor */
+#ifdef CH32V30x_D8
 #define RCC_PLLMul_2                     ((uint32_t)0x00000000)
 #define RCC_PLLMul_3                     ((uint32_t)0x00040000)
 #define RCC_PLLMul_4                     ((uint32_t)0x00080000)
@@ -51,7 +62,7 @@ typedef struct
 #define RCC_PLLMul_16                    ((uint32_t)0x00380000)
 #define RCC_PLLMul_18                    ((uint32_t)0x003C0000)
 
-/* PLL_multiplication_factor for CH32V307 */
+#else
 #define RCC_PLLMul_18_EXTEN              ((uint32_t)0x00000000)
 #define RCC_PLLMul_3_EXTEN               ((uint32_t)0x00040000)
 #define RCC_PLLMul_4_EXTEN               ((uint32_t)0x00080000)
@@ -69,7 +80,10 @@ typedef struct
 #define RCC_PLLMul_15_EXTEN              ((uint32_t)0x00380000)
 #define RCC_PLLMul_16_EXTEN              ((uint32_t)0x003C0000)
 
+#endif
+
 /* PREDIV1_division_factor */
+#ifdef CH32V30x_D8C
 #define RCC_PREDIV1_Div1                 ((uint32_t)0x00000000)
 #define RCC_PREDIV1_Div2                 ((uint32_t)0x00000001)
 #define RCC_PREDIV1_Div3                 ((uint32_t)0x00000002)
@@ -87,11 +101,17 @@ typedef struct
 #define RCC_PREDIV1_Div15                ((uint32_t)0x0000000E)
 #define RCC_PREDIV1_Div16                ((uint32_t)0x0000000F)
 
+#endif
+
 /* PREDIV1_clock_source */
+#ifdef CH32V30x_D8C
 #define RCC_PREDIV1_Source_HSE           ((uint32_t)0x00000000)
 #define RCC_PREDIV1_Source_PLL2          ((uint32_t)0x00010000)
 
+#endif
+
 /* PREDIV2_division_factor */
+#ifdef CH32V30x_D8C
 #define RCC_PREDIV2_Div1                 ((uint32_t)0x00000000)
 #define RCC_PREDIV2_Div2                 ((uint32_t)0x00000010)
 #define RCC_PREDIV2_Div3                 ((uint32_t)0x00000020)
@@ -109,7 +129,10 @@ typedef struct
 #define RCC_PREDIV2_Div15                ((uint32_t)0x000000E0)
 #define RCC_PREDIV2_Div16                ((uint32_t)0x000000F0)
 
+#endif
+
 /* PLL2_multiplication_factor */
+#ifdef CH32V30x_D8C
 #define RCC_PLL2Mul_2_5                  ((uint32_t)0x00000000)
 #define RCC_PLL2Mul_12_5                 ((uint32_t)0x00000100)
 #define RCC_PLL2Mul_4                    ((uint32_t)0x00000200)
@@ -127,7 +150,10 @@ typedef struct
 #define RCC_PLL2Mul_16                   ((uint32_t)0x00000E00)
 #define RCC_PLL2Mul_20                   ((uint32_t)0x00000F00)
 
+#endif
+
 /* PLL3_multiplication_factor */
+#ifdef CH32V30x_D8C
 #define RCC_PLL3Mul_2_5                  ((uint32_t)0x00000000)
 #define RCC_PLL3Mul_12_5                 ((uint32_t)0x00001000)
 #define RCC_PLL3Mul_4                    ((uint32_t)0x00002000)
@@ -144,6 +170,8 @@ typedef struct
 #define RCC_PLL3Mul_15                   ((uint32_t)0x0000D000)
 #define RCC_PLL3Mul_16                   ((uint32_t)0x0000E000)
 #define RCC_PLL3Mul_20                   ((uint32_t)0x0000F000)
+
+#endif
 
 /* System_clock_source */
 #define RCC_SYSCLKSource_HSI             ((uint32_t)0x00000000)
@@ -174,9 +202,13 @@ typedef struct
 #define RCC_IT_HSIRDY                    ((uint8_t)0x04)
 #define RCC_IT_HSERDY                    ((uint8_t)0x08)
 #define RCC_IT_PLLRDY                    ((uint8_t)0x10)
+#define RCC_IT_CSS                       ((uint8_t)0x80)
+
+#ifdef CH32V30x_D8C
 #define RCC_IT_PLL2RDY                   ((uint8_t)0x20)
 #define RCC_IT_PLL3RDY                   ((uint8_t)0x40)
-#define RCC_IT_CSS                       ((uint8_t)0x80)
+
+#endif
 
 /* USB_OTG_FS_clock_source */
 #define RCC_OTGFSCLKSource_PLLCLK_Div1   ((uint8_t)0x00)
@@ -184,12 +216,18 @@ typedef struct
 #define RCC_OTGFSCLKSource_PLLCLK_Div3   ((uint8_t)0x02)
 
 /* I2S2_clock_source */
+#ifdef CH32V30x_D8C
 #define RCC_I2S2CLKSource_SYSCLK         ((uint8_t)0x00)
 #define RCC_I2S2CLKSource_PLL3_VCO       ((uint8_t)0x01)
 
+#endif
+
 /* I2S3_clock_source */
+#ifdef CH32V30x_D8C
 #define RCC_I2S3CLKSource_SYSCLK         ((uint8_t)0x00)
 #define RCC_I2S3CLKSource_PLL3_VCO       ((uint8_t)0x01)
+
+#endif
 
 /* ADC_clock_source */
 #define RCC_PCLK2_Div2                   ((uint32_t)0x00000000)
@@ -270,10 +308,14 @@ typedef struct
 #define RCC_MCO_HSI                      ((uint8_t)0x05)
 #define RCC_MCO_HSE                      ((uint8_t)0x06)
 #define RCC_MCO_PLLCLK_Div2              ((uint8_t)0x07)
+
+#ifdef CH32V30x_D8C
 #define RCC_MCO_PLL2CLK                  ((uint8_t)0x08)
 #define RCC_MCO_PLL3CLK_Div2             ((uint8_t)0x09)
 #define RCC_MCO_XT1                      ((uint8_t)0x0A)
 #define RCC_MCO_PLL3CLK                  ((uint8_t)0x0B)
+
+#endif
 
 /* RCC_Flag */
 #define RCC_FLAG_HSIRDY                  ((uint8_t)0x21)
@@ -287,23 +329,34 @@ typedef struct
 #define RCC_FLAG_IWDGRST                 ((uint8_t)0x7D)
 #define RCC_FLAG_WWDGRST                 ((uint8_t)0x7E)
 #define RCC_FLAG_LPWRRST                 ((uint8_t)0x7F)
+
+#ifdef CH32V30x_D8C
 #define RCC_FLAG_PLL2RDY                 ((uint8_t)0x3B)
 #define RCC_FLAG_PLL3RDY                 ((uint8_t)0x3D)
+
+#endif
 
 /* SysTick_clock_source */
 #define SysTick_CLKSource_HCLK_Div8      ((uint32_t)0xFFFFFFFB)
 #define SysTick_CLKSource_HCLK           ((uint32_t)0x00000004)
 
 /* RNG_clock_source */
+#ifdef CH32V30x_D8C
 #define RCC_RNGCLKSource_SYSCLK          ((uint32_t)0x00)
 #define RCC_RNGCLKSource_PLL3_VCO        ((uint32_t)0x01)
 
+#endif
+
 /* ETH1G_clock_source */
+#ifdef CH32V30x_D8C
 #define RCC_ETH1GCLKSource_PLL2_VCO      ((uint32_t)0x00)
 #define RCC_ETH1GCLKSource_PLL3_VCO      ((uint32_t)0x01)
 #define RCC_ETH1GCLKSource_PB1_IN        ((uint32_t)0x02)
 
+#endif
+
 /* USBFS_clock_source */
+#ifdef CH32V30x_D8C
 #define RCC_USBPLL_Div1                  ((uint32_t)0x00)
 #define RCC_USBPLL_Div2                  ((uint32_t)0x01)
 #define RCC_USBPLL_Div3                  ((uint32_t)0x02)
@@ -313,17 +366,25 @@ typedef struct
 #define RCC_USBPLL_Div7                  ((uint32_t)0x06)
 #define RCC_USBPLL_Div8                  ((uint32_t)0x07)
 
+#endif
+
 /* USBHSPLL_clock_source */
+#ifdef CH32V30x_D8C
 #define RCC_HSBHSPLLCLKSource_HSE        ((uint32_t)0x00)
 #define RCC_HSBHSPLLCLKSource_HSI        ((uint32_t)0x01)
 
+#endif
+
 /* USBHSPLLCKREF_clock_select */
+#ifdef CH32V30x_D8C
 #define RCC_USBHSPLLCKREFCLK_3M          ((uint32_t)0x00)
 #define RCC_USBHSPLLCKREFCLK_4M          ((uint32_t)0x01)
 #define RCC_USBHSPLLCKREFCLK_8M          ((uint32_t)0x02)
 #define RCC_USBHSPLLCKREFCLK_5M          ((uint32_t)0x03)
 
-/* USBCLK48M_clock_source */
+#endif
+
+/* OTGUSBCLK48M_clock_source */
 #define RCC_USBCLK48MCLKSource_PLLCLK    ((uint32_t)0x00)
 #define RCC_USBCLK48MCLKSource_USBPHY    ((uint32_t)0x01)
 
@@ -359,19 +420,20 @@ FlagStatus RCC_GetFlagStatus(uint8_t RCC_FLAG);
 void RCC_ClearFlag(void);
 ITStatus RCC_GetITStatus(uint8_t RCC_IT);
 void RCC_ClearITPendingBit(uint8_t RCC_IT);
+void RCC_ADCCLKADJcmd(FunctionalState NewState);
+void RCC_OTGFSCLKConfig(uint32_t RCC_OTGFSCLKSource);
+void RCC_USBCLK48MConfig(uint32_t RCC_USBCLK48MSource);
 
+#ifdef CH32V30x_D8C
 void RCC_PREDIV1Config(uint32_t RCC_PREDIV1_Source, uint32_t RCC_PREDIV1_Div);
 void RCC_PREDIV2Config(uint32_t RCC_PREDIV2_Div);
 void RCC_PLL2Config(uint32_t RCC_PLL2Mul);
 void RCC_PLL2Cmd(FunctionalState NewState);
 void RCC_PLL3Config(uint32_t RCC_PLL3Mul);
 void RCC_PLL3Cmd(FunctionalState NewState);
-void RCC_OTGFSCLKConfig(uint32_t RCC_OTGFSCLKSource);
 void RCC_I2S2CLKConfig(uint32_t RCC_I2S2CLKSource);
 void RCC_I2S3CLKConfig(uint32_t RCC_I2S3CLKSource);
 void RCC_AHBPeriphResetCmd(uint32_t RCC_AHBPeriph, FunctionalState NewState);
-
-void RCC_ADCCLKADJcmd(FunctionalState NewState);
 void RCC_RNGCLKConfig(uint32_t RCC_RNGCLKSource);
 void RCC_ETH1GCLKConfig(uint32_t RCC_ETH1GCLKSource);
 void RCC_ETH1G_125Mcmd(FunctionalState NewState);
@@ -379,7 +441,8 @@ void RCC_USBHSConfig(uint32_t RCC_USBHS);
 void RCC_USBHSPLLCLKConfig(uint32_t RCC_USBHSPLLCLKSource);
 void RCC_USBHSPLLCKREFCLKConfig(uint32_t RCC_USBHSPLLCKREFCLKSource);
 void RCC_USBHSPHYPLLALIVEcmd(FunctionalState NewState);
-void RCC_USBCLK48MConfig(uint32_t RCC_USBCLK48MSource);
+
+#endif
 
 #ifdef __cplusplus
 }

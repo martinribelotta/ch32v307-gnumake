@@ -4,6 +4,8 @@
 * Version            : V1.0.0
 * Date               : 2021/06/06
 * Description        : CH32V30x Device Peripheral Access Layer Header File.
+* Copyright (c) 2021 Nanjing Qinheng Microelectronics Co., Ltd.
+* SPDX-License-Identifier: Apache-2.0
 *******************************************************************************/   
 #ifndef __CH32V30x_H
 #define __CH32V30x_H
@@ -11,6 +13,9 @@
 #ifdef __cplusplus
  extern "C" {
 #endif 
+
+//#define CH32V30x_D8              /* CH32V303x */
+#define CH32V30x_D8C             /* CH32V307x-CH32V305x */
   
 #define __MPU_PRESENT             0 /* Other CH32 devices does not provide an MPU */
 #define __Vendor_SysTickConfig    0 /* Set to 1 if different SysTick Config is used */	 
@@ -18,7 +23,7 @@
 #define HSE_VALUE    ((uint32_t)8000000) /* Value of the External oscillator in Hz */
 
 /* In the following line adjust the External High Speed oscillator (HSE) Startup Timeout value */
-#define HSE_STARTUP_TIMEOUT   ((uint16_t)0x500) /* Time out for HSE start up */
+#define HSE_STARTUP_TIMEOUT   ((uint16_t)0x1000) /* Time out for HSE start up */
 
 #define HSI_VALUE    ((uint32_t)8000000) /* Value of the Internal oscillator in Hz */
 
@@ -77,6 +82,48 @@ typedef enum IRQn
   USART3_IRQn                 = 55,      /* USART3 global Interrupt                              */
   EXTI15_10_IRQn              = 56,      /* External Line[15:10] Interrupts                      */
   RTCAlarm_IRQn               = 57,      /* RTC Alarm through EXTI Line Interrupt                */
+
+#ifdef CH32V30x_D8
+  TIM8_BRK_IRQn               = 59,      /* TIM8 Break Interrupt                                 */
+  TIM8_UP_IRQn                = 60,      /* TIM8 Update Interrupt                                */
+  TIM8_TRG_COM_IRQn           = 61,      /* TIM8 Trigger and Commutation Interrupt               */
+  TIM8_CC_IRQn                = 62,      /* TIM8 Capture Compare Interrupt                       */
+  RNG_IRQn                    = 63,      /* RNG global Interrupt                                 */
+  FSMC_IRQn                   = 64,      /* FSMC global Interrupt                                */
+  SDIO_IRQn                   = 65,      /* SDIO global Interrupt                                */
+  TIM5_IRQn                   = 66,      /* TIM5 global Interrupt                                */
+  SPI3_IRQn                   = 67,      /* SPI3 global Interrupt                                */
+  UART4_IRQn                  = 68,      /* UART4 global Interrupt                               */
+  UART5_IRQn                  = 69,      /* UART5 global Interrupt                               */
+  TIM6_IRQn                   = 70,      /* TIM6 global Interrupt                                */
+  TIM7_IRQn                   = 71,      /* TIM7 global Interrupt                                */
+  DMA2_Channel1_IRQn          = 72,      /* DMA2 Channel 1 global Interrupt                      */
+  DMA2_Channel2_IRQn          = 73,      /* DMA2 Channel 2 global Interrupt                      */
+  DMA2_Channel3_IRQn          = 74,      /* DMA2 Channel 3 global Interrupt                      */
+  DMA2_Channel4_IRQn          = 75,      /* DMA2 Channel 4 global Interrupt                      */
+  DMA2_Channel5_IRQn          = 76,      /* DMA2 Channel 5 global Interrupt                      */
+  OTG_FS_IRQn                 = 83,      /* OTGFS global Interrupt                               */
+  UART6_IRQn                  = 87,      /* UART6 global Interrupt                               */
+  UART7_IRQn                  = 88,      /* UART7 global Interrupt                               */
+  UART8_IRQn                  = 89,      /* UART8 global Interrupt                               */
+  TIM9_BRK_IRQn               = 90,      /* TIM9 Break Interrupt                                 */
+  TIM9_UP_IRQn                = 91,      /* TIM9 Update Interrupt                                */
+  TIM9_TRG_COM_IRQn           = 92,      /* TIM9 Trigger and Commutation Interrupt               */
+  TIM9_CC_IRQn                = 93,      /* TIM9 Capture Compare Interrupt                       */
+  TIM10_BRK_IRQn              = 94,      /* TIM10 Break Interrupt                                */
+  TIM10_UP_IRQn               = 95,      /* TIM10 Update Interrupt                               */
+  TIM10_TRG_COM_IRQn          = 96,      /* TIM10 Trigger and Commutation Interrupt              */
+  TIM10_CC_IRQn               = 97,      /* TIM10 Capture Compare Interrupt                      */
+  DMA2_Channel6_IRQn          = 98,      /* DMA2 Channel 6 global Interrupt                      */
+  DMA2_Channel7_IRQn          = 99,      /* DMA2 Channel 7 global Interrupt                      */
+  DMA2_Channel8_IRQn          = 100,     /* DMA2 Channel 8 global Interrupt                      */
+  DMA2_Channel9_IRQn          = 101,     /* DMA2 Channel 9 global Interrupt                      */
+  DMA2_Channel10_IRQn         = 102,     /* DMA2 Channel 10 global Interrupt                     */
+  DMA2_Channel11_IRQn         = 103,     /* DMA2 Channel 11 global Interrupt                     */
+
+#endif
+
+#ifdef CH32V30x_D8C
   USBWakeUp_IRQn              = 58,      /* USB Device WakeUp from suspend through EXTI Line Interrupt */
   TIM8_BRK_IRQn               = 59,      /* TIM8 Break Interrupt                                 */
   TIM8_UP_IRQn                = 60,      /* TIM8 Update Interrupt                                */
@@ -123,6 +170,8 @@ typedef enum IRQn
   DMA2_Channel9_IRQn          = 101,     /* DMA2 Channel 9 global Interrupt                      */
   DMA2_Channel10_IRQn         = 102,     /* DMA2 Channel 10 global Interrupt                     */
   DMA2_Channel11_IRQn         = 103,     /* DMA2 Channel 11 global Interrupt                     */
+
+#endif
 } IRQn_Type;
 
 #define HardFault_IRQn   EXC_IRQn
@@ -339,13 +388,6 @@ typedef struct
   __IO uint32_t DOR1;
   __IO uint32_t DOR2;
 } DAC_TypeDef;
-
-/* Debug MCU */
-typedef struct
-{
-  __IO uint32_t CFGR0;
-  __IO uint32_t CFGR1;
-}DBGMCU_TypeDef;
 
 /* DMA Channel Controller */
 typedef struct
@@ -574,7 +616,9 @@ typedef struct
   __IO uint16_t I2SCFGR;
   uint16_t  RESERVED7;
   __IO uint16_t I2SPR;
-  uint16_t  RESERVED8;  
+  uint16_t  RESERVED8;
+  __IO uint16_t HSCR;
+  uint16_t  RESERVED9;
 } SPI_TypeDef;
 
 /* TIM */
@@ -1173,8 +1217,6 @@ typedef struct
 #define FSMC_Bank1E_R_BASE    (FSMC_R_BASE + 0x0104) 
 #define FSMC_Bank2_R_BASE     (FSMC_R_BASE + 0x0060) 
 
-#define DBGMCU_BASE           ((uint32_t)0xE000D000)
-
 #define OB_BASE               ((uint32_t)0x1FFFF800)
 
 /* Peripheral declaration */
@@ -1268,8 +1310,6 @@ typedef struct
 #define FSMC_Bank1          ((FSMC_Bank1_TypeDef *) FSMC_Bank1_R_BASE)
 #define FSMC_Bank1E         ((FSMC_Bank1E_TypeDef *) FSMC_Bank1E_R_BASE)
 #define FSMC_Bank2          ((FSMC_Bank2_TypeDef *) FSMC_Bank2_R_BASE)
-
-#define DBGMCU              ((DBGMCU_TypeDef *) DBGMCU_BASE)
 
 #define OB                  ((OB_TypeDef *) OB_BASE)
 

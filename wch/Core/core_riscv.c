@@ -4,6 +4,8 @@
 * Version            : V1.0.0
 * Date               : 2021/06/06
 * Description        : RISC-V Core Peripheral Access Layer Source File
+* Copyright (c) 2021 Nanjing Qinheng Microelectronics Co., Ltd.
+* SPDX-License-Identifier: Apache-2.0
 *******************************************************************************/
 #include <stdint.h>
 
@@ -535,5 +537,22 @@ uint32_t __get_MHARTID(void)
   return (result);
 }
 
+/*********************************************************************
+ * @fn      __get_SP
+ *
+ * @brief   none
+ *
+ * @return  Return SP Register
+ */
+uint32_t __get_SP(void)
+{
+  uint32_t result;
 
+  asm volatile (
+   "mv %0," "sp"
+   : "=r"(result)
+   :
+ );
+  return (result);
+}
 
