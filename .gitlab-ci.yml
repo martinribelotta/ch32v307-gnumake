@@ -1,4 +1,4 @@
-image: registry.gitlab.com/eta-for-ci/dockerfile_draft
+image: registry.gitlab.com/eta-for-ci/dockerfile_mrs_toolchain
 
 stages:          # List of stages for jobs, and their order of execution
   - build
@@ -6,4 +6,5 @@ stages:          # List of stages for jobs, and their order of execution
 build-job:       # This job runs in the build stage, which runs first.
   stage: build
   script:
-    - pytest --version
+    - make clean
+    - make all -j8
