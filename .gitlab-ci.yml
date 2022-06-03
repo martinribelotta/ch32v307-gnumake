@@ -8,3 +8,11 @@ build-job:       # This job runs in the build stage, which runs first.
   script:
     - make clean
     - make all -j8
+  artifacts:
+    paths:
+      - build/*.elf
+      - build/*.hex
+      - build/*.bin
+      - build/*.lst
+      - build/*.map
+    expire_in: 1 week
