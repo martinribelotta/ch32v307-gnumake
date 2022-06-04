@@ -89,7 +89,7 @@ void rt_hw_board_init()
 //     GPIO_Init(GPIOA, &GPIO_InitStructure);
 // }
 
-void SysTick_Handler(void) __attribute__((interrupt("WCH-Interrupt-fast")));
+// void SysTick_Handler(void) __attribute__((interrupt("WCH-Interrupt-fast")));
 void SysTick_Handler(void)
 {
     GET_INT_SP();

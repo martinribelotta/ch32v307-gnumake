@@ -2,7 +2,6 @@ rt_thread_dir := $(wch_dir)/$(notdir $(patsubst %/,%,$(dir $(abspath $(lastword 
 
 CSRC+=$(wildcard $(rt_thread_dir)/*.c)
 CSRC+=$(wildcard $(rt_thread_dir)/src/*.c)
-CSRC+=$(wildcard $(rt_thread_dir)/drivers/*/*.c)
 CSRC+=$(wildcard $(rt_thread_dir)/components/drivers/*/*.c)
 CSRC+=$(wildcard $(rt_thread_dir)/components/finsh/*.c)
 CSRC+=$(wildcard $(rt_thread_dir)/libcpu/risc-v/*.c)

@@ -293,7 +293,7 @@ static const struct rt_uart_ops ch32_uart_ops =
 
 
 #ifdef BSP_USING_UART1
-void USART1_IRQHandler(void) __attribute__((interrupt("WCH-Interrupt-fast")));
+//void USART1_IRQHandler(void) __attribute__((interrupt("WCH-Interrupt-fast")));
 void USART1_IRQHandler(void)
 {
     GET_INT_SP();
@@ -305,7 +305,7 @@ void USART1_IRQHandler(void)
 #endif
 
 #ifdef BSP_USING_UART2
-void USART2_IRQHandler(void) __attribute__((interrupt()));
+//void USART2_IRQHandler(void) __attribute__((interrupt()));
 void USART2_IRQHandler(void)
 {
     GET_INT_SP();
@@ -317,7 +317,7 @@ void USART2_IRQHandler(void)
 #endif
 
 #ifdef BSP_USING_UART3
-void USART3_IRQHandler(void) __attribute__((interrupt()));
+//void USART3_IRQHandler(void) __attribute__((interrupt()));
 void USART3_IRQHandler(void)
 {
     GET_INT_SP();
@@ -329,7 +329,7 @@ void USART3_IRQHandler(void)
 #endif
 
 #ifdef BSP_USING_UART4
-void UART4_IRQHandler(void) __attribute__((interrupt()));
+//void UART4_IRQHandler(void) __attribute__((interrupt()));
 void UART4_IRQHandler(void)
 {
     GET_INT_SP();
@@ -341,7 +341,7 @@ void UART4_IRQHandler(void)
 #endif
 
 #ifdef BSP_USING_UART5
-void UART5_IRQHandler(void) __attribute__((interrupt()));
+//void UART5_IRQHandler(void) __attribute__((interrupt()));
 void UART5_IRQHandler(void)
 {
     GET_INT_SP();
@@ -353,7 +353,7 @@ void UART5_IRQHandler(void)
 #endif
 
 #ifdef BSP_USING_UART6
-void UART6_IRQHandler(void) __attribute__((interrupt()));
+//void UART6_IRQHandler(void) __attribute__((interrupt()));
 void UART6_IRQHandler(void)
 {
     GET_INT_SP();
@@ -365,7 +365,7 @@ void UART6_IRQHandler(void)
 #endif
 
 #ifdef BSP_USING_UART7
-void UART7_IRQHandler(void) __attribute__((interrupt()));
+//void UART7_IRQHandler(void) __attribute__((interrupt()));
 void UART7_IRQHandler(void)
 {
     GET_INT_SP();
@@ -378,7 +378,7 @@ void UART7_IRQHandler(void)
 
 
 #ifdef BSP_USING_UART8
-void UART8_IRQHandler(void) __attribute__((interrupt()));
+//void UART8_IRQHandler(void) __attribute__((interrupt()));
 void UART8_IRQHandler(void)
 {
     GET_INT_SP();
