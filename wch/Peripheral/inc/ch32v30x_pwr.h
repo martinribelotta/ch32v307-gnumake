@@ -5,8 +5,6 @@
 * Date               : 2021/06/06
 * Description        : This file contains all the functions prototypes for the PWR  
 *                      firmware library.
-* Copyright (c) 2021 Nanjing Qinheng Microelectronics Co., Ltd.
-* SPDX-License-Identifier: Apache-2.0
 *******************************************************************************/ 
 #ifndef __CH32V30x_PWR_H
 #define __CH32V30x_PWR_H
@@ -50,10 +48,10 @@ void PWR_EnterSTOPMode(uint32_t PWR_Regulator, uint8_t PWR_STOPEntry);
 void PWR_EnterSTANDBYMode(void);
 FlagStatus PWR_GetFlagStatus(uint32_t PWR_FLAG);
 void PWR_ClearFlag(uint32_t PWR_FLAG);
+void PWR_EnterSTOPMode_RAM(uint32_t PWR_Regulator, uint8_t PWR_STOPEntry);
+void PWR_EnterSTOPMode_RAM_LV(uint32_t PWR_Regulator, uint8_t PWR_STOPEntry);
 void PWR_EnterSTANDBYMode_RAM(void);
 void PWR_EnterSTANDBYMode_RAM_LV(void);
-void PWR_EnterSTANDBYMode_RAM_VBAT_EN(void);
-void PWR_EnterSTANDBYMode_RAM_LV_VBAT_EN(void);
 
 
 #ifdef __cplusplus

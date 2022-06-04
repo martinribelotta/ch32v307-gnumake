@@ -1,25 +1,50 @@
 /*
- * File      : drv_gpio.h
- * This file is part of RT-Thread RTOS
- * COPYRIGHT (C) 2015, RT-Thread Development Team
+ * Copyright (c) 2006-2018, RT-Thread Development Team
  *
- * The license and distribution terms for this file may be
- * found in the file LICENSE in this distribution or at
- * http://www.rt-thread.org/license/LICENSE
+ * SPDX-License-Identifier: Apache-2.0
  *
  * Change Logs:
- * Date           Author       Notes
- * 2015-01-05     Bernard      the first version
- * 2017-11-35     ZYH            update to 3.0.0
+ * Date           Author            Notes
+ * 2021-09-09     WCH        the first version
  */
-#ifndef GPIO_H__
-#define GPIO_H__
-struct stm32_hw_pin_userdata
+ 
+#ifndef __DRV_GPIO_H__
+#define __DRV_GPIO_H__
+
+#include <board.h>
+#include <rtthread.h>
+#include "rtdevice.h"
+#include <rthw.h>
+
+
+#define __CH32_PORT(port)  GPIO##port##_BASE
+#define GET_PIN(PORTx,PIN) (rt_base_t)((16 * ( ((rt_base_t)__CH32_PORT(PORTx) - (rt_base_t)GPIOA_BASE)/(0x0400UL) )) + PIN)
+
+#define __CH32_PIN(index, gpio, gpio_index)                                \
+    {                                                                      \
+        index, GPIO##gpio, GPIO_Pin_##gpio_index                           \
+    }
+
+#define __CH32_PIN_RESERVE                                                 \
+    {                                                                      \
+        -1, 0, 0                                                           \
+    }
+
+/* CH32 GPIO driver */
+struct pin_index
 {
-    int pin;
-    uint32_t mode;
+    int index;
+    GPIO_TypeDef *gpio;
+    uint32_t pin;
 };
-#define PIN_USERDATA_END {-1,0}
-extern struct stm32_hw_pin_userdata stm32_pins[];
+
+struct pin_irq_map
+{
+    rt_uint16_t pinbit;
+    IRQn_Type irqno;
+};
+
 int rt_hw_pin_init(void);
-#endif
+
+
+#endif/* __DRV_GPIO_H__ */

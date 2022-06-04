@@ -5,8 +5,6 @@
 * Date               : 2021/06/06
 * Description        : This file contains all the functions prototypes for the FSMC
 *                      firmware library.
-* Copyright (c) 2021 Nanjing Qinheng Microelectronics Co., Ltd.
-* SPDX-License-Identifier: Apache-2.0
 *******************************************************************************/
 #ifndef __CH32V30x_FSMC_H
 #define __CH32V30x_FSMC_H
@@ -175,11 +173,40 @@ typedef struct
 }FSMC_NANDInitTypeDef;
 
 
+typedef struct
+{
+  uint32_t FSMC_Waitfeature;    /* Enables or disables the Wait feature for the Memory Bank.
+                                   This parameter can be any value of @ref FSMC_Wait_feature */
+
+  uint32_t FSMC_TCLRSetupTime;  /* Defines the number of HCLK cycles to configure the
+                                   delay between CLE low and RE low.
+                                   This parameter can be a value between 0 and 0xFF. */
+
+  uint32_t FSMC_TARSetupTime;   /* Defines the number of HCLK cycles to configure the
+                                   delay between ALE low and RE low.
+                                   This parameter can be a number between 0x0 and 0xFF */
+
+  
+  FSMC_NAND_PCCARDTimingInitTypeDef*  FSMC_CommonSpaceTimingStruct; /* FSMC Common Space Timing */
+
+  FSMC_NAND_PCCARDTimingInitTypeDef*  FSMC_AttributeSpaceTimingStruct;  /* FSMC Attribute Space Timing */
+  
+  FSMC_NAND_PCCARDTimingInitTypeDef*  FSMC_IOSpaceTimingStruct; /* FSMC IO Space Timing */
+}FSMC_PCCARDInitTypeDef;
+
+
 /* FSMC_NORSRAM_Bank */
 #define FSMC_Bank1_NORSRAM1                             ((uint32_t)0x00000000)
+#define FSMC_Bank1_NORSRAM2                             ((uint32_t)0x00000002)
+#define FSMC_Bank1_NORSRAM3                             ((uint32_t)0x00000004)
+#define FSMC_Bank1_NORSRAM4                             ((uint32_t)0x00000006)
 
 /* FSMC_NAND_Bank */
 #define FSMC_Bank2_NAND                                 ((uint32_t)0x00000010)
+#define FSMC_Bank3_NAND                                 ((uint32_t)0x00000100)
+
+/* FSMC_PCCARD_Bank */
+#define FSMC_Bank4_PCCARD                               ((uint32_t)0x00001000)
 
 /* FSMC_Data_Address_Bus_Multiplexing */
 #define FSMC_DataAddressMux_Disable                     ((uint32_t)0x00000000)
@@ -266,12 +293,16 @@ typedef struct
 
 void FSMC_NORSRAMDeInit(uint32_t FSMC_Bank);
 void FSMC_NANDDeInit(uint32_t FSMC_Bank);
+void FSMC_PCCARDDeInit(void);
 void FSMC_NORSRAMInit(FSMC_NORSRAMInitTypeDef* FSMC_NORSRAMInitStruct);
 void FSMC_NANDInit(FSMC_NANDInitTypeDef* FSMC_NANDInitStruct);
+void FSMC_PCCARDInit(FSMC_PCCARDInitTypeDef* FSMC_PCCARDInitStruct);
 void FSMC_NORSRAMStructInit(FSMC_NORSRAMInitTypeDef* FSMC_NORSRAMInitStruct);
 void FSMC_NANDStructInit(FSMC_NANDInitTypeDef* FSMC_NANDInitStruct);
+void FSMC_PCCARDStructInit(FSMC_PCCARDInitTypeDef* FSMC_PCCARDInitStruct);
 void FSMC_NORSRAMCmd(uint32_t FSMC_Bank, FunctionalState NewState);
 void FSMC_NANDCmd(uint32_t FSMC_Bank, FunctionalState NewState);
+void FSMC_PCCARDCmd(FunctionalState NewState);
 void FSMC_NANDECCCmd(uint32_t FSMC_Bank, FunctionalState NewState);
 uint32_t FSMC_GetECC(uint32_t FSMC_Bank);
 void FSMC_ITConfig(uint32_t FSMC_Bank, uint32_t FSMC_IT, FunctionalState NewState);

@@ -5,8 +5,6 @@
 * Date               : 2021/06/06
 * Description        : This file contains all the functions prototypes for the  
 *                      TIM firmware library.
-* Copyright (c) 2021 Nanjing Qinheng Microelectronics Co., Ltd.
-* SPDX-License-Identifier: Apache-2.0
 *******************************************************************************/ 
 #ifndef __CH32V30x_TIM_H
 #define __CH32V30x_TIM_H
@@ -258,24 +256,24 @@ typedef struct
 #define TIM_DMABase_DCR                    ((uint16_t)0x0012)
 
 /* TIM_DMA_Burst_Length */
-#define TIM_DMABurstLength_1Transfer       ((uint16_t)0x0000)
-#define TIM_DMABurstLength_2Transfers      ((uint16_t)0x0100)
-#define TIM_DMABurstLength_3Transfers      ((uint16_t)0x0200)
-#define TIM_DMABurstLength_4Transfers      ((uint16_t)0x0300)
-#define TIM_DMABurstLength_5Transfers      ((uint16_t)0x0400)
-#define TIM_DMABurstLength_6Transfers      ((uint16_t)0x0500)
-#define TIM_DMABurstLength_7Transfers      ((uint16_t)0x0600)
-#define TIM_DMABurstLength_8Transfers      ((uint16_t)0x0700)
-#define TIM_DMABurstLength_9Transfers      ((uint16_t)0x0800)
-#define TIM_DMABurstLength_10Transfers     ((uint16_t)0x0900)
-#define TIM_DMABurstLength_11Transfers     ((uint16_t)0x0A00)
-#define TIM_DMABurstLength_12Transfers     ((uint16_t)0x0B00)
-#define TIM_DMABurstLength_13Transfers     ((uint16_t)0x0C00)
-#define TIM_DMABurstLength_14Transfers     ((uint16_t)0x0D00)
-#define TIM_DMABurstLength_15Transfers     ((uint16_t)0x0E00)
-#define TIM_DMABurstLength_16Transfers     ((uint16_t)0x0F00)
-#define TIM_DMABurstLength_17Transfers     ((uint16_t)0x1000)
-#define TIM_DMABurstLength_18Transfers     ((uint16_t)0x1100)
+#define TIM_DMABurstLength_1Transfer           ((uint16_t)0x0000)
+#define TIM_DMABurstLength_2Transfers          ((uint16_t)0x0100)
+#define TIM_DMABurstLength_3Transfers          ((uint16_t)0x0200)
+#define TIM_DMABurstLength_4Transfers          ((uint16_t)0x0300)
+#define TIM_DMABurstLength_5Transfers          ((uint16_t)0x0400)
+#define TIM_DMABurstLength_6Transfers          ((uint16_t)0x0500)
+#define TIM_DMABurstLength_7Transfers          ((uint16_t)0x0600)
+#define TIM_DMABurstLength_8Transfers          ((uint16_t)0x0700)
+#define TIM_DMABurstLength_9Transfers          ((uint16_t)0x0800)
+#define TIM_DMABurstLength_10Transfers         ((uint16_t)0x0900)
+#define TIM_DMABurstLength_11Transfers         ((uint16_t)0x0A00)
+#define TIM_DMABurstLength_12Transfers         ((uint16_t)0x0B00)
+#define TIM_DMABurstLength_13Transfers         ((uint16_t)0x0C00)
+#define TIM_DMABurstLength_14Transfers         ((uint16_t)0x0D00)
+#define TIM_DMABurstLength_15Transfers         ((uint16_t)0x0E00)
+#define TIM_DMABurstLength_16Transfers         ((uint16_t)0x0F00)
+#define TIM_DMABurstLength_17Transfers         ((uint16_t)0x1000)
+#define TIM_DMABurstLength_18Transfers         ((uint16_t)0x1100)
 
 /* TIM_DMA_sources */
 #define TIM_DMA_Update                     ((uint16_t)0x0100)

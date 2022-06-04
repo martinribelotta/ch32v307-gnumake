@@ -28,7 +28,7 @@ CFLAGS+=$(addprefix -I, $(INCLUDES))
 CFLAGS+=$(addprefix -D, $(DEFINES))
 
 LDFLAGS:=$(ARCH)
-LDFLAGS+=-nostartfiles -nostdlib
+LDFLAGS+=-nostartfiles
 LDFLAGS+=$(SPECS_FLAGS)
 LDFLAGS+=$(addprefix -L, $(LIBPATH))
 LDFLAGS+=$(addprefix -l, $(LIBS))
