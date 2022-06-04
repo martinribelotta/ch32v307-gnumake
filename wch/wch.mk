@@ -1,18 +1,13 @@
 wch_dir := $(notdir $(patsubst %/,%,$(dir $(abspath $(lastword $(MAKEFILE_LIST))))))
 
-CSRC+=$(wildcard $(wch_dir)/Core/*.c)
-CSRC+=$(wildcard $(wch_dir)/Debug/*.c)
-CSRC+=$(wildcard $(wch_dir)/Peripheral/src/*.c)
-CSRC+=$(wildcard $(wch_dir)/Startup/*.c)
-CSRC+=$(wildcard $(wch_dir)/drivers/*.c)
+CSRC+=$(wildcard $(wch_dir)/hal_drivers/*.c)
+CSRC+=$(wildcard $(wch_dir)/hal_libraries/ch32v307_hal/source/*.c)
+CSRC+=$(wildcard $(wch_dir)/hal_libraries/bmsis/source/*.c)
+ASRC+=$(wildcard $(wch_dir)/hal_libraries/bmsis/source/*.S)
 
-ASRC+=$(wildcard $(wch_dir)/Startup/*.S)
-
-INCLUDES+=$(wch_dir)/Core
-INCLUDES+=$(wch_dir)/Debug
-INCLUDES+=$(wch_dir)/Peripheral/inc
-INCLUDES+=$(wch_dir)/Startup
-INCLUDES+=$(wch_dir)/drivers
+INCLUDES+=$(wch_dir)/hal_libraries/ch32v307_hal/include
+INCLUDES+=$(wch_dir)/hal_libraries/bmsis/include
+INCLUDES+=$(wch_dir)/hal_drivers
 
 DEFINES+=
 
