@@ -11,11 +11,6 @@
 #include "board.h"
 #include <rtthread.h>
 
-
-
-void NMI_Handler(void) __attribute__((interrupt("WCH-Interrupt-fast")));
-void HardFault_Handler(void) __attribute__((interrupt("WCH-Interrupt-fast")));
-
 /*********************************************************************
  * @fn      NMI_Handler
  *
@@ -48,5 +43,3 @@ void HardFault_Handler(void)
     FREE_INT_SP();
 
 }
-
-
