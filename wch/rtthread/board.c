@@ -80,3 +80,28 @@ void SysTick_Handler(void)
     FREE_INT_SP();
 
 }
+
+int memcmp(const void *a, const void *b, unsigned int n)
+{
+    return rt_memcmp(a, b, n);
+}
+
+int memcpy(void *a, const void *b, unsigned int n)
+{
+    return rt_memcpy(a, b, n);
+}
+
+int memset(void *a, char v, unsigned int n)
+{
+    return rt_memset(a, v, n);
+}
+
+int strlen(const char *s)
+{
+    return rt_strlen(s);
+}
+
+int strncmp(const char *a, const char *b, unsigned int n)
+{
+    return rt_strncmp(a, b, n);
+}

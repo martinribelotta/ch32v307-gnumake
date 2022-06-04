@@ -43,23 +43,21 @@ static inline float fastsin(float n)
 static void fastsincos_build()
 {
     for (int i = 0 ; i < MAX_CIRCLE_ANGLE ; i++)
-      fast_cossin_table[i] = (float)sin((double)i * PI / HALF_MAX_CIRCLE_ANGLE);
+      fast_cossin_table[i] = (float)sinf((float)i * ((float)(PI / HALF_MAX_CIRCLE_ANGLE)));
 }
 
 __attribute__((optimize(3)))
 int donut(void)
 {
-    int k;
-    float A=0, B=0, i, j;
     static float z[1760];
     static char b[1760];
     rt_kprintf("\x1b[2J"); 
     fastsincos_build();
-    for(; ; ) {
+    for(float A=0, B=0; ; ) {
         memset(b,32,1760);
         memset(z,0,7040);
-        for(j=0; 6.28f>j; j+=0.07f) {
-            for(i=0; 6.28f >i; i+=0.02f) {
+        for(float j=0; 6.28f>j; j+=0.07f) {
+            for(float i=0.0f; 6.28f >i; i+=0.02f) {
                 float sini=fastsin(i),
                       cosj=fastcos(j),
                       sinA=fastsin(A),
@@ -82,10 +80,10 @@ int donut(void)
             }
         }
         rt_kprintf("\x1b[d");
-        for(k=0; 1761>k; k++)
+        for(int k=0; 1761>k; k++)
             rt_kprintf("%c", k%80?b[k]:10);
-        A+=0.04;
-        B+= 0.02;
+        A+=0.04f;
+        B+=0.02f;
     }
     return 0;
 }
