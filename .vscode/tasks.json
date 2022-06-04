@@ -12,6 +12,11 @@
             "label": "make clean",
             "type": "shell",
             "command": "make clean"
+        },
+        {
+            "label": "make flash",
+            "type": "shell",
+            "command": "make flash"
         }
     ]
 }
