@@ -1154,7 +1154,7 @@ FlagStatus ETH_GetSoftwareResetStatus(void)
   {
     bitstatus = RESET;
   }
-  printf("ETH->DMABMR is:%08x\n",ETH->DMABMR);
+  // printf("ETH->DMABMR is:%08x\n",ETH->DMABMR);
 
   return bitstatus;
 }
@@ -1290,7 +1290,7 @@ ITStatus ETH_GetDMAITStatus(uint32_t ETH_DMA_IT)
 
 /*******************************************************************************
 * Function Name  : ETH_DMAClearITPendingBit
-* Description    : Clears the ETHERNET’s DMA IT pending bit.
+* Description    : Clears the ETHERNETï¿½s DMA IT pending bit.
 * Input          : ETH_DMA_IT: specifies the interrupt pending bit to clear.
 *                  ETH_DMA_IT_NIS : Normal interrupt summary
 *                  ETH_DMA_IT_AIS : Abnormal interrupt summary
@@ -2272,7 +2272,7 @@ void RGMII_TXC_Delay(uint8_t clock_polarity,uint8_t delay_time)
         ETH->MACCR |= (uint32_t)(delay_time<<29);
     }
     else{
-        printf("Error:delay_time is out of range!\n");
+        // printf("Error:delay_time is out of range!\n");
     }
 }
 
