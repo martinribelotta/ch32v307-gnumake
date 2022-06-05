@@ -1,0 +1,472 @@
+[
+  {
+    "directory": "/home/martin/Proyectos/git/martinribelotta/rv/floss-tools/src",
+    "file": "donut.c",
+    "command": "riscv-none-embed-gcc -MMD -c -march=rv32imfc -mabi=ilp32f -msmall-data-limit=8 -mno-save-restore   -Og -g3 -ffunction-sections -fdata-sections -specs=nosys.specs -specs=nano.specs  -Isrc -Iwch/hal_libraries/ch32v307_hal/include -Iwch/hal_libraries/bmsis/include -Iwch/hal_drivers -Iwch/rtthread -Iwch/rtthread/include -Iwch/rtthread/libcpu/risc-v -Iwch/rtthread/components/drivers/include -Iwch/rtthread/components/finsh  -o build/src/donut.o src/donut.c"
+  },
+  {
+    "directory": "/home/martin/Proyectos/git/martinribelotta/rv/floss-tools/src",
+    "file": "main.c",
+    "command": "riscv-none-embed-gcc -MMD -c -march=rv32imfc -mabi=ilp32f -msmall-data-limit=8 -mno-save-restore   -Og -g3 -ffunction-sections -fdata-sections -specs=nosys.specs -specs=nano.specs  -Isrc -Iwch/hal_libraries/ch32v307_hal/include -Iwch/hal_libraries/bmsis/include -Iwch/hal_drivers -Iwch/rtthread -Iwch/rtthread/include -Iwch/rtthread/libcpu/risc-v -Iwch/rtthread/components/drivers/include -Iwch/rtthread/components/finsh  -o build/src/main.o src/main.c"
+  },
+  {
+    "directory": "/home/martin/Proyectos/git/martinribelotta/rv/floss-tools/wch/hal_drivers",
+    "file": "drv_usart.c",
+    "command": "riscv-none-embed-gcc -MMD -c -march=rv32imfc -mabi=ilp32f -msmall-data-limit=8 -mno-save-restore   -Og -g3 -ffunction-sections -fdata-sections -specs=nosys.specs -specs=nano.specs  -Isrc -Iwch/hal_libraries/ch32v307_hal/include -Iwch/hal_libraries/bmsis/include -Iwch/hal_drivers -Iwch/rtthread -Iwch/rtthread/include -Iwch/rtthread/libcpu/risc-v -Iwch/rtthread/components/drivers/include -Iwch/rtthread/components/finsh  -o build/wch/hal_drivers/drv_usart.o wch/hal_drivers/drv_usart.c"
+  },
+  {
+    "directory": "/home/martin/Proyectos/git/martinribelotta/rv/floss-tools/wch/hal_drivers",
+    "file": "drv_adc.c",
+    "command": "riscv-none-embed-gcc -MMD -c -march=rv32imfc -mabi=ilp32f -msmall-data-limit=8 -mno-save-restore   -Og -g3 -ffunction-sections -fdata-sections -specs=nosys.specs -specs=nano.specs  -Isrc -Iwch/hal_libraries/ch32v307_hal/include -Iwch/hal_libraries/bmsis/include -Iwch/hal_drivers -Iwch/rtthread -Iwch/rtthread/include -Iwch/rtthread/libcpu/risc-v -Iwch/rtthread/components/drivers/include -Iwch/rtthread/components/finsh  -o build/wch/hal_drivers/drv_adc.o wch/hal_drivers/drv_adc.c"
+  },
+  {
+    "directory": "/home/martin/Proyectos/git/martinribelotta/rv/floss-tools/wch/hal_drivers",
+    "file": "drv_gpio.c",
+    "command": "riscv-none-embed-gcc -MMD -c -march=rv32imfc -mabi=ilp32f -msmall-data-limit=8 -mno-save-restore   -Og -g3 -ffunction-sections -fdata-sections -specs=nosys.specs -specs=nano.specs  -Isrc -Iwch/hal_libraries/ch32v307_hal/include -Iwch/hal_libraries/bmsis/include -Iwch/hal_drivers -Iwch/rtthread -Iwch/rtthread/include -Iwch/rtthread/libcpu/risc-v -Iwch/rtthread/components/drivers/include -Iwch/rtthread/components/finsh  -o build/wch/hal_drivers/drv_gpio.o wch/hal_drivers/drv_gpio.c"
+  },
+  {
+    "directory": "/home/martin/Proyectos/git/martinribelotta/rv/floss-tools/wch/hal_drivers",
+    "file": "drv_soft_i2c.c",
+    "command": "riscv-none-embed-gcc -MMD -c -march=rv32imfc -mabi=ilp32f -msmall-data-limit=8 -mno-save-restore   -Og -g3 -ffunction-sections -fdata-sections -specs=nosys.specs -specs=nano.specs  -Isrc -Iwch/hal_libraries/ch32v307_hal/include -Iwch/hal_libraries/bmsis/include -Iwch/hal_drivers -Iwch/rtthread -Iwch/rtthread/include -Iwch/rtthread/libcpu/risc-v -Iwch/rtthread/components/drivers/include -Iwch/rtthread/components/finsh  -o build/wch/hal_drivers/drv_soft_i2c.o wch/hal_drivers/drv_soft_i2c.c"
+  },
+  {
+    "directory": "/home/martin/Proyectos/git/martinribelotta/rv/floss-tools/wch/hal_drivers",
+    "file": "drv_dac.c",
+    "command": "riscv-none-embed-gcc -MMD -c -march=rv32imfc -mabi=ilp32f -msmall-data-limit=8 -mno-save-restore   -Og -g3 -ffunction-sections -fdata-sections -specs=nosys.specs -specs=nano.specs  -Isrc -Iwch/hal_libraries/ch32v307_hal/include -Iwch/hal_libraries/bmsis/include -Iwch/hal_drivers -Iwch/rtthread -Iwch/rtthread/include -Iwch/rtthread/libcpu/risc-v -Iwch/rtthread/components/drivers/include -Iwch/rtthread/components/finsh  -o build/wch/hal_drivers/drv_dac.o wch/hal_drivers/drv_dac.c"
+  },
+  {
+    "directory": "/home/martin/Proyectos/git/martinribelotta/rv/floss-tools/wch/hal_libraries/ch32v307_hal/source",
+    "file": "ch32v30x_rtc.c",
+    "command": "riscv-none-embed-gcc -MMD -c -march=rv32imfc -mabi=ilp32f -msmall-data-limit=8 -mno-save-restore   -Og -g3 -ffunction-sections -fdata-sections -specs=nosys.specs -specs=nano.specs  -Isrc -Iwch/hal_libraries/ch32v307_hal/include -Iwch/hal_libraries/bmsis/include -Iwch/hal_drivers -Iwch/rtthread -Iwch/rtthread/include -Iwch/rtthread/libcpu/risc-v -Iwch/rtthread/components/drivers/include -Iwch/rtthread/components/finsh  -o build/wch/hal_libraries/ch32v307_hal/source/ch32v30x_rtc.o wch/hal_libraries/ch32v307_hal/source/ch32v30x_rtc.c"
+  },
+  {
+    "directory": "/home/martin/Proyectos/git/martinribelotta/rv/floss-tools/wch/hal_libraries/ch32v307_hal/source",
+    "file": "ch32v30x_pwr.c",
+    "command": "riscv-none-embed-gcc -MMD -c -march=rv32imfc -mabi=ilp32f -msmall-data-limit=8 -mno-save-restore   -Og -g3 -ffunction-sections -fdata-sections -specs=nosys.specs -specs=nano.specs  -Isrc -Iwch/hal_libraries/ch32v307_hal/include -Iwch/hal_libraries/bmsis/include -Iwch/hal_drivers -Iwch/rtthread -Iwch/rtthread/include -Iwch/rtthread/libcpu/risc-v -Iwch/rtthread/components/drivers/include -Iwch/rtthread/components/finsh  -o build/wch/hal_libraries/ch32v307_hal/source/ch32v30x_pwr.o wch/hal_libraries/ch32v307_hal/source/ch32v30x_pwr.c"
+  },
+  {
+    "directory": "/home/martin/Proyectos/git/martinribelotta/rv/floss-tools/wch/hal_libraries/ch32v307_hal/source",
+    "file": "ch32v30x_i2c.c",
+    "command": "riscv-none-embed-gcc -MMD -c -march=rv32imfc -mabi=ilp32f -msmall-data-limit=8 -mno-save-restore   -Og -g3 -ffunction-sections -fdata-sections -specs=nosys.specs -specs=nano.specs  -Isrc -Iwch/hal_libraries/ch32v307_hal/include -Iwch/hal_libraries/bmsis/include -Iwch/hal_drivers -Iwch/rtthread -Iwch/rtthread/include -Iwch/rtthread/libcpu/risc-v -Iwch/rtthread/components/drivers/include -Iwch/rtthread/components/finsh  -o build/wch/hal_libraries/ch32v307_hal/source/ch32v30x_i2c.o wch/hal_libraries/ch32v307_hal/source/ch32v30x_i2c.c"
+  },
+  {
+    "directory": "/home/martin/Proyectos/git/martinribelotta/rv/floss-tools/wch/hal_libraries/ch32v307_hal/source",
+    "file": "ch32v30x_iwdg.c",
+    "command": "riscv-none-embed-gcc -MMD -c -march=rv32imfc -mabi=ilp32f -msmall-data-limit=8 -mno-save-restore   -Og -g3 -ffunction-sections -fdata-sections -specs=nosys.specs -specs=nano.specs  -Isrc -Iwch/hal_libraries/ch32v307_hal/include -Iwch/hal_libraries/bmsis/include -Iwch/hal_drivers -Iwch/rtthread -Iwch/rtthread/include -Iwch/rtthread/libcpu/risc-v -Iwch/rtthread/components/drivers/include -Iwch/rtthread/components/finsh  -o build/wch/hal_libraries/ch32v307_hal/source/ch32v30x_iwdg.o wch/hal_libraries/ch32v307_hal/source/ch32v30x_iwdg.c"
+  },
+  {
+    "directory": "/home/martin/Proyectos/git/martinribelotta/rv/floss-tools/wch/hal_libraries/ch32v307_hal/source",
+    "file": "ch32v30x_eth.c",
+    "command": "riscv-none-embed-gcc -MMD -c -march=rv32imfc -mabi=ilp32f -msmall-data-limit=8 -mno-save-restore   -Og -g3 -ffunction-sections -fdata-sections -specs=nosys.specs -specs=nano.specs  -Isrc -Iwch/hal_libraries/ch32v307_hal/include -Iwch/hal_libraries/bmsis/include -Iwch/hal_drivers -Iwch/rtthread -Iwch/rtthread/include -Iwch/rtthread/libcpu/risc-v -Iwch/rtthread/components/drivers/include -Iwch/rtthread/components/finsh  -o build/wch/hal_libraries/ch32v307_hal/source/ch32v30x_eth.o wch/hal_libraries/ch32v307_hal/source/ch32v30x_eth.c"
+  },
+  {
+    "directory": "/home/martin/Proyectos/git/martinribelotta/rv/floss-tools/wch/hal_libraries/ch32v307_hal/source",
+    "file": "ch32v30x_sdio.c",
+    "command": "riscv-none-embed-gcc -MMD -c -march=rv32imfc -mabi=ilp32f -msmall-data-limit=8 -mno-save-restore   -Og -g3 -ffunction-sections -fdata-sections -specs=nosys.specs -specs=nano.specs  -Isrc -Iwch/hal_libraries/ch32v307_hal/include -Iwch/hal_libraries/bmsis/include -Iwch/hal_drivers -Iwch/rtthread -Iwch/rtthread/include -Iwch/rtthread/libcpu/risc-v -Iwch/rtthread/components/drivers/include -Iwch/rtthread/components/finsh  -o build/wch/hal_libraries/ch32v307_hal/source/ch32v30x_sdio.o wch/hal_libraries/ch32v307_hal/source/ch32v30x_sdio.c"
+  },
+  {
+    "directory": "/home/martin/Proyectos/git/martinribelotta/rv/floss-tools/wch/hal_libraries/ch32v307_hal/source",
+    "file": "ch32v30x_rcc.c",
+    "command": "riscv-none-embed-gcc -MMD -c -march=rv32imfc -mabi=ilp32f -msmall-data-limit=8 -mno-save-restore   -Og -g3 -ffunction-sections -fdata-sections -specs=nosys.specs -specs=nano.specs  -Isrc -Iwch/hal_libraries/ch32v307_hal/include -Iwch/hal_libraries/bmsis/include -Iwch/hal_drivers -Iwch/rtthread -Iwch/rtthread/include -Iwch/rtthread/libcpu/risc-v -Iwch/rtthread/components/drivers/include -Iwch/rtthread/components/finsh  -o build/wch/hal_libraries/ch32v307_hal/source/ch32v30x_rcc.o wch/hal_libraries/ch32v307_hal/source/ch32v30x_rcc.c"
+  },
+  {
+    "directory": "/home/martin/Proyectos/git/martinribelotta/rv/floss-tools/wch/hal_libraries/ch32v307_hal/source",
+    "file": "ch32v30x_flash.c",
+    "command": "riscv-none-embed-gcc -MMD -c -march=rv32imfc -mabi=ilp32f -msmall-data-limit=8 -mno-save-restore   -Og -g3 -ffunction-sections -fdata-sections -specs=nosys.specs -specs=nano.specs  -Isrc -Iwch/hal_libraries/ch32v307_hal/include -Iwch/hal_libraries/bmsis/include -Iwch/hal_drivers -Iwch/rtthread -Iwch/rtthread/include -Iwch/rtthread/libcpu/risc-v -Iwch/rtthread/components/drivers/include -Iwch/rtthread/components/finsh  -o build/wch/hal_libraries/ch32v307_hal/source/ch32v30x_flash.o wch/hal_libraries/ch32v307_hal/source/ch32v30x_flash.c"
+  },
+  {
+    "directory": "/home/martin/Proyectos/git/martinribelotta/rv/floss-tools/wch/hal_libraries/ch32v307_hal/source",
+    "file": "ch32v30x_crc.c",
+    "command": "riscv-none-embed-gcc -MMD -c -march=rv32imfc -mabi=ilp32f -msmall-data-limit=8 -mno-save-restore   -Og -g3 -ffunction-sections -fdata-sections -specs=nosys.specs -specs=nano.specs  -Isrc -Iwch/hal_libraries/ch32v307_hal/include -Iwch/hal_libraries/bmsis/include -Iwch/hal_drivers -Iwch/rtthread -Iwch/rtthread/include -Iwch/rtthread/libcpu/risc-v -Iwch/rtthread/components/drivers/include -Iwch/rtthread/components/finsh  -o build/wch/hal_libraries/ch32v307_hal/source/ch32v30x_crc.o wch/hal_libraries/ch32v307_hal/source/ch32v30x_crc.c"
+  },
+  {
+    "directory": "/home/martin/Proyectos/git/martinribelotta/rv/floss-tools/wch/hal_libraries/ch32v307_hal/source",
+    "file": "ch32v30x_usart.c",
+    "command": "riscv-none-embed-gcc -MMD -c -march=rv32imfc -mabi=ilp32f -msmall-data-limit=8 -mno-save-restore   -Og -g3 -ffunction-sections -fdata-sections -specs=nosys.specs -specs=nano.specs  -Isrc -Iwch/hal_libraries/ch32v307_hal/include -Iwch/hal_libraries/bmsis/include -Iwch/hal_drivers -Iwch/rtthread -Iwch/rtthread/include -Iwch/rtthread/libcpu/risc-v -Iwch/rtthread/components/drivers/include -Iwch/rtthread/components/finsh  -o build/wch/hal_libraries/ch32v307_hal/source/ch32v30x_usart.o wch/hal_libraries/ch32v307_hal/source/ch32v30x_usart.c"
+  },
+  {
+    "directory": "/home/martin/Proyectos/git/martinribelotta/rv/floss-tools/wch/hal_libraries/ch32v307_hal/source",
+    "file": "ch32v30x_misc.c",
+    "command": "riscv-none-embed-gcc -MMD -c -march=rv32imfc -mabi=ilp32f -msmall-data-limit=8 -mno-save-restore   -Og -g3 -ffunction-sections -fdata-sections -specs=nosys.specs -specs=nano.specs  -Isrc -Iwch/hal_libraries/ch32v307_hal/include -Iwch/hal_libraries/bmsis/include -Iwch/hal_drivers -Iwch/rtthread -Iwch/rtthread/include -Iwch/rtthread/libcpu/risc-v -Iwch/rtthread/components/drivers/include -Iwch/rtthread/components/finsh  -o build/wch/hal_libraries/ch32v307_hal/source/ch32v30x_misc.o wch/hal_libraries/ch32v307_hal/source/ch32v30x_misc.c"
+  },
+  {
+    "directory": "/home/martin/Proyectos/git/martinribelotta/rv/floss-tools/wch/hal_libraries/ch32v307_hal/source",
+    "file": "ch32v30x_rng.c",
+    "command": "riscv-none-embed-gcc -MMD -c -march=rv32imfc -mabi=ilp32f -msmall-data-limit=8 -mno-save-restore   -Og -g3 -ffunction-sections -fdata-sections -specs=nosys.specs -specs=nano.specs  -Isrc -Iwch/hal_libraries/ch32v307_hal/include -Iwch/hal_libraries/bmsis/include -Iwch/hal_drivers -Iwch/rtthread -Iwch/rtthread/include -Iwch/rtthread/libcpu/risc-v -Iwch/rtthread/components/drivers/include -Iwch/rtthread/components/finsh  -o build/wch/hal_libraries/ch32v307_hal/source/ch32v30x_rng.o wch/hal_libraries/ch32v307_hal/source/ch32v30x_rng.c"
+  },
+  {
+    "directory": "/home/martin/Proyectos/git/martinribelotta/rv/floss-tools/wch/hal_libraries/ch32v307_hal/source",
+    "file": "ch32v30x_wwdg.c",
+    "command": "riscv-none-embed-gcc -MMD -c -march=rv32imfc -mabi=ilp32f -msmall-data-limit=8 -mno-save-restore   -Og -g3 -ffunction-sections -fdata-sections -specs=nosys.specs -specs=nano.specs  -Isrc -Iwch/hal_libraries/ch32v307_hal/include -Iwch/hal_libraries/bmsis/include -Iwch/hal_drivers -Iwch/rtthread -Iwch/rtthread/include -Iwch/rtthread/libcpu/risc-v -Iwch/rtthread/components/drivers/include -Iwch/rtthread/components/finsh  -o build/wch/hal_libraries/ch32v307_hal/source/ch32v30x_wwdg.o wch/hal_libraries/ch32v307_hal/source/ch32v30x_wwdg.c"
+  },
+  {
+    "directory": "/home/martin/Proyectos/git/martinribelotta/rv/floss-tools/wch/hal_libraries/ch32v307_hal/source",
+    "file": "ch32v30x_tim.c",
+    "command": "riscv-none-embed-gcc -MMD -c -march=rv32imfc -mabi=ilp32f -msmall-data-limit=8 -mno-save-restore   -Og -g3 -ffunction-sections -fdata-sections -specs=nosys.specs -specs=nano.specs  -Isrc -Iwch/hal_libraries/ch32v307_hal/include -Iwch/hal_libraries/bmsis/include -Iwch/hal_drivers -Iwch/rtthread -Iwch/rtthread/include -Iwch/rtthread/libcpu/risc-v -Iwch/rtthread/components/drivers/include -Iwch/rtthread/components/finsh  -o build/wch/hal_libraries/ch32v307_hal/source/ch32v30x_tim.o wch/hal_libraries/ch32v307_hal/source/ch32v30x_tim.c"
+  },
+  {
+    "directory": "/home/martin/Proyectos/git/martinribelotta/rv/floss-tools/wch/hal_libraries/ch32v307_hal/source",
+    "file": "ch32v30x_adc.c",
+    "command": "riscv-none-embed-gcc -MMD -c -march=rv32imfc -mabi=ilp32f -msmall-data-limit=8 -mno-save-restore   -Og -g3 -ffunction-sections -fdata-sections -specs=nosys.specs -specs=nano.specs  -Isrc -Iwch/hal_libraries/ch32v307_hal/include -Iwch/hal_libraries/bmsis/include -Iwch/hal_drivers -Iwch/rtthread -Iwch/rtthread/include -Iwch/rtthread/libcpu/risc-v -Iwch/rtthread/components/drivers/include -Iwch/rtthread/components/finsh  -o build/wch/hal_libraries/ch32v307_hal/source/ch32v30x_adc.o wch/hal_libraries/ch32v307_hal/source/ch32v30x_adc.c"
+  },
+  {
+    "directory": "/home/martin/Proyectos/git/martinribelotta/rv/floss-tools/wch/hal_libraries/ch32v307_hal/source",
+    "file": "ch32v30x_spi.c",
+    "command": "riscv-none-embed-gcc -MMD -c -march=rv32imfc -mabi=ilp32f -msmall-data-limit=8 -mno-save-restore   -Og -g3 -ffunction-sections -fdata-sections -specs=nosys.specs -specs=nano.specs  -Isrc -Iwch/hal_libraries/ch32v307_hal/include -Iwch/hal_libraries/bmsis/include -Iwch/hal_drivers -Iwch/rtthread -Iwch/rtthread/include -Iwch/rtthread/libcpu/risc-v -Iwch/rtthread/components/drivers/include -Iwch/rtthread/components/finsh  -o build/wch/hal_libraries/ch32v307_hal/source/ch32v30x_spi.o wch/hal_libraries/ch32v307_hal/source/ch32v30x_spi.c"
+  },
+  {
+    "directory": "/home/martin/Proyectos/git/martinribelotta/rv/floss-tools/wch/hal_libraries/ch32v307_hal/source",
+    "file": "ch32v30x_bkp.c",
+    "command": "riscv-none-embed-gcc -MMD -c -march=rv32imfc -mabi=ilp32f -msmall-data-limit=8 -mno-save-restore   -Og -g3 -ffunction-sections -fdata-sections -specs=nosys.specs -specs=nano.specs  -Isrc -Iwch/hal_libraries/ch32v307_hal/include -Iwch/hal_libraries/bmsis/include -Iwch/hal_drivers -Iwch/rtthread -Iwch/rtthread/include -Iwch/rtthread/libcpu/risc-v -Iwch/rtthread/components/drivers/include -Iwch/rtthread/components/finsh  -o build/wch/hal_libraries/ch32v307_hal/source/ch32v30x_bkp.o wch/hal_libraries/ch32v307_hal/source/ch32v30x_bkp.c"
+  },
+  {
+    "directory": "/home/martin/Proyectos/git/martinribelotta/rv/floss-tools/wch/hal_libraries/ch32v307_hal/source",
+    "file": "ch32v30x_dvp.c",
+    "command": "riscv-none-embed-gcc -MMD -c -march=rv32imfc -mabi=ilp32f -msmall-data-limit=8 -mno-save-restore   -Og -g3 -ffunction-sections -fdata-sections -specs=nosys.specs -specs=nano.specs  -Isrc -Iwch/hal_libraries/ch32v307_hal/include -Iwch/hal_libraries/bmsis/include -Iwch/hal_drivers -Iwch/rtthread -Iwch/rtthread/include -Iwch/rtthread/libcpu/risc-v -Iwch/rtthread/components/drivers/include -Iwch/rtthread/components/finsh  -o build/wch/hal_libraries/ch32v307_hal/source/ch32v30x_dvp.o wch/hal_libraries/ch32v307_hal/source/ch32v30x_dvp.c"
+  },
+  {
+    "directory": "/home/martin/Proyectos/git/martinribelotta/rv/floss-tools/wch/hal_libraries/ch32v307_hal/source",
+    "file": "ch32v30x_exti.c",
+    "command": "riscv-none-embed-gcc -MMD -c -march=rv32imfc -mabi=ilp32f -msmall-data-limit=8 -mno-save-restore   -Og -g3 -ffunction-sections -fdata-sections -specs=nosys.specs -specs=nano.specs  -Isrc -Iwch/hal_libraries/ch32v307_hal/include -Iwch/hal_libraries/bmsis/include -Iwch/hal_drivers -Iwch/rtthread -Iwch/rtthread/include -Iwch/rtthread/libcpu/risc-v -Iwch/rtthread/components/drivers/include -Iwch/rtthread/components/finsh  -o build/wch/hal_libraries/ch32v307_hal/source/ch32v30x_exti.o wch/hal_libraries/ch32v307_hal/source/ch32v30x_exti.c"
+  },
+  {
+    "directory": "/home/martin/Proyectos/git/martinribelotta/rv/floss-tools/wch/hal_libraries/ch32v307_hal/source",
+    "file": "ch32v30x_fsmc.c",
+    "command": "riscv-none-embed-gcc -MMD -c -march=rv32imfc -mabi=ilp32f -msmall-data-limit=8 -mno-save-restore   -Og -g3 -ffunction-sections -fdata-sections -specs=nosys.specs -specs=nano.specs  -Isrc -Iwch/hal_libraries/ch32v307_hal/include -Iwch/hal_libraries/bmsis/include -Iwch/hal_drivers -Iwch/rtthread -Iwch/rtthread/include -Iwch/rtthread/libcpu/risc-v -Iwch/rtthread/components/drivers/include -Iwch/rtthread/components/finsh  -o build/wch/hal_libraries/ch32v307_hal/source/ch32v30x_fsmc.o wch/hal_libraries/ch32v307_hal/source/ch32v30x_fsmc.c"
+  },
+  {
+    "directory": "/home/martin/Proyectos/git/martinribelotta/rv/floss-tools/wch/hal_libraries/ch32v307_hal/source",
+    "file": "ch32v30x_opa.c",
+    "command": "riscv-none-embed-gcc -MMD -c -march=rv32imfc -mabi=ilp32f -msmall-data-limit=8 -mno-save-restore   -Og -g3 -ffunction-sections -fdata-sections -specs=nosys.specs -specs=nano.specs  -Isrc -Iwch/hal_libraries/ch32v307_hal/include -Iwch/hal_libraries/bmsis/include -Iwch/hal_drivers -Iwch/rtthread -Iwch/rtthread/include -Iwch/rtthread/libcpu/risc-v -Iwch/rtthread/components/drivers/include -Iwch/rtthread/components/finsh  -o build/wch/hal_libraries/ch32v307_hal/source/ch32v30x_opa.o wch/hal_libraries/ch32v307_hal/source/ch32v30x_opa.c"
+  },
+  {
+    "directory": "/home/martin/Proyectos/git/martinribelotta/rv/floss-tools/wch/hal_libraries/ch32v307_hal/source",
+    "file": "ch32v30x_dma.c",
+    "command": "riscv-none-embed-gcc -MMD -c -march=rv32imfc -mabi=ilp32f -msmall-data-limit=8 -mno-save-restore   -Og -g3 -ffunction-sections -fdata-sections -specs=nosys.specs -specs=nano.specs  -Isrc -Iwch/hal_libraries/ch32v307_hal/include -Iwch/hal_libraries/bmsis/include -Iwch/hal_drivers -Iwch/rtthread -Iwch/rtthread/include -Iwch/rtthread/libcpu/risc-v -Iwch/rtthread/components/drivers/include -Iwch/rtthread/components/finsh  -o build/wch/hal_libraries/ch32v307_hal/source/ch32v30x_dma.o wch/hal_libraries/ch32v307_hal/source/ch32v30x_dma.c"
+  },
+  {
+    "directory": "/home/martin/Proyectos/git/martinribelotta/rv/floss-tools/wch/hal_libraries/ch32v307_hal/source",
+    "file": "ch32v30x_dbgmcu.c",
+    "command": "riscv-none-embed-gcc -MMD -c -march=rv32imfc -mabi=ilp32f -msmall-data-limit=8 -mno-save-restore   -Og -g3 -ffunction-sections -fdata-sections -specs=nosys.specs -specs=nano.specs  -Isrc -Iwch/hal_libraries/ch32v307_hal/include -Iwch/hal_libraries/bmsis/include -Iwch/hal_drivers -Iwch/rtthread -Iwch/rtthread/include -Iwch/rtthread/libcpu/risc-v -Iwch/rtthread/components/drivers/include -Iwch/rtthread/components/finsh  -o build/wch/hal_libraries/ch32v307_hal/source/ch32v30x_dbgmcu.o wch/hal_libraries/ch32v307_hal/source/ch32v30x_dbgmcu.c"
+  },
+  {
+    "directory": "/home/martin/Proyectos/git/martinribelotta/rv/floss-tools/wch/hal_libraries/ch32v307_hal/source",
+    "file": "ch32v30x_gpio.c",
+    "command": "riscv-none-embed-gcc -MMD -c -march=rv32imfc -mabi=ilp32f -msmall-data-limit=8 -mno-save-restore   -Og -g3 -ffunction-sections -fdata-sections -specs=nosys.specs -specs=nano.specs  -Isrc -Iwch/hal_libraries/ch32v307_hal/include -Iwch/hal_libraries/bmsis/include -Iwch/hal_drivers -Iwch/rtthread -Iwch/rtthread/include -Iwch/rtthread/libcpu/risc-v -Iwch/rtthread/components/drivers/include -Iwch/rtthread/components/finsh  -o build/wch/hal_libraries/ch32v307_hal/source/ch32v30x_gpio.o wch/hal_libraries/ch32v307_hal/source/ch32v30x_gpio.c"
+  },
+  {
+    "directory": "/home/martin/Proyectos/git/martinribelotta/rv/floss-tools/wch/hal_libraries/ch32v307_hal/source",
+    "file": "ch32v30x_dac.c",
+    "command": "riscv-none-embed-gcc -MMD -c -march=rv32imfc -mabi=ilp32f -msmall-data-limit=8 -mno-save-restore   -Og -g3 -ffunction-sections -fdata-sections -specs=nosys.specs -specs=nano.specs  -Isrc -Iwch/hal_libraries/ch32v307_hal/include -Iwch/hal_libraries/bmsis/include -Iwch/hal_drivers -Iwch/rtthread -Iwch/rtthread/include -Iwch/rtthread/libcpu/risc-v -Iwch/rtthread/components/drivers/include -Iwch/rtthread/components/finsh  -o build/wch/hal_libraries/ch32v307_hal/source/ch32v30x_dac.o wch/hal_libraries/ch32v307_hal/source/ch32v30x_dac.c"
+  },
+  {
+    "directory": "/home/martin/Proyectos/git/martinribelotta/rv/floss-tools/wch/hal_libraries/ch32v307_hal/source",
+    "file": "ch32v30x_can.c",
+    "command": "riscv-none-embed-gcc -MMD -c -march=rv32imfc -mabi=ilp32f -msmall-data-limit=8 -mno-save-restore   -Og -g3 -ffunction-sections -fdata-sections -specs=nosys.specs -specs=nano.specs  -Isrc -Iwch/hal_libraries/ch32v307_hal/include -Iwch/hal_libraries/bmsis/include -Iwch/hal_drivers -Iwch/rtthread -Iwch/rtthread/include -Iwch/rtthread/libcpu/risc-v -Iwch/rtthread/components/drivers/include -Iwch/rtthread/components/finsh  -o build/wch/hal_libraries/ch32v307_hal/source/ch32v30x_can.o wch/hal_libraries/ch32v307_hal/source/ch32v30x_can.c"
+  },
+  {
+    "directory": "/home/martin/Proyectos/git/martinribelotta/rv/floss-tools/wch/hal_libraries/bmsis/source",
+    "file": "core_riscv.c",
+    "command": "riscv-none-embed-gcc -MMD -c -march=rv32imfc -mabi=ilp32f -msmall-data-limit=8 -mno-save-restore   -Og -g3 -ffunction-sections -fdata-sections -specs=nosys.specs -specs=nano.specs  -Isrc -Iwch/hal_libraries/ch32v307_hal/include -Iwch/hal_libraries/bmsis/include -Iwch/hal_drivers -Iwch/rtthread -Iwch/rtthread/include -Iwch/rtthread/libcpu/risc-v -Iwch/rtthread/components/drivers/include -Iwch/rtthread/components/finsh  -o build/wch/hal_libraries/bmsis/source/core_riscv.o wch/hal_libraries/bmsis/source/core_riscv.c"
+  },
+  {
+    "directory": "/home/martin/Proyectos/git/martinribelotta/rv/floss-tools/wch/hal_libraries/bmsis/source",
+    "file": "ch32v30x_it.c",
+    "command": "riscv-none-embed-gcc -MMD -c -march=rv32imfc -mabi=ilp32f -msmall-data-limit=8 -mno-save-restore   -Og -g3 -ffunction-sections -fdata-sections -specs=nosys.specs -specs=nano.specs  -Isrc -Iwch/hal_libraries/ch32v307_hal/include -Iwch/hal_libraries/bmsis/include -Iwch/hal_drivers -Iwch/rtthread -Iwch/rtthread/include -Iwch/rtthread/libcpu/risc-v -Iwch/rtthread/components/drivers/include -Iwch/rtthread/components/finsh  -o build/wch/hal_libraries/bmsis/source/ch32v30x_it.o wch/hal_libraries/bmsis/source/ch32v30x_it.c"
+  },
+  {
+    "directory": "/home/martin/Proyectos/git/martinribelotta/rv/floss-tools/wch/hal_libraries/bmsis/source",
+    "file": "system_ch32v30x.c",
+    "command": "riscv-none-embed-gcc -MMD -c -march=rv32imfc -mabi=ilp32f -msmall-data-limit=8 -mno-save-restore   -Og -g3 -ffunction-sections -fdata-sections -specs=nosys.specs -specs=nano.specs  -Isrc -Iwch/hal_libraries/ch32v307_hal/include -Iwch/hal_libraries/bmsis/include -Iwch/hal_drivers -Iwch/rtthread -Iwch/rtthread/include -Iwch/rtthread/libcpu/risc-v -Iwch/rtthread/components/drivers/include -Iwch/rtthread/components/finsh  -o build/wch/hal_libraries/bmsis/source/system_ch32v30x.o wch/hal_libraries/bmsis/source/system_ch32v30x.c"
+  },
+  {
+    "directory": "/home/martin/Proyectos/git/martinribelotta/rv/floss-tools/wch/hal_libraries/bmsis/source",
+    "file": "debug.c",
+    "command": "riscv-none-embed-gcc -MMD -c -march=rv32imfc -mabi=ilp32f -msmall-data-limit=8 -mno-save-restore   -Og -g3 -ffunction-sections -fdata-sections -specs=nosys.specs -specs=nano.specs  -Isrc -Iwch/hal_libraries/ch32v307_hal/include -Iwch/hal_libraries/bmsis/include -Iwch/hal_drivers -Iwch/rtthread -Iwch/rtthread/include -Iwch/rtthread/libcpu/risc-v -Iwch/rtthread/components/drivers/include -Iwch/rtthread/components/finsh  -o build/wch/hal_libraries/bmsis/source/debug.o wch/hal_libraries/bmsis/source/debug.c"
+  },
+  {
+    "directory": "/home/martin/Proyectos/git/martinribelotta/rv/floss-tools/wch/rtthread",
+    "file": "board.c",
+    "command": "riscv-none-embed-gcc -MMD -c -march=rv32imfc -mabi=ilp32f -msmall-data-limit=8 -mno-save-restore   -Og -g3 -ffunction-sections -fdata-sections -specs=nosys.specs -specs=nano.specs  -Isrc -Iwch/hal_libraries/ch32v307_hal/include -Iwch/hal_libraries/bmsis/include -Iwch/hal_drivers -Iwch/rtthread -Iwch/rtthread/include -Iwch/rtthread/libcpu/risc-v -Iwch/rtthread/components/drivers/include -Iwch/rtthread/components/finsh  -o build/wch/rtthread/board.o wch/rtthread/board.c"
+  },
+  {
+    "directory": "/home/martin/Proyectos/git/martinribelotta/rv/floss-tools/wch/rtthread/src",
+    "file": "mem.c",
+    "command": "riscv-none-embed-gcc -MMD -c -march=rv32imfc -mabi=ilp32f -msmall-data-limit=8 -mno-save-restore   -Og -g3 -ffunction-sections -fdata-sections -specs=nosys.specs -specs=nano.specs  -Isrc -Iwch/hal_libraries/ch32v307_hal/include -Iwch/hal_libraries/bmsis/include -Iwch/hal_drivers -Iwch/rtthread -Iwch/rtthread/include -Iwch/rtthread/libcpu/risc-v -Iwch/rtthread/components/drivers/include -Iwch/rtthread/components/finsh  -o build/wch/rtthread/src/mem.o wch/rtthread/src/mem.c"
+  },
+  {
+    "directory": "/home/martin/Proyectos/git/martinribelotta/rv/floss-tools/wch/rtthread/src",
+    "file": "idle.c",
+    "command": "riscv-none-embed-gcc -MMD -c -march=rv32imfc -mabi=ilp32f -msmall-data-limit=8 -mno-save-restore   -Og -g3 -ffunction-sections -fdata-sections -specs=nosys.specs -specs=nano.specs  -Isrc -Iwch/hal_libraries/ch32v307_hal/include -Iwch/hal_libraries/bmsis/include -Iwch/hal_drivers -Iwch/rtthread -Iwch/rtthread/include -Iwch/rtthread/libcpu/risc-v -Iwch/rtthread/components/drivers/include -Iwch/rtthread/components/finsh  -o build/wch/rtthread/src/idle.o wch/rtthread/src/idle.c"
+  },
+  {
+    "directory": "/home/martin/Proyectos/git/martinribelotta/rv/floss-tools/wch/rtthread/src",
+    "file": "mempool.c",
+    "command": "riscv-none-embed-gcc -MMD -c -march=rv32imfc -mabi=ilp32f -msmall-data-limit=8 -mno-save-restore   -Og -g3 -ffunction-sections -fdata-sections -specs=nosys.specs -specs=nano.specs  -Isrc -Iwch/hal_libraries/ch32v307_hal/include -Iwch/hal_libraries/bmsis/include -Iwch/hal_drivers -Iwch/rtthread -Iwch/rtthread/include -Iwch/rtthread/libcpu/risc-v -Iwch/rtthread/components/drivers/include -Iwch/rtthread/components/finsh  -o build/wch/rtthread/src/mempool.o wch/rtthread/src/mempool.c"
+  },
+  {
+    "directory": "/home/martin/Proyectos/git/martinribelotta/rv/floss-tools/wch/rtthread/src",
+    "file": "irq.c",
+    "command": "riscv-none-embed-gcc -MMD -c -march=rv32imfc -mabi=ilp32f -msmall-data-limit=8 -mno-save-restore   -Og -g3 -ffunction-sections -fdata-sections -specs=nosys.specs -specs=nano.specs  -Isrc -Iwch/hal_libraries/ch32v307_hal/include -Iwch/hal_libraries/bmsis/include -Iwch/hal_drivers -Iwch/rtthread -Iwch/rtthread/include -Iwch/rtthread/libcpu/risc-v -Iwch/rtthread/components/drivers/include -Iwch/rtthread/components/finsh  -o build/wch/rtthread/src/irq.o wch/rtthread/src/irq.c"
+  },
+  {
+    "directory": "/home/martin/Proyectos/git/martinribelotta/rv/floss-tools/wch/rtthread/src",
+    "file": "scheduler.c",
+    "command": "riscv-none-embed-gcc -MMD -c -march=rv32imfc -mabi=ilp32f -msmall-data-limit=8 -mno-save-restore   -Og -g3 -ffunction-sections -fdata-sections -specs=nosys.specs -specs=nano.specs  -Isrc -Iwch/hal_libraries/ch32v307_hal/include -Iwch/hal_libraries/bmsis/include -Iwch/hal_drivers -Iwch/rtthread -Iwch/rtthread/include -Iwch/rtthread/libcpu/risc-v -Iwch/rtthread/components/drivers/include -Iwch/rtthread/components/finsh  -o build/wch/rtthread/src/scheduler.o wch/rtthread/src/scheduler.c"
+  },
+  {
+    "directory": "/home/martin/Proyectos/git/martinribelotta/rv/floss-tools/wch/rtthread/src",
+    "file": "clock.c",
+    "command": "riscv-none-embed-gcc -MMD -c -march=rv32imfc -mabi=ilp32f -msmall-data-limit=8 -mno-save-restore   -Og -g3 -ffunction-sections -fdata-sections -specs=nosys.specs -specs=nano.specs  -Isrc -Iwch/hal_libraries/ch32v307_hal/include -Iwch/hal_libraries/bmsis/include -Iwch/hal_drivers -Iwch/rtthread -Iwch/rtthread/include -Iwch/rtthread/libcpu/risc-v -Iwch/rtthread/components/drivers/include -Iwch/rtthread/components/finsh  -o build/wch/rtthread/src/clock.o wch/rtthread/src/clock.c"
+  },
+  {
+    "directory": "/home/martin/Proyectos/git/martinribelotta/rv/floss-tools/wch/rtthread/src",
+    "file": "kservice.c",
+    "command": "riscv-none-embed-gcc -MMD -c -march=rv32imfc -mabi=ilp32f -msmall-data-limit=8 -mno-save-restore   -Og -g3 -ffunction-sections -fdata-sections -specs=nosys.specs -specs=nano.specs  -Isrc -Iwch/hal_libraries/ch32v307_hal/include -Iwch/hal_libraries/bmsis/include -Iwch/hal_drivers -Iwch/rtthread -Iwch/rtthread/include -Iwch/rtthread/libcpu/risc-v -Iwch/rtthread/components/drivers/include -Iwch/rtthread/components/finsh  -o build/wch/rtthread/src/kservice.o wch/rtthread/src/kservice.c"
+  },
+  {
+    "directory": "/home/martin/Proyectos/git/martinribelotta/rv/floss-tools/wch/rtthread/src",
+    "file": "ipc.c",
+    "command": "riscv-none-embed-gcc -MMD -c -march=rv32imfc -mabi=ilp32f -msmall-data-limit=8 -mno-save-restore   -Og -g3 -ffunction-sections -fdata-sections -specs=nosys.specs -specs=nano.specs  -Isrc -Iwch/hal_libraries/ch32v307_hal/include -Iwch/hal_libraries/bmsis/include -Iwch/hal_drivers -Iwch/rtthread -Iwch/rtthread/include -Iwch/rtthread/libcpu/risc-v -Iwch/rtthread/components/drivers/include -Iwch/rtthread/components/finsh  -o build/wch/rtthread/src/ipc.o wch/rtthread/src/ipc.c"
+  },
+  {
+    "directory": "/home/martin/Proyectos/git/martinribelotta/rv/floss-tools/wch/rtthread/src",
+    "file": "device.c",
+    "command": "riscv-none-embed-gcc -MMD -c -march=rv32imfc -mabi=ilp32f -msmall-data-limit=8 -mno-save-restore   -Og -g3 -ffunction-sections -fdata-sections -specs=nosys.specs -specs=nano.specs  -Isrc -Iwch/hal_libraries/ch32v307_hal/include -Iwch/hal_libraries/bmsis/include -Iwch/hal_drivers -Iwch/rtthread -Iwch/rtthread/include -Iwch/rtthread/libcpu/risc-v -Iwch/rtthread/components/drivers/include -Iwch/rtthread/components/finsh  -o build/wch/rtthread/src/device.o wch/rtthread/src/device.c"
+  },
+  {
+    "directory": "/home/martin/Proyectos/git/martinribelotta/rv/floss-tools/wch/rtthread/src",
+    "file": "cpu.c",
+    "command": "riscv-none-embed-gcc -MMD -c -march=rv32imfc -mabi=ilp32f -msmall-data-limit=8 -mno-save-restore   -Og -g3 -ffunction-sections -fdata-sections -specs=nosys.specs -specs=nano.specs  -Isrc -Iwch/hal_libraries/ch32v307_hal/include -Iwch/hal_libraries/bmsis/include -Iwch/hal_drivers -Iwch/rtthread -Iwch/rtthread/include -Iwch/rtthread/libcpu/risc-v -Iwch/rtthread/components/drivers/include -Iwch/rtthread/components/finsh  -o build/wch/rtthread/src/cpu.o wch/rtthread/src/cpu.c"
+  },
+  {
+    "directory": "/home/martin/Proyectos/git/martinribelotta/rv/floss-tools/wch/rtthread/src",
+    "file": "signal.c",
+    "command": "riscv-none-embed-gcc -MMD -c -march=rv32imfc -mabi=ilp32f -msmall-data-limit=8 -mno-save-restore   -Og -g3 -ffunction-sections -fdata-sections -specs=nosys.specs -specs=nano.specs  -Isrc -Iwch/hal_libraries/ch32v307_hal/include -Iwch/hal_libraries/bmsis/include -Iwch/hal_drivers -Iwch/rtthread -Iwch/rtthread/include -Iwch/rtthread/libcpu/risc-v -Iwch/rtthread/components/drivers/include -Iwch/rtthread/components/finsh  -o build/wch/rtthread/src/signal.o wch/rtthread/src/signal.c"
+  },
+  {
+    "directory": "/home/martin/Proyectos/git/martinribelotta/rv/floss-tools/wch/rtthread/src",
+    "file": "object.c",
+    "command": "riscv-none-embed-gcc -MMD -c -march=rv32imfc -mabi=ilp32f -msmall-data-limit=8 -mno-save-restore   -Og -g3 -ffunction-sections -fdata-sections -specs=nosys.specs -specs=nano.specs  -Isrc -Iwch/hal_libraries/ch32v307_hal/include -Iwch/hal_libraries/bmsis/include -Iwch/hal_drivers -Iwch/rtthread -Iwch/rtthread/include -Iwch/rtthread/libcpu/risc-v -Iwch/rtthread/components/drivers/include -Iwch/rtthread/components/finsh  -o build/wch/rtthread/src/object.o wch/rtthread/src/object.c"
+  },
+  {
+    "directory": "/home/martin/Proyectos/git/martinribelotta/rv/floss-tools/wch/rtthread/src",
+    "file": "memheap.c",
+    "command": "riscv-none-embed-gcc -MMD -c -march=rv32imfc -mabi=ilp32f -msmall-data-limit=8 -mno-save-restore   -Og -g3 -ffunction-sections -fdata-sections -specs=nosys.specs -specs=nano.specs  -Isrc -Iwch/hal_libraries/ch32v307_hal/include -Iwch/hal_libraries/bmsis/include -Iwch/hal_drivers -Iwch/rtthread -Iwch/rtthread/include -Iwch/rtthread/libcpu/risc-v -Iwch/rtthread/components/drivers/include -Iwch/rtthread/components/finsh  -o build/wch/rtthread/src/memheap.o wch/rtthread/src/memheap.c"
+  },
+  {
+    "directory": "/home/martin/Proyectos/git/martinribelotta/rv/floss-tools/wch/rtthread/src",
+    "file": "slab.c",
+    "command": "riscv-none-embed-gcc -MMD -c -march=rv32imfc -mabi=ilp32f -msmall-data-limit=8 -mno-save-restore   -Og -g3 -ffunction-sections -fdata-sections -specs=nosys.specs -specs=nano.specs  -Isrc -Iwch/hal_libraries/ch32v307_hal/include -Iwch/hal_libraries/bmsis/include -Iwch/hal_drivers -Iwch/rtthread -Iwch/rtthread/include -Iwch/rtthread/libcpu/risc-v -Iwch/rtthread/components/drivers/include -Iwch/rtthread/components/finsh  -o build/wch/rtthread/src/slab.o wch/rtthread/src/slab.c"
+  },
+  {
+    "directory": "/home/martin/Proyectos/git/martinribelotta/rv/floss-tools/wch/rtthread/src",
+    "file": "thread.c",
+    "command": "riscv-none-embed-gcc -MMD -c -march=rv32imfc -mabi=ilp32f -msmall-data-limit=8 -mno-save-restore   -Og -g3 -ffunction-sections -fdata-sections -specs=nosys.specs -specs=nano.specs  -Isrc -Iwch/hal_libraries/ch32v307_hal/include -Iwch/hal_libraries/bmsis/include -Iwch/hal_drivers -Iwch/rtthread -Iwch/rtthread/include -Iwch/rtthread/libcpu/risc-v -Iwch/rtthread/components/drivers/include -Iwch/rtthread/components/finsh  -o build/wch/rtthread/src/thread.o wch/rtthread/src/thread.c"
+  },
+  {
+    "directory": "/home/martin/Proyectos/git/martinribelotta/rv/floss-tools/wch/rtthread/src",
+    "file": "timer.c",
+    "command": "riscv-none-embed-gcc -MMD -c -march=rv32imfc -mabi=ilp32f -msmall-data-limit=8 -mno-save-restore   -Og -g3 -ffunction-sections -fdata-sections -specs=nosys.specs -specs=nano.specs  -Isrc -Iwch/hal_libraries/ch32v307_hal/include -Iwch/hal_libraries/bmsis/include -Iwch/hal_drivers -Iwch/rtthread -Iwch/rtthread/include -Iwch/rtthread/libcpu/risc-v -Iwch/rtthread/components/drivers/include -Iwch/rtthread/components/finsh  -o build/wch/rtthread/src/timer.o wch/rtthread/src/timer.c"
+  },
+  {
+    "directory": "/home/martin/Proyectos/git/martinribelotta/rv/floss-tools/wch/rtthread/src",
+    "file": "components.c",
+    "command": "riscv-none-embed-gcc -MMD -c -march=rv32imfc -mabi=ilp32f -msmall-data-limit=8 -mno-save-restore   -Og -g3 -ffunction-sections -fdata-sections -specs=nosys.specs -specs=nano.specs  -Isrc -Iwch/hal_libraries/ch32v307_hal/include -Iwch/hal_libraries/bmsis/include -Iwch/hal_drivers -Iwch/rtthread -Iwch/rtthread/include -Iwch/rtthread/libcpu/risc-v -Iwch/rtthread/components/drivers/include -Iwch/rtthread/components/finsh  -o build/wch/rtthread/src/components.o wch/rtthread/src/components.c"
+  },
+  {
+    "directory": "/home/martin/Proyectos/git/martinribelotta/rv/floss-tools/wch/rtthread/components/drivers/spi",
+    "file": "spi_dev.c",
+    "command": "riscv-none-embed-gcc -MMD -c -march=rv32imfc -mabi=ilp32f -msmall-data-limit=8 -mno-save-restore   -Og -g3 -ffunction-sections -fdata-sections -specs=nosys.specs -specs=nano.specs  -Isrc -Iwch/hal_libraries/ch32v307_hal/include -Iwch/hal_libraries/bmsis/include -Iwch/hal_drivers -Iwch/rtthread -Iwch/rtthread/include -Iwch/rtthread/libcpu/risc-v -Iwch/rtthread/components/drivers/include -Iwch/rtthread/components/finsh  -o build/wch/rtthread/components/drivers/spi/spi_dev.o wch/rtthread/components/drivers/spi/spi_dev.c"
+  },
+  {
+    "directory": "/home/martin/Proyectos/git/martinribelotta/rv/floss-tools/wch/rtthread/components/drivers/spi",
+    "file": "qspi_core.c",
+    "command": "riscv-none-embed-gcc -MMD -c -march=rv32imfc -mabi=ilp32f -msmall-data-limit=8 -mno-save-restore   -Og -g3 -ffunction-sections -fdata-sections -specs=nosys.specs -specs=nano.specs  -Isrc -Iwch/hal_libraries/ch32v307_hal/include -Iwch/hal_libraries/bmsis/include -Iwch/hal_drivers -Iwch/rtthread -Iwch/rtthread/include -Iwch/rtthread/libcpu/risc-v -Iwch/rtthread/components/drivers/include -Iwch/rtthread/components/finsh  -o build/wch/rtthread/components/drivers/spi/qspi_core.o wch/rtthread/components/drivers/spi/qspi_core.c"
+  },
+  {
+    "directory": "/home/martin/Proyectos/git/martinribelotta/rv/floss-tools/wch/rtthread/components/drivers/spi",
+    "file": "spi_core.c",
+    "command": "riscv-none-embed-gcc -MMD -c -march=rv32imfc -mabi=ilp32f -msmall-data-limit=8 -mno-save-restore   -Og -g3 -ffunction-sections -fdata-sections -specs=nosys.specs -specs=nano.specs  -Isrc -Iwch/hal_libraries/ch32v307_hal/include -Iwch/hal_libraries/bmsis/include -Iwch/hal_drivers -Iwch/rtthread -Iwch/rtthread/include -Iwch/rtthread/libcpu/risc-v -Iwch/rtthread/components/drivers/include -Iwch/rtthread/components/finsh  -o build/wch/rtthread/components/drivers/spi/spi_core.o wch/rtthread/components/drivers/spi/spi_core.c"
+  },
+  {
+    "directory": "/home/martin/Proyectos/git/martinribelotta/rv/floss-tools/wch/rtthread/components/drivers/misc",
+    "file": "pin.c",
+    "command": "riscv-none-embed-gcc -MMD -c -march=rv32imfc -mabi=ilp32f -msmall-data-limit=8 -mno-save-restore   -Og -g3 -ffunction-sections -fdata-sections -specs=nosys.specs -specs=nano.specs  -Isrc -Iwch/hal_libraries/ch32v307_hal/include -Iwch/hal_libraries/bmsis/include -Iwch/hal_drivers -Iwch/rtthread -Iwch/rtthread/include -Iwch/rtthread/libcpu/risc-v -Iwch/rtthread/components/drivers/include -Iwch/rtthread/components/finsh  -o build/wch/rtthread/components/drivers/misc/pin.o wch/rtthread/components/drivers/misc/pin.c"
+  },
+  {
+    "directory": "/home/martin/Proyectos/git/martinribelotta/rv/floss-tools/wch/rtthread/components/drivers/misc",
+    "file": "rt_drv_pwm.c",
+    "command": "riscv-none-embed-gcc -MMD -c -march=rv32imfc -mabi=ilp32f -msmall-data-limit=8 -mno-save-restore   -Og -g3 -ffunction-sections -fdata-sections -specs=nosys.specs -specs=nano.specs  -Isrc -Iwch/hal_libraries/ch32v307_hal/include -Iwch/hal_libraries/bmsis/include -Iwch/hal_drivers -Iwch/rtthread -Iwch/rtthread/include -Iwch/rtthread/libcpu/risc-v -Iwch/rtthread/components/drivers/include -Iwch/rtthread/components/finsh  -o build/wch/rtthread/components/drivers/misc/rt_drv_pwm.o wch/rtthread/components/drivers/misc/rt_drv_pwm.c"
+  },
+  {
+    "directory": "/home/martin/Proyectos/git/martinribelotta/rv/floss-tools/wch/rtthread/components/drivers/misc",
+    "file": "dac.c",
+    "command": "riscv-none-embed-gcc -MMD -c -march=rv32imfc -mabi=ilp32f -msmall-data-limit=8 -mno-save-restore   -Og -g3 -ffunction-sections -fdata-sections -specs=nosys.specs -specs=nano.specs  -Isrc -Iwch/hal_libraries/ch32v307_hal/include -Iwch/hal_libraries/bmsis/include -Iwch/hal_drivers -Iwch/rtthread -Iwch/rtthread/include -Iwch/rtthread/libcpu/risc-v -Iwch/rtthread/components/drivers/include -Iwch/rtthread/components/finsh  -o build/wch/rtthread/components/drivers/misc/dac.o wch/rtthread/components/drivers/misc/dac.c"
+  },
+  {
+    "directory": "/home/martin/Proyectos/git/martinribelotta/rv/floss-tools/wch/rtthread/components/drivers/misc",
+    "file": "adc.c",
+    "command": "riscv-none-embed-gcc -MMD -c -march=rv32imfc -mabi=ilp32f -msmall-data-limit=8 -mno-save-restore   -Og -g3 -ffunction-sections -fdata-sections -specs=nosys.specs -specs=nano.specs  -Isrc -Iwch/hal_libraries/ch32v307_hal/include -Iwch/hal_libraries/bmsis/include -Iwch/hal_drivers -Iwch/rtthread -Iwch/rtthread/include -Iwch/rtthread/libcpu/risc-v -Iwch/rtthread/components/drivers/include -Iwch/rtthread/components/finsh  -o build/wch/rtthread/components/drivers/misc/adc.o wch/rtthread/components/drivers/misc/adc.c"
+  },
+  {
+    "directory": "/home/martin/Proyectos/git/martinribelotta/rv/floss-tools/wch/rtthread/components/drivers/src",
+    "file": "ringblk_buf.c",
+    "command": "riscv-none-embed-gcc -MMD -c -march=rv32imfc -mabi=ilp32f -msmall-data-limit=8 -mno-save-restore   -Og -g3 -ffunction-sections -fdata-sections -specs=nosys.specs -specs=nano.specs  -Isrc -Iwch/hal_libraries/ch32v307_hal/include -Iwch/hal_libraries/bmsis/include -Iwch/hal_drivers -Iwch/rtthread -Iwch/rtthread/include -Iwch/rtthread/libcpu/risc-v -Iwch/rtthread/components/drivers/include -Iwch/rtthread/components/finsh  -o build/wch/rtthread/components/drivers/src/ringblk_buf.o wch/rtthread/components/drivers/src/ringblk_buf.c"
+  },
+  {
+    "directory": "/home/martin/Proyectos/git/martinribelotta/rv/floss-tools/wch/rtthread/components/drivers/src",
+    "file": "workqueue.c",
+    "command": "riscv-none-embed-gcc -MMD -c -march=rv32imfc -mabi=ilp32f -msmall-data-limit=8 -mno-save-restore   -Og -g3 -ffunction-sections -fdata-sections -specs=nosys.specs -specs=nano.specs  -Isrc -Iwch/hal_libraries/ch32v307_hal/include -Iwch/hal_libraries/bmsis/include -Iwch/hal_drivers -Iwch/rtthread -Iwch/rtthread/include -Iwch/rtthread/libcpu/risc-v -Iwch/rtthread/components/drivers/include -Iwch/rtthread/components/finsh  -o build/wch/rtthread/components/drivers/src/workqueue.o wch/rtthread/components/drivers/src/workqueue.c"
+  },
+  {
+    "directory": "/home/martin/Proyectos/git/martinribelotta/rv/floss-tools/wch/rtthread/components/drivers/src",
+    "file": "dataqueue.c",
+    "command": "riscv-none-embed-gcc -MMD -c -march=rv32imfc -mabi=ilp32f -msmall-data-limit=8 -mno-save-restore   -Og -g3 -ffunction-sections -fdata-sections -specs=nosys.specs -specs=nano.specs  -Isrc -Iwch/hal_libraries/ch32v307_hal/include -Iwch/hal_libraries/bmsis/include -Iwch/hal_drivers -Iwch/rtthread -Iwch/rtthread/include -Iwch/rtthread/libcpu/risc-v -Iwch/rtthread/components/drivers/include -Iwch/rtthread/components/finsh  -o build/wch/rtthread/components/drivers/src/dataqueue.o wch/rtthread/components/drivers/src/dataqueue.c"
+  },
+  {
+    "directory": "/home/martin/Proyectos/git/martinribelotta/rv/floss-tools/wch/rtthread/components/drivers/src",
+    "file": "ringbuffer.c",
+    "command": "riscv-none-embed-gcc -MMD -c -march=rv32imfc -mabi=ilp32f -msmall-data-limit=8 -mno-save-restore   -Og -g3 -ffunction-sections -fdata-sections -specs=nosys.specs -specs=nano.specs  -Isrc -Iwch/hal_libraries/ch32v307_hal/include -Iwch/hal_libraries/bmsis/include -Iwch/hal_drivers -Iwch/rtthread -Iwch/rtthread/include -Iwch/rtthread/libcpu/risc-v -Iwch/rtthread/components/drivers/include -Iwch/rtthread/components/finsh  -o build/wch/rtthread/components/drivers/src/ringbuffer.o wch/rtthread/components/drivers/src/ringbuffer.c"
+  },
+  {
+    "directory": "/home/martin/Proyectos/git/martinribelotta/rv/floss-tools/wch/rtthread/components/drivers/src",
+    "file": "pipe.c",
+    "command": "riscv-none-embed-gcc -MMD -c -march=rv32imfc -mabi=ilp32f -msmall-data-limit=8 -mno-save-restore   -Og -g3 -ffunction-sections -fdata-sections -specs=nosys.specs -specs=nano.specs  -Isrc -Iwch/hal_libraries/ch32v307_hal/include -Iwch/hal_libraries/bmsis/include -Iwch/hal_drivers -Iwch/rtthread -Iwch/rtthread/include -Iwch/rtthread/libcpu/risc-v -Iwch/rtthread/components/drivers/include -Iwch/rtthread/components/finsh  -o build/wch/rtthread/components/drivers/src/pipe.o wch/rtthread/components/drivers/src/pipe.c"
+  },
+  {
+    "directory": "/home/martin/Proyectos/git/martinribelotta/rv/floss-tools/wch/rtthread/components/drivers/src",
+    "file": "waitqueue.c",
+    "command": "riscv-none-embed-gcc -MMD -c -march=rv32imfc -mabi=ilp32f -msmall-data-limit=8 -mno-save-restore   -Og -g3 -ffunction-sections -fdata-sections -specs=nosys.specs -specs=nano.specs  -Isrc -Iwch/hal_libraries/ch32v307_hal/include -Iwch/hal_libraries/bmsis/include -Iwch/hal_drivers -Iwch/rtthread -Iwch/rtthread/include -Iwch/rtthread/libcpu/risc-v -Iwch/rtthread/components/drivers/include -Iwch/rtthread/components/finsh  -o build/wch/rtthread/components/drivers/src/waitqueue.o wch/rtthread/components/drivers/src/waitqueue.c"
+  },
+  {
+    "directory": "/home/martin/Proyectos/git/martinribelotta/rv/floss-tools/wch/rtthread/components/drivers/src",
+    "file": "completion.c",
+    "command": "riscv-none-embed-gcc -MMD -c -march=rv32imfc -mabi=ilp32f -msmall-data-limit=8 -mno-save-restore   -Og -g3 -ffunction-sections -fdata-sections -specs=nosys.specs -specs=nano.specs  -Isrc -Iwch/hal_libraries/ch32v307_hal/include -Iwch/hal_libraries/bmsis/include -Iwch/hal_drivers -Iwch/rtthread -Iwch/rtthread/include -Iwch/rtthread/libcpu/risc-v -Iwch/rtthread/components/drivers/include -Iwch/rtthread/components/finsh  -o build/wch/rtthread/components/drivers/src/completion.o wch/rtthread/components/drivers/src/completion.c"
+  },
+  {
+    "directory": "/home/martin/Proyectos/git/martinribelotta/rv/floss-tools/wch/rtthread/components/drivers/cputime",
+    "file": "cputime.c",
+    "command": "riscv-none-embed-gcc -MMD -c -march=rv32imfc -mabi=ilp32f -msmall-data-limit=8 -mno-save-restore   -Og -g3 -ffunction-sections -fdata-sections -specs=nosys.specs -specs=nano.specs  -Isrc -Iwch/hal_libraries/ch32v307_hal/include -Iwch/hal_libraries/bmsis/include -Iwch/hal_drivers -Iwch/rtthread -Iwch/rtthread/include -Iwch/rtthread/libcpu/risc-v -Iwch/rtthread/components/drivers/include -Iwch/rtthread/components/finsh  -o build/wch/rtthread/components/drivers/cputime/cputime.o wch/rtthread/components/drivers/cputime/cputime.c"
+  },
+  {
+    "directory": "/home/martin/Proyectos/git/martinribelotta/rv/floss-tools/wch/rtthread/components/drivers/serial",
+    "file": "serial.c",
+    "command": "riscv-none-embed-gcc -MMD -c -march=rv32imfc -mabi=ilp32f -msmall-data-limit=8 -mno-save-restore   -Og -g3 -ffunction-sections -fdata-sections -specs=nosys.specs -specs=nano.specs  -Isrc -Iwch/hal_libraries/ch32v307_hal/include -Iwch/hal_libraries/bmsis/include -Iwch/hal_drivers -Iwch/rtthread -Iwch/rtthread/include -Iwch/rtthread/libcpu/risc-v -Iwch/rtthread/components/drivers/include -Iwch/rtthread/components/finsh  -o build/wch/rtthread/components/drivers/serial/serial.o wch/rtthread/components/drivers/serial/serial.c"
+  },
+  {
+    "directory": "/home/martin/Proyectos/git/martinribelotta/rv/floss-tools/wch/rtthread/components/drivers/i2c",
+    "file": "i2c_core.c",
+    "command": "riscv-none-embed-gcc -MMD -c -march=rv32imfc -mabi=ilp32f -msmall-data-limit=8 -mno-save-restore   -Og -g3 -ffunction-sections -fdata-sections -specs=nosys.specs -specs=nano.specs  -Isrc -Iwch/hal_libraries/ch32v307_hal/include -Iwch/hal_libraries/bmsis/include -Iwch/hal_drivers -Iwch/rtthread -Iwch/rtthread/include -Iwch/rtthread/libcpu/risc-v -Iwch/rtthread/components/drivers/include -Iwch/rtthread/components/finsh  -o build/wch/rtthread/components/drivers/i2c/i2c_core.o wch/rtthread/components/drivers/i2c/i2c_core.c"
+  },
+  {
+    "directory": "/home/martin/Proyectos/git/martinribelotta/rv/floss-tools/wch/rtthread/components/drivers/i2c",
+    "file": "i2c-bit-ops.c",
+    "command": "riscv-none-embed-gcc -MMD -c -march=rv32imfc -mabi=ilp32f -msmall-data-limit=8 -mno-save-restore   -Og -g3 -ffunction-sections -fdata-sections -specs=nosys.specs -specs=nano.specs  -Isrc -Iwch/hal_libraries/ch32v307_hal/include -Iwch/hal_libraries/bmsis/include -Iwch/hal_drivers -Iwch/rtthread -Iwch/rtthread/include -Iwch/rtthread/libcpu/risc-v -Iwch/rtthread/components/drivers/include -Iwch/rtthread/components/finsh  -o build/wch/rtthread/components/drivers/i2c/i2c-bit-ops.o wch/rtthread/components/drivers/i2c/i2c-bit-ops.c"
+  },
+  {
+    "directory": "/home/martin/Proyectos/git/martinribelotta/rv/floss-tools/wch/rtthread/components/drivers/i2c",
+    "file": "i2c_dev.c",
+    "command": "riscv-none-embed-gcc -MMD -c -march=rv32imfc -mabi=ilp32f -msmall-data-limit=8 -mno-save-restore   -Og -g3 -ffunction-sections -fdata-sections -specs=nosys.specs -specs=nano.specs  -Isrc -Iwch/hal_libraries/ch32v307_hal/include -Iwch/hal_libraries/bmsis/include -Iwch/hal_drivers -Iwch/rtthread -Iwch/rtthread/include -Iwch/rtthread/libcpu/risc-v -Iwch/rtthread/components/drivers/include -Iwch/rtthread/components/finsh  -o build/wch/rtthread/components/drivers/i2c/i2c_dev.o wch/rtthread/components/drivers/i2c/i2c_dev.c"
+  },
+  {
+    "directory": "/home/martin/Proyectos/git/martinribelotta/rv/floss-tools/wch/rtthread/components/drivers/hwtimer",
+    "file": "hwtimer.c",
+    "command": "riscv-none-embed-gcc -MMD -c -march=rv32imfc -mabi=ilp32f -msmall-data-limit=8 -mno-save-restore   -Og -g3 -ffunction-sections -fdata-sections -specs=nosys.specs -specs=nano.specs  -Isrc -Iwch/hal_libraries/ch32v307_hal/include -Iwch/hal_libraries/bmsis/include -Iwch/hal_drivers -Iwch/rtthread -Iwch/rtthread/include -Iwch/rtthread/libcpu/risc-v -Iwch/rtthread/components/drivers/include -Iwch/rtthread/components/finsh  -o build/wch/rtthread/components/drivers/hwtimer/hwtimer.o wch/rtthread/components/drivers/hwtimer/hwtimer.c"
+  },
+  {
+    "directory": "/home/martin/Proyectos/git/martinribelotta/rv/floss-tools/wch/rtthread/components/finsh",
+    "file": "msh_file.c",
+    "command": "riscv-none-embed-gcc -MMD -c -march=rv32imfc -mabi=ilp32f -msmall-data-limit=8 -mno-save-restore   -Og -g3 -ffunction-sections -fdata-sections -specs=nosys.specs -specs=nano.specs  -Isrc -Iwch/hal_libraries/ch32v307_hal/include -Iwch/hal_libraries/bmsis/include -Iwch/hal_drivers -Iwch/rtthread -Iwch/rtthread/include -Iwch/rtthread/libcpu/risc-v -Iwch/rtthread/components/drivers/include -Iwch/rtthread/components/finsh  -o build/wch/rtthread/components/finsh/msh_file.o wch/rtthread/components/finsh/msh_file.c"
+  },
+  {
+    "directory": "/home/martin/Proyectos/git/martinribelotta/rv/floss-tools/wch/rtthread/components/finsh",
+    "file": "finsh_error.c",
+    "command": "riscv-none-embed-gcc -MMD -c -march=rv32imfc -mabi=ilp32f -msmall-data-limit=8 -mno-save-restore   -Og -g3 -ffunction-sections -fdata-sections -specs=nosys.specs -specs=nano.specs  -Isrc -Iwch/hal_libraries/ch32v307_hal/include -Iwch/hal_libraries/bmsis/include -Iwch/hal_drivers -Iwch/rtthread -Iwch/rtthread/include -Iwch/rtthread/libcpu/risc-v -Iwch/rtthread/components/drivers/include -Iwch/rtthread/components/finsh  -o build/wch/rtthread/components/finsh/finsh_error.o wch/rtthread/components/finsh/finsh_error.c"
+  },
+  {
+    "directory": "/home/martin/Proyectos/git/martinribelotta/rv/floss-tools/wch/rtthread/components/finsh",
+    "file": "finsh_var.c",
+    "command": "riscv-none-embed-gcc -MMD -c -march=rv32imfc -mabi=ilp32f -msmall-data-limit=8 -mno-save-restore   -Og -g3 -ffunction-sections -fdata-sections -specs=nosys.specs -specs=nano.specs  -Isrc -Iwch/hal_libraries/ch32v307_hal/include -Iwch/hal_libraries/bmsis/include -Iwch/hal_drivers -Iwch/rtthread -Iwch/rtthread/include -Iwch/rtthread/libcpu/risc-v -Iwch/rtthread/components/drivers/include -Iwch/rtthread/components/finsh  -o build/wch/rtthread/components/finsh/finsh_var.o wch/rtthread/components/finsh/finsh_var.c"
+  },
+  {
+    "directory": "/home/martin/Proyectos/git/martinribelotta/rv/floss-tools/wch/rtthread/components/finsh",
+    "file": "finsh_heap.c",
+    "command": "riscv-none-embed-gcc -MMD -c -march=rv32imfc -mabi=ilp32f -msmall-data-limit=8 -mno-save-restore   -Og -g3 -ffunction-sections -fdata-sections -specs=nosys.specs -specs=nano.specs  -Isrc -Iwch/hal_libraries/ch32v307_hal/include -Iwch/hal_libraries/bmsis/include -Iwch/hal_drivers -Iwch/rtthread -Iwch/rtthread/include -Iwch/rtthread/libcpu/risc-v -Iwch/rtthread/components/drivers/include -Iwch/rtthread/components/finsh  -o build/wch/rtthread/components/finsh/finsh_heap.o wch/rtthread/components/finsh/finsh_heap.c"
+  },
+  {
+    "directory": "/home/martin/Proyectos/git/martinribelotta/rv/floss-tools/wch/rtthread/components/finsh",
+    "file": "finsh_init.c",
+    "command": "riscv-none-embed-gcc -MMD -c -march=rv32imfc -mabi=ilp32f -msmall-data-limit=8 -mno-save-restore   -Og -g3 -ffunction-sections -fdata-sections -specs=nosys.specs -specs=nano.specs  -Isrc -Iwch/hal_libraries/ch32v307_hal/include -Iwch/hal_libraries/bmsis/include -Iwch/hal_drivers -Iwch/rtthread -Iwch/rtthread/include -Iwch/rtthread/libcpu/risc-v -Iwch/rtthread/components/drivers/include -Iwch/rtthread/components/finsh  -o build/wch/rtthread/components/finsh/finsh_init.o wch/rtthread/components/finsh/finsh_init.c"
+  },
+  {
+    "directory": "/home/martin/Proyectos/git/martinribelotta/rv/floss-tools/wch/rtthread/components/finsh",
+    "file": "finsh_compiler.c",
+    "command": "riscv-none-embed-gcc -MMD -c -march=rv32imfc -mabi=ilp32f -msmall-data-limit=8 -mno-save-restore   -Og -g3 -ffunction-sections -fdata-sections -specs=nosys.specs -specs=nano.specs  -Isrc -Iwch/hal_libraries/ch32v307_hal/include -Iwch/hal_libraries/bmsis/include -Iwch/hal_drivers -Iwch/rtthread -Iwch/rtthread/include -Iwch/rtthread/libcpu/risc-v -Iwch/rtthread/components/drivers/include -Iwch/rtthread/components/finsh  -o build/wch/rtthread/components/finsh/finsh_compiler.o wch/rtthread/components/finsh/finsh_compiler.c"
+  },
+  {
+    "directory": "/home/martin/Proyectos/git/martinribelotta/rv/floss-tools/wch/rtthread/components/finsh",
+    "file": "msh.c",
+    "command": "riscv-none-embed-gcc -MMD -c -march=rv32imfc -mabi=ilp32f -msmall-data-limit=8 -mno-save-restore   -Og -g3 -ffunction-sections -fdata-sections -specs=nosys.specs -specs=nano.specs  -Isrc -Iwch/hal_libraries/ch32v307_hal/include -Iwch/hal_libraries/bmsis/include -Iwch/hal_drivers -Iwch/rtthread -Iwch/rtthread/include -Iwch/rtthread/libcpu/risc-v -Iwch/rtthread/components/drivers/include -Iwch/rtthread/components/finsh  -o build/wch/rtthread/components/finsh/msh.o wch/rtthread/components/finsh/msh.c"
+  },
+  {
+    "directory": "/home/martin/Proyectos/git/martinribelotta/rv/floss-tools/wch/rtthread/components/finsh",
+    "file": "finsh_node.c",
+    "command": "riscv-none-embed-gcc -MMD -c -march=rv32imfc -mabi=ilp32f -msmall-data-limit=8 -mno-save-restore   -Og -g3 -ffunction-sections -fdata-sections -specs=nosys.specs -specs=nano.specs  -Isrc -Iwch/hal_libraries/ch32v307_hal/include -Iwch/hal_libraries/bmsis/include -Iwch/hal_drivers -Iwch/rtthread -Iwch/rtthread/include -Iwch/rtthread/libcpu/risc-v -Iwch/rtthread/components/drivers/include -Iwch/rtthread/components/finsh  -o build/wch/rtthread/components/finsh/finsh_node.o wch/rtthread/components/finsh/finsh_node.c"
+  },
+  {
+    "directory": "/home/martin/Proyectos/git/martinribelotta/rv/floss-tools/wch/rtthread/components/finsh",
+    "file": "finsh_ops.c",
+    "command": "riscv-none-embed-gcc -MMD -c -march=rv32imfc -mabi=ilp32f -msmall-data-limit=8 -mno-save-restore   -Og -g3 -ffunction-sections -fdata-sections -specs=nosys.specs -specs=nano.specs  -Isrc -Iwch/hal_libraries/ch32v307_hal/include -Iwch/hal_libraries/bmsis/include -Iwch/hal_drivers -Iwch/rtthread -Iwch/rtthread/include -Iwch/rtthread/libcpu/risc-v -Iwch/rtthread/components/drivers/include -Iwch/rtthread/components/finsh  -o build/wch/rtthread/components/finsh/finsh_ops.o wch/rtthread/components/finsh/finsh_ops.c"
+  },
+  {
+    "directory": "/home/martin/Proyectos/git/martinribelotta/rv/floss-tools/wch/rtthread/components/finsh",
+    "file": "shell.c",
+    "command": "riscv-none-embed-gcc -MMD -c -march=rv32imfc -mabi=ilp32f -msmall-data-limit=8 -mno-save-restore   -Og -g3 -ffunction-sections -fdata-sections -specs=nosys.specs -specs=nano.specs  -Isrc -Iwch/hal_libraries/ch32v307_hal/include -Iwch/hal_libraries/bmsis/include -Iwch/hal_drivers -Iwch/rtthread -Iwch/rtthread/include -Iwch/rtthread/libcpu/risc-v -Iwch/rtthread/components/drivers/include -Iwch/rtthread/components/finsh  -o build/wch/rtthread/components/finsh/shell.o wch/rtthread/components/finsh/shell.c"
+  },
+  {
+    "directory": "/home/martin/Proyectos/git/martinribelotta/rv/floss-tools/wch/rtthread/components/finsh",
+    "file": "cmd.c",
+    "command": "riscv-none-embed-gcc -MMD -c -march=rv32imfc -mabi=ilp32f -msmall-data-limit=8 -mno-save-restore   -Og -g3 -ffunction-sections -fdata-sections -specs=nosys.specs -specs=nano.specs  -Isrc -Iwch/hal_libraries/ch32v307_hal/include -Iwch/hal_libraries/bmsis/include -Iwch/hal_drivers -Iwch/rtthread -Iwch/rtthread/include -Iwch/rtthread/libcpu/risc-v -Iwch/rtthread/components/drivers/include -Iwch/rtthread/components/finsh  -o build/wch/rtthread/components/finsh/cmd.o wch/rtthread/components/finsh/cmd.c"
+  },
+  {
+    "directory": "/home/martin/Proyectos/git/martinribelotta/rv/floss-tools/wch/rtthread/components/finsh",
+    "file": "finsh_token.c",
+    "command": "riscv-none-embed-gcc -MMD -c -march=rv32imfc -mabi=ilp32f -msmall-data-limit=8 -mno-save-restore   -Og -g3 -ffunction-sections -fdata-sections -specs=nosys.specs -specs=nano.specs  -Isrc -Iwch/hal_libraries/ch32v307_hal/include -Iwch/hal_libraries/bmsis/include -Iwch/hal_drivers -Iwch/rtthread -Iwch/rtthread/include -Iwch/rtthread/libcpu/risc-v -Iwch/rtthread/components/drivers/include -Iwch/rtthread/components/finsh  -o build/wch/rtthread/components/finsh/finsh_token.o wch/rtthread/components/finsh/finsh_token.c"
+  },
+  {
+    "directory": "/home/martin/Proyectos/git/martinribelotta/rv/floss-tools/wch/rtthread/components/finsh",
+    "file": "finsh_parser.c",
+    "command": "riscv-none-embed-gcc -MMD -c -march=rv32imfc -mabi=ilp32f -msmall-data-limit=8 -mno-save-restore   -Og -g3 -ffunction-sections -fdata-sections -specs=nosys.specs -specs=nano.specs  -Isrc -Iwch/hal_libraries/ch32v307_hal/include -Iwch/hal_libraries/bmsis/include -Iwch/hal_drivers -Iwch/rtthread -Iwch/rtthread/include -Iwch/rtthread/libcpu/risc-v -Iwch/rtthread/components/drivers/include -Iwch/rtthread/components/finsh  -o build/wch/rtthread/components/finsh/finsh_parser.o wch/rtthread/components/finsh/finsh_parser.c"
+  },
+  {
+    "directory": "/home/martin/Proyectos/git/martinribelotta/rv/floss-tools/wch/rtthread/components/finsh",
+    "file": "symbol.c",
+    "command": "riscv-none-embed-gcc -MMD -c -march=rv32imfc -mabi=ilp32f -msmall-data-limit=8 -mno-save-restore   -Og -g3 -ffunction-sections -fdata-sections -specs=nosys.specs -specs=nano.specs  -Isrc -Iwch/hal_libraries/ch32v307_hal/include -Iwch/hal_libraries/bmsis/include -Iwch/hal_drivers -Iwch/rtthread -Iwch/rtthread/include -Iwch/rtthread/libcpu/risc-v -Iwch/rtthread/components/drivers/include -Iwch/rtthread/components/finsh  -o build/wch/rtthread/components/finsh/symbol.o wch/rtthread/components/finsh/symbol.c"
+  },
+  {
+    "directory": "/home/martin/Proyectos/git/martinribelotta/rv/floss-tools/wch/rtthread/components/finsh",
+    "file": "finsh_vm.c",
+    "command": "riscv-none-embed-gcc -MMD -c -march=rv32imfc -mabi=ilp32f -msmall-data-limit=8 -mno-save-restore   -Og -g3 -ffunction-sections -fdata-sections -specs=nosys.specs -specs=nano.specs  -Isrc -Iwch/hal_libraries/ch32v307_hal/include -Iwch/hal_libraries/bmsis/include -Iwch/hal_drivers -Iwch/rtthread -Iwch/rtthread/include -Iwch/rtthread/libcpu/risc-v -Iwch/rtthread/components/drivers/include -Iwch/rtthread/components/finsh  -o build/wch/rtthread/components/finsh/finsh_vm.o wch/rtthread/components/finsh/finsh_vm.c"
+  },
+  {
+    "directory": "/home/martin/Proyectos/git/martinribelotta/rv/floss-tools/wch/rtthread/libcpu/risc-v",
+    "file": "cpuport.c",
+    "command": "riscv-none-embed-gcc -MMD -c -march=rv32imfc -mabi=ilp32f -msmall-data-limit=8 -mno-save-restore   -Og -g3 -ffunction-sections -fdata-sections -specs=nosys.specs -specs=nano.specs  -Isrc -Iwch/hal_libraries/ch32v307_hal/include -Iwch/hal_libraries/bmsis/include -Iwch/hal_drivers -Iwch/rtthread -Iwch/rtthread/include -Iwch/rtthread/libcpu/risc-v -Iwch/rtthread/components/drivers/include -Iwch/rtthread/components/finsh  -o build/wch/rtthread/libcpu/risc-v/cpuport.o wch/rtthread/libcpu/risc-v/cpuport.c"
+  },
+  {
+    "directory": "/home/martin/Proyectos/git/martinribelotta/rv/floss-tools/wch/hal_libraries/bmsis/source",
+    "file": "startup_ch32v30x.S",
+    "command": "riscv-none-embed-gcc -MMD -c -march=rv32imfc -mabi=ilp32f -msmall-data-limit=8 -mno-save-restore   -Og -g3 -ffunction-sections -fdata-sections -specs=nosys.specs -specs=nano.specs  -Isrc -Iwch/hal_libraries/ch32v307_hal/include -Iwch/hal_libraries/bmsis/include -Iwch/hal_drivers -Iwch/rtthread -Iwch/rtthread/include -Iwch/rtthread/libcpu/risc-v -Iwch/rtthread/components/drivers/include -Iwch/rtthread/components/finsh  -o build/wch/hal_libraries/bmsis/source/startup_ch32v30x.o wch/hal_libraries/bmsis/source/startup_ch32v30x.S"
+  },
+  {
+    "directory": "/home/martin/Proyectos/git/martinribelotta/rv/floss-tools/wch/rtthread/libcpu/risc-v",
+    "file": "context_gcc.S",
+    "command": "riscv-none-embed-gcc -MMD -c -march=rv32imfc -mabi=ilp32f -msmall-data-limit=8 -mno-save-restore   -Og -g3 -ffunction-sections -fdata-sections -specs=nosys.specs -specs=nano.specs  -Isrc -Iwch/hal_libraries/ch32v307_hal/include -Iwch/hal_libraries/bmsis/include -Iwch/hal_drivers -Iwch/rtthread -Iwch/rtthread/include -Iwch/rtthread/libcpu/risc-v -Iwch/rtthread/components/drivers/include -Iwch/rtthread/components/finsh  -o build/wch/rtthread/libcpu/risc-v/context_gcc.o wch/rtthread/libcpu/risc-v/context_gcc.S"
+  },
+  {
+    "directory": "/home/martin/Proyectos/git/martinribelotta/rv/floss-tools/wch/rtthread/libcpu/risc-v",
+    "file": "interrupt_gcc.S",
+    "command": "riscv-none-embed-gcc -MMD -c -march=rv32imfc -mabi=ilp32f -msmall-data-limit=8 -mno-save-restore   -Og -g3 -ffunction-sections -fdata-sections -specs=nosys.specs -specs=nano.specs  -Isrc -Iwch/hal_libraries/ch32v307_hal/include -Iwch/hal_libraries/bmsis/include -Iwch/hal_drivers -Iwch/rtthread -Iwch/rtthread/include -Iwch/rtthread/libcpu/risc-v -Iwch/rtthread/components/drivers/include -Iwch/rtthread/components/finsh  -o build/wch/rtthread/libcpu/risc-v/interrupt_gcc.o wch/rtthread/libcpu/risc-v/interrupt_gcc.S"
+  }
+]

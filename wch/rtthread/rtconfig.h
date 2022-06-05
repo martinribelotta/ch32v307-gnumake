@@ -278,6 +278,17 @@
 
 /* Board extended module Drivers */
 
+#define RT_USING_I2C
+#define RT_USING_I2C_BITOPS
+#define BSP_USING_I2C1
+// #define BSP_USING_I2C2
+#define BSP_USING_ADC1
+
+#define RT_USING_DAC
+#define RT_USING_ADC
+#define RT_USING_CPUTIME
+#define RT_USING_HWTIMER
+
 /* end of Hardware Drivers Config */
 #define BOARD_CH32V307V_R0
 

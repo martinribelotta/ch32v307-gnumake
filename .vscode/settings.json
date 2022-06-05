@@ -1,3 +1,8 @@
 {
-    "makefile.extensionOutputFolder": "./.vscode"
+    "makefile.extensionOutputFolder": "./.vscode",
+    "files.associations": {
+        "drv_gpio.h": "c",
+        "rtdevice.h": "c",
+        "drv_soft_i2c.h": "c"
+    }
 }

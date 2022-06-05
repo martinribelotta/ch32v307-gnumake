@@ -1,0 +1,10 @@
+{
+    "configurations": [
+        {
+            "name": "Embedded RISC-V Linux host",
+            "compileCommands": "${workspaceFolder}/.vscode/compile_commands.json",
+            "configurationProvider": "ms-vscode.makefile-tools"
+        }
+    ],
+    "version": 4
+}
