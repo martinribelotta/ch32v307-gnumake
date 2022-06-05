@@ -79,3 +79,5 @@ flash: all
 	@openocd -f wch/wch-riscv.cfg -c init -c halt -c "flash erase_sector wch_riscv 0 last" -c "program $(TARGET_ELF) verify" -c wlink_reset_resume -c exit
 
 .PHONY: all clean
+
+-include $(DEPS)
