@@ -1,0 +1,4 @@
+add_subdirectory(hal_libraries/ch32v307_hal)
+add_subdirectory(hal_libraries/bmsis)
+add_subdirectory(hal_drivers)
+add_subdirectory(rtthread)
