@@ -29,6 +29,14 @@
                 "cwd": "${workspaceFolder}/build"
             },
             "command": "cmake --build . --target flash"
+        },
+        {
+            "label": "clean and rebuild",
+            "dependsOrder": "sequence",
+            "dependsOn": [
+                "cmake remove build",
+                "cmake build"
+            ]
         }
     ]
 }

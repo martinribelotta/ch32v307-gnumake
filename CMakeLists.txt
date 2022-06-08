@@ -18,3 +18,16 @@ add_custom_command(TARGET ${TARGET_ELF} POST_BUILD
 add_custom_command(TARGET ${TARGET_ELF} POST_BUILD
     COMMAND ${CROSS_OBJCOPY} "-Oihex" $<TARGET_FILE:${TARGET_ELF}> $<TARGET_FILE:${TARGET_ELF}>.hex
     COMMENT "Generating hex file")
+
+add_custom_target(flash
+        COMMAND openocd -f ${CMAKE_CURRENT_SOURCE_DIR}/wch/wch-riscv.cfg
+            -c init
+            -c halt
+            -c "flash erase_sector wch_riscv 0 last"
+            -c "program ${TARGET_ELF} verify"
+            -c wlink_reset_resume
+            -c exit
+        WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}
+        DEPENDS ${tgt}
+        COMMENT "Running openocd ${tgt_name}"
+        USES_TERMINAL)
