@@ -9,3 +9,12 @@ enable_language(C CXX ASM)
 
 add_subdirectory(wch)
 target_link_libraries(${TARGET_ELF} m)
+add_custom_command(TARGET ${TARGET_ELF} POST_BUILD
+    COMMAND ${CROSS_OBJDUMP} "-dSx" $<TARGET_FILE:${TARGET_ELF}> > $<TARGET_FILE:${TARGET_ELF}>.lst
+    COMMENT "Generating disassembler file")
+add_custom_command(TARGET ${TARGET_ELF} POST_BUILD
+    COMMAND ${CROSS_OBJCOPY} "-Obinary" $<TARGET_FILE:${TARGET_ELF}> $<TARGET_FILE:${TARGET_ELF}>.bin
+    COMMENT "Generating bin file")
+add_custom_command(TARGET ${TARGET_ELF} POST_BUILD
+    COMMAND ${CROSS_OBJCOPY} "-Oihex" $<TARGET_FILE:${TARGET_ELF}> $<TARGET_FILE:${TARGET_ELF}>.hex
+    COMMENT "Generating hex file")
