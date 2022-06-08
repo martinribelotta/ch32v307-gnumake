@@ -3,6 +3,8 @@
     "files.associations": {
         "drv_gpio.h": "c",
         "rtdevice.h": "c",
-        "drv_soft_i2c.h": "c"
+        "drv_soft_i2c.h": "c",
+        "rtthread.h": "c",
+        "ch32v30x.h": "c"
     }
 }

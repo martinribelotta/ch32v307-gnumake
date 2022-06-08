@@ -4,19 +4,39 @@
     "version": "2.0.0",
     "tasks": [
         {
-            "label": "make all",
+            "label": "cmake build",
             "type": "shell",
-            "command": "make all"
+            "options": {
+                "cwd": "${workspaceFolder}/build"
+            },
+            "command": "cmake --build . --target all",
+            "dependsOn": [ "cmake configure" ]
         },
         {
-            "label": "make clean",
+            "label": "cmake remove build",
             "type": "shell",
-            "command": "make clean"
+            "command": "rm -fr ${workspaceFolder}/build"
         },
         {
-            "label": "make flash",
+            "label": "cmake configure",
             "type": "shell",
-            "command": "make flash"
+            "command": "cmake -B build -S ${workspaceFolder} -G Ninja"
+        },
+        {
+            "label": "flash to device",
+            "type": "shell",
+            "options": {
+                "cwd": "${workspaceFolder}/build"
+            },
+            "command": "cmake --build . --target flash"
+        },
+        {
+            "label": "clean and rebuild",
+            "dependsOrder": "sequence",
+            "dependsOn": [
+                "cmake remove build",
+                "cmake build"
+            ]
         }
     ]
 }

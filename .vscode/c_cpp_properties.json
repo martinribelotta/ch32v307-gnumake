@@ -2,8 +2,7 @@
     "configurations": [
         {
             "name": "Embedded RISC-V Linux host",
-            "compileCommands": "${workspaceFolder}/.vscode/compile_commands.json",
-            "configurationProvider": "ms-vscode.makefile-tools"
+            "configurationProvider": "ms-vscode.cmake-tools"
         }
     ],
     "version": 4

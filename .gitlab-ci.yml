@@ -6,8 +6,10 @@ stages:          # List of stages for jobs, and their order of execution
 build-job:       # This job runs in the build stage, which runs first.
   stage: build
   script:
-    - make clean
-    - make all -j8
+    - mkdir build
+    - cd build && cmake .. -G Ninja
+    - ninja -t clean
+    - ninja -j8
   artifacts:
     paths:
       - build/*.elf
