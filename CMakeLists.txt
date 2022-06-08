@@ -8,5 +8,4 @@ add_executable(${TARGET_ELF} src/main.c src/donut.c)
 enable_language(C CXX ASM)
 
 add_subdirectory(wch)
-target_link_options(${TARGET_ELF} PUBLIC -T${CMAKE_CURRENT_SOURCE_DIR}/wch/Ld/Link.ld)
 target_link_libraries(${TARGET_ELF} m)

@@ -6,6 +6,9 @@ stages:          # List of stages for jobs, and their order of execution
 build-job:       # This job runs in the build stage, which runs first.
   stage: build
   script:
+    - apt-get install -y cmake ninja
+    - mkdir build
+    - cd build && cmake .. -G Ninja
     - make clean
     - make all -j8
   artifacts:
