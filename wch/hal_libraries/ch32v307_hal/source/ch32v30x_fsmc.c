@@ -320,7 +320,7 @@ void FSMC_PCCARDStructInit(FSMC_PCCARDInitTypeDef* FSMC_PCCARDInitStruct)
 *                    FSMC_Bank1_NORSRAM2: FSMC Bank1 NOR/SRAM2
 *                    FSMC_Bank1_NORSRAM3: FSMC Bank1 NOR/SRAM3
 *                    FSMC_Bank1_NORSRAM4: FSMC Bank1 NOR/SRAM4
-*                  NewState£ºENABLE or DISABLE.
+*                  NewState: ENABLE or DISABLE.
 * Return         : None
 *******************************************************************************/
 void FSMC_NORSRAMCmd(uint32_t FSMC_Bank, FunctionalState NewState)
@@ -342,7 +342,7 @@ void FSMC_NORSRAMCmd(uint32_t FSMC_Bank, FunctionalState NewState)
 * Input          : FSMC_Bank: specifies the FSMC Bank to be used
 *                    FSMC_Bank2_NAND: FSMC Bank2 NAND
 *                    FSMC_Bank3_NAND: FSMC Bank3 NAND
-*                  NewState£ºENABLE or DISABLE.
+*                  NewState: ENABLE or DISABLE.
 * Return         : None
 *******************************************************************************/
 void FSMC_NANDCmd(uint32_t FSMC_Bank, FunctionalState NewState)
@@ -375,7 +375,7 @@ void FSMC_NANDCmd(uint32_t FSMC_Bank, FunctionalState NewState)
 /*******************************************************************************
 * Function Name  : FSMC_PCCARDCmd
 * Description    : Enables or disables the PCCARD Memory Bank.
-* Input          : NewState£ºENABLE or DISABLE.
+* Input          : NewState: ENABLE or DISABLE.
 * Return         : None
 *******************************************************************************/
 void FSMC_PCCARDCmd(FunctionalState NewState)
@@ -397,7 +397,7 @@ void FSMC_PCCARDCmd(FunctionalState NewState)
 * Input          : FSMC_Bank: specifies the FSMC Bank to be used
 *                    FSMC_Bank2_NAND: FSMC Bank2 NAND
 *                    FSMC_Bank3_NAND: FSMC Bank3 NAND
-*                  NewState£ºENABLE or DISABLE.
+*                  NewState: ENABLE or DISABLE.
 * Return         : None
 *******************************************************************************/
 void FSMC_NANDECCCmd(uint32_t FSMC_Bank, FunctionalState NewState)
@@ -432,8 +432,8 @@ void FSMC_NANDECCCmd(uint32_t FSMC_Bank, FunctionalState NewState)
 * Input          : FSMC_Bank: specifies the FSMC Bank to be used
 *                    FSMC_Bank2_NAND: FSMC Bank2 NAND
 *                    FSMC_Bank3_NAND: FSMC Bank3 NAND
-*                  NewState£ºENABLE or DISABLE.
-* Return         : eccval£ºThe Error Correction Code (ECC) value.
+*                  NewState: ENABLE or DISABLE.
+* Return         : eccval: The Error Correction Code (ECC) value.
 *******************************************************************************/
 uint32_t FSMC_GetECC(uint32_t FSMC_Bank)
 {
@@ -461,7 +461,7 @@ uint32_t FSMC_GetECC(uint32_t FSMC_Bank)
 *                    FSMC_IT_RisingEdge: Rising edge detection interrupt.
 *                    FSMC_IT_Level: Level edge detection interrupt.
 *                    FSMC_IT_FallingEdge: Falling edge detection interrupt.
-*                  NewState£ºENABLE or DISABLE.
+*                  NewState: ENABLE or DISABLE.
 * Return         : None
 *******************************************************************************/
 void FSMC_ITConfig(uint32_t FSMC_Bank, uint32_t FSMC_IT, FunctionalState NewState)
@@ -512,8 +512,8 @@ void FSMC_ITConfig(uint32_t FSMC_Bank, uint32_t FSMC_IT, FunctionalState NewStat
 *                    FSMC_FLAG_Level: Level detection Flag.
 *                    FSMC_FLAG_FallingEdge: Falling egde detection Flag.
 *                    FSMC_FLAG_FEMPT: Fifo empty Flag.
-*                  NewState£ºENABLE or DISABLE.
-* Return         : FlagStatus£º The new state of FSMC_FLAG (SET or RESET).
+*                  NewState: ENABLE or DISABLE.
+* Return         : FlagStatus:  The new state of FSMC_FLAG (SET or RESET).
 *******************************************************************************/
 FlagStatus FSMC_GetFlagStatus(uint32_t FSMC_Bank, uint32_t FSMC_FLAG)
 {
@@ -587,7 +587,7 @@ void FSMC_ClearFlag(uint32_t FSMC_Bank, uint32_t FSMC_FLAG)
 *                    FSMC_IT_RisingEdge: Rising edge detection interrupt.
 *                    FSMC_IT_Level: Level edge detection interrupt.
 *                    FSMC_IT_FallingEdge: Falling edge detection interrupt.
-* Return         : ITStatus£ºThe new state of FSMC_IT (SET or RESET).
+* Return         : ITStatus: The new state of FSMC_IT (SET or RESET).
 *******************************************************************************/
 ITStatus FSMC_GetITStatus(uint32_t FSMC_Bank, uint32_t FSMC_IT)
 {

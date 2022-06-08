@@ -429,7 +429,7 @@ uint32_t ETH_Init(ETH_InitTypeDef* ETH_InitStruct, uint16_t PHYAddress)
                   ETH_InitStruct->ETH_DeferralCheck);
 	ETH->MACCR = (uint32_t)tmpreg;
 #ifdef USE10BASE_T
-	/* enable internal pull up resistance,50Ω */
+	/* enable internal pull up resistance,50 ohm */
 	ETH->MACCR|=ETH_Internal_Pull_Up_Res_Enable;
 #endif
 	ETH->MACFFR = (uint32_t)(ETH_InitStruct->ETH_ReceiveAll |

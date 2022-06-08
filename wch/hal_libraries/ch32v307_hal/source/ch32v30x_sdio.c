@@ -88,7 +88,7 @@ void SDIO_StructInit(SDIO_InitTypeDef* SDIO_InitStruct)
 * Description    : Enables or disables the SDIO Clock.
 * Input          : SDIO_InitStruct: pointer to an SDIO_InitTypeDef structure which
 *                    will be initialized.
-*                  NewState£ºENABLE or DISABLE.
+*                  NewState: ENABLE or DISABLE.
 * Return         : None
 *******************************************************************************/
 void SDIO_ClockCmd(FunctionalState NewState)
@@ -335,7 +335,7 @@ uint32_t SDIO_GetFIFOCount(void)
 /*******************************************************************************
 * Function Name  : SDIO_StartSDIOReadWait
 * Description    : Starts the SD I/O Read Wait operation.
-* Input          : NewState£ºENABLE or DISABLE.
+* Input          : NewState: ENABLE or DISABLE.
 * Return         : None
 *******************************************************************************/
 void SDIO_StartSDIOReadWait(FunctionalState NewState)
@@ -347,7 +347,7 @@ void SDIO_StartSDIOReadWait(FunctionalState NewState)
 /*******************************************************************************
 * Function Name  : SDIO_StopSDIOReadWait
 * Description    : Stops the SD I/O Read Wait operation.
-* Input          : NewState£ºENABLE or DISABLE.
+* Input          : NewState: ENABLE or DISABLE.
 * Return         : None
 *******************************************************************************/
 void SDIO_StopSDIOReadWait(FunctionalState NewState)
@@ -460,7 +460,7 @@ void SDIO_SendCEATACmd(FunctionalState NewState)
 *                    SDIO_FLAG_RXDAVL:   Data available in receive FIFO
 *                    SDIO_FLAG_SDIOIT:   SD I/O interrupt received
 *                    SDIO_FLAG_CEATAEND: CE-ATA command completion signal received for CMD61
-* Return         : ITStatus£ºSET or RESET
+* Return         : ITStatus: SET or RESET
 *******************************************************************************/
 FlagStatus SDIO_GetFlagStatus(uint32_t SDIO_FLAG)
 { 
@@ -532,7 +532,7 @@ void SDIO_ClearFlag(uint32_t SDIO_FLAG)
 *                    SDIO_IT_RXDAVL:   Data available in receive FIFO interrupt
 *                    SDIO_IT_SDIOIT:   SD I/O interrupt received interrupt
 *                    SDIO_IT_CEATAEND: CE-ATA command completion signal received for CMD61 interrupt
-* Return         : ITStatus£ºSET or RESET
+* Return         : ITStatus: SET or RESET
 *******************************************************************************/
 ITStatus SDIO_GetITStatus(uint32_t SDIO_IT)
 { 

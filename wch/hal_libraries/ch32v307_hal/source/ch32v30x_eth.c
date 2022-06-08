@@ -1290,7 +1290,7 @@ ITStatus ETH_GetDMAITStatus(uint32_t ETH_DMA_IT)
 
 /*******************************************************************************
 * Function Name  : ETH_DMAClearITPendingBit
-* Description    : Clears the ETHERNET�s DMA IT pending bit.
+* Description    : Clears the ETHERNET DMA IT pending bit.
 * Input          : ETH_DMA_IT: specifies the interrupt pending bit to clear.
 *                  ETH_DMA_IT_NIS : Normal interrupt summary
 *                  ETH_DMA_IT_AIS : Abnormal interrupt summary

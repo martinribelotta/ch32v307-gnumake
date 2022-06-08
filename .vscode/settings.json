@@ -5,6 +5,10 @@
         "rtdevice.h": "c",
         "drv_soft_i2c.h": "c",
         "rtthread.h": "c",
-        "ch32v30x.h": "c"
+        "ch32v30x.h": "c",
+        "ch32v30x_fsmc.h": "c",
+        "ch32v30x_conf.h": "c",
+        "ch32v30x_dac.h": "c",
+        "ch32v30x_it.h": "c"
     }
 }

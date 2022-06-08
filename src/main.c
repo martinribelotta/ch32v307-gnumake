@@ -16,18 +16,10 @@
 
 /* Global define */
 
-/* LED0通锟斤拷rt锟斤拷pin锟斤拷锟斤拷锟接匡拷锟斤拷锟斤拷  */
 #define LED0_PIN  18   //PC3
 
 /* Global Variable */
 
-/*********************************************************************
- * @fn      LED1_BLINK_INIT
- *
- * @brief   LED1Íš¹ýÖ±œÓµ÷ÓÃµ×²ãÇý¶¯
- *
- * @return  none
- */
 void LED1_BLINK_INIT(void)
 {
     GPIO_InitTypeDef GPIO_InitStructure={0};
@@ -38,15 +30,6 @@ void LED1_BLINK_INIT(void)
     GPIO_Init(GPIOA, &GPIO_InitStructure);
 }
 
-/*********************************************************************
- * @fn      main
- *
- * @brief   mainÖ»ÊÇÒ»žöÏß³ÌÖ®Ò»£¬³ýŽËÖ®Íâ»¹ÓÐtshell,idle
- *          ±ŸmainÖ»ÊÇÒ»žöLEDÉÁËž£¬mainÏß³ÌµÄ×¢²áÔÚrtthread_startupÖÐ£¬tshellÊ¹ÓÃÁËŽ®¿Ú
- *          œÓÊÕÖÐ¶Ï£¬ÖÐ¶ÏÕ»ºÍÏß³ÌÕ»Ê¹ÓÃ·Ö¿ª.
- *
- * @return  none
- */
 int main(void)
 {
     rt_kprintf("\r\n MCU: CH32V307\r\n");
@@ -64,13 +47,6 @@ int main(void)
 	}
 }
 
-/*********************************************************************
- * @fn      led
- *
- * @brief   ²âÊÔÊ¹ÓÃÇý¶¯œÓ¿Ú²Ù×÷I/O¿Ú
- *
- * @return  none
- */
 int led(void)
 {
     rt_uint8_t count;
@@ -91,6 +67,3 @@ int led(void)
 }
 
 MSH_CMD_EXPORT(led,  led sample by using I/O drivers);
-
-
-

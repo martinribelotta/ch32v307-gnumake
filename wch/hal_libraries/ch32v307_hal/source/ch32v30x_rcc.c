@@ -1134,7 +1134,7 @@ void RCC_RNGCLKConfig(uint32_t RCC_RNGCLKSource)
 * Input          : RCC_RNGCLKSource: specifies the ETH1G clock source.
 *                  RCC_ETH1GCLKSource_PLL2_VCO: system clock selected as ETH1G clock entry
 *                  RCC_ETH1GCLKSource_PLL3_VCO: PLL3 VCO clock selected as ETH1G clock entry
-*                  RCC_ETH1GCLKSource_PB1_IN£º GPIO PB1 input clock selected as ETH1G clock entry
+*                  RCC_ETH1GCLKSource_PB1_IN: GPIO PB1 input clock selected as ETH1G clock entry
 * Return         : None
 *******************************************************************************/
 void RCC_ETH1GCLKConfig(uint32_t RCC_ETH1GCLKSource)

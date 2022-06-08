@@ -62,7 +62,7 @@ void RNG_ITConfig(FunctionalState NewState)
   *                  RNG_FLAG_DRDY: Data Ready flag.
   *                  RNG_FLAG_CECS: Clock Error Current flag.
   *                  RNG_FLAG_SECS: Seed Error Current flag.
-* Return         : bitstatus£ºSET or RESET.
+* Return         : bitstatus: SET or RESET.
 *******************************************************************************/
 FlagStatus RNG_GetFlagStatus(uint8_t RNG_FLAG)
 {
@@ -99,7 +99,7 @@ void RNG_ClearFlag(uint8_t RNG_FLAG)
 * Input          : RNG_IT: specifies the RNG interrupt source to check.
 *                    RNG_IT_CEI: Clock Error Interrupt.
 *                    RNG_IT_SEI: Seed Error Interrupt.
-* Return         : bitstatus£ºSET or RESET.
+* Return         : bitstatus: SET or RESET.
 *******************************************************************************/
 ITStatus RNG_GetITStatus(uint8_t RNG_IT)
 {
