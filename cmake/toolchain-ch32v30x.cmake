@@ -1,14 +1,18 @@
 set(CMAKE_SYSTEM_NAME Generic)
-set(CMAKE_SYSTEM_PROCESSOR arm)
+set(CMAKE_SYSTEM_PROCESSOR RISC-V)
 
-set(CROSS_PREFIX "riscv-none-embed-")
-set(CROSS_CC "${CROSS_PREFIX}gcc")
-set(CROSS_CXX "${CROSS_PREFIX}g++")
-set(CROSS_OBJDUMP "${CROSS_PREFIX}objdump")
-set(CROSS_OBJCOPY "${CROSS_PREFIX}objcopy")
-
-set(CMAKE_C_COMPILER ${CROSS_CC})
-set(CMAKE_CXX_COMPILER ${CROSS_CXX})
+if(CMAKE_C_COMPILER)
+  string(REGEX REPLACE "\-gcc$" "-objdump" CROSS_OBJDUMP "${CMAKE_C_COMPILER}")
+  string(REGEX REPLACE "\-gcc$" "-objcopy" CROSS_OBJCOPY "${CMAKE_C_COMPILER}")
+else()
+  set(CROSS_PREFIX "riscv-none-embed-")
+  set(CROSS_CC "${CROSS_PREFIX}gcc")
+  set(CROSS_CXX "${CROSS_PREFIX}g++")
+  set(CROSS_OBJDUMP "${CROSS_PREFIX}objdump")
+  set(CROSS_OBJCOPY "${CROSS_PREFIX}objcopy")
+  set(CMAKE_C_COMPILER ${CROSS_CC})
+  set(CMAKE_CXX_COMPILER ${CROSS_CXX})
+endif()
 
 set(CPU_FLAGS "-march=rv32imfc -mabi=ilp32f -msmall-data-limit=8 -mno-save-restore")
 
