@@ -4,37 +4,44 @@
     "version": "2.0.0",
     "tasks": [
         {
-            "label": "cmake build",
+            "label": "cmake clean",
             "type": "shell",
-            "options": {
-                "cwd": "${workspaceFolder}/build"
-            },
-            "command": "cmake --build . --target all",
-            "dependsOn": [ "cmake configure" ]
+            "command": "sh -c \"${command:cmake.tasksBuildCommand} -t clean\"",
+        },
+        {
+            "label": "cmake build",
+            "type": "cmake",
+            "command": "build"
         },
         {
             "label": "cmake remove build",
             "type": "shell",
-            "command": "rm -fr ${workspaceFolder}/build"
-        },
-        {
-            "label": "cmake configure",
-            "type": "shell",
-            "command": "cmake -B build -S ${workspaceFolder} -G Ninja"
+            "command": "rm -fr ${command:cmake.buildDirectory}"
         },
         {
             "label": "flash to device",
             "type": "shell",
             "options": {
-                "cwd": "${workspaceFolder}/build"
+                "env": {
+                    "ELF_NAME": "${command:cmake.getLaunchTargetPath}"
+                }
             },
-            "command": "cmake --build . --target flash"
+            "linux": {
+                "command": "${config:cortex-debug.openocdPath.linux}",
+            },
+            "windows": {
+                "command": "${config:cortex-debug.openocdPath.windows}",
+            },
+            "args": [
+                "-f${workspaceFolder}/wch/wch-riscv.cfg",
+                "-f${workspaceFolder}/wch/wch-program.cfg",
+            ]
         },
         {
-            "label": "clean and rebuild",
+            "label": "rebuild",
             "dependsOrder": "sequence",
             "dependsOn": [
-                "cmake remove build",
+                "cmake clean",
                 "cmake build"
             ]
         }

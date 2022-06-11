@@ -12,7 +12,6 @@
             "type": "cortex-debug",
             "runToEntryPoint": "main",
             "servertype": "openocd",
-            "gdbPath": "riscv-none-embed-gdb",
             "configFiles": [
                 "${workspaceFolder}/wch/wch-riscv.cfg"
             ],
@@ -22,7 +21,7 @@
                 "set architecture riscv:rv32",
                 "set remotetimeout unlimited"
             ],
-            "preLaunchTask": "make all"
+            "preLaunchTask": "cmake build"
         }
     ]
 }
