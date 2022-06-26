@@ -4,10 +4,16 @@ set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
 project(firmware)
 set(TARGET_ELF ${PROJECT_NAME}.elf)
-add_executable(${TARGET_ELF} src/main.c src/donut.c)
+add_executable(${TARGET_ELF} src/main.c src/donut.c src/cdc_acm_template.c)
 enable_language(C CXX ASM)
 
+set(PKG_CHERRYUSB_DEVICE_HS_IN_FULL ON)
+set(PKG_CHERRYUSB_DEVICE_CDC ON)
+set(PKG_CHERRYUSB_DEVICE_CH32VXXX ON)
+set(PKG_CHERRYUSB_RTTHREAD ON)
+
 add_subdirectory(wch)
+
 target_link_libraries(${TARGET_ELF} m)
 add_custom_command(TARGET ${TARGET_ELF} POST_BUILD
     COMMAND ${CROSS_OBJDUMP} "-dSx" $<TARGET_FILE:${TARGET_ELF}> > $<TARGET_FILE:${TARGET_ELF}>.lst

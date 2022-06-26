@@ -15,6 +15,9 @@
         "ch32v30x_fsmc.h": "c",
         "ch32v30x_conf.h": "c",
         "ch32v30x_dac.h": "c",
-        "ch32v30x_it.h": "c"
+        "ch32v30x_it.h": "c",
+        "core_riscv.h": "c",
+        "ch32v30x_usart.h": "c",
+        "system_ch32v30x.h": "c"
     }
 }

@@ -41,5 +41,7 @@ target_include_directories(${TARGET_ELF} PUBLIC
     ${CMAKE_CURRENT_SOURCE_DIR}/components/finsh
 )
 
+add_subdirectory(components/CherryUSB)
+
 # CSRC+=$(wildcard $(rt_thread_dir)/components/drivers/*/*.c)
 # CSRC+=$(wildcard $(rt_thread_dir)/components/finsh/*.c)

@@ -12,6 +12,9 @@
 #include <rthw.h>
 #include "drivers/pin.h"
 
+#include "usbd_core.h"
+#include "usbd_cdc.h"
+
 /* Global typedef */
 
 /* Global define */
@@ -30,6 +33,28 @@ void LED1_BLINK_INIT(void)
     GPIO_Init(GPIOA, &GPIO_InitStructure);
 }
 
+void usb_dc_low_level_init(void)
+{
+    RCC_USBCLK48MConfig(RCC_USBCLK48MCLKSource_USBPHY);
+    RCC_USBHSPLLCLKConfig(RCC_HSBHSPLLCLKSource_HSE);
+    RCC_USBHSConfig(RCC_USBPLL_Div2);
+    RCC_USBHSPLLCKREFCLKConfig(RCC_USBHSPLLCKREFCLK_4M);
+    RCC_USBHSPHYPLLALIVEcmd(ENABLE);
+#ifdef CONFIG_USB_HS
+    RCC_AHBPeriphClockCmd(RCC_AHBPeriph_USBHS, ENABLE);
+#else
+    RCC_AHBPeriphClockCmd(RCC_AHBPeriph_OTG_FS, ENABLE);
+#endif
+
+    rt_thread_mdelay(100);
+#ifndef CONFIG_USB_HS
+    //EXTEN->EXTEN_CTR |= EXTEN_USBD_PU_EN;
+    NVIC_EnableIRQ(OTG_FS_IRQn);
+#else
+    NVIC_EnableIRQ( USBHS_IRQn );
+#endif
+}
+
 int main(void)
 {
     rt_kprintf("\r\n MCU: CH32V307\r\n");
@@ -37,11 +62,20 @@ int main(void)
     rt_kprintf(" www.wch.cn\r\n");
 	LED1_BLINK_INIT();
 
+    extern void cdc_acm_init(void);
+    cdc_acm_init();
+
+    while (!usb_device_is_configured()) {
+    }
+
 	GPIO_ResetBits(GPIOA,GPIO_Pin_0);
 	while(1)
 	{
+        extern void cdc_acm_data_send_with_dtr_test();
+        cdc_acm_data_send_with_dtr_test();
 	    GPIO_SetBits(GPIOA,GPIO_Pin_0);
 	    rt_thread_mdelay(500);
+        cdc_acm_data_send_with_dtr_test();
 	    GPIO_ResetBits(GPIOA,GPIO_Pin_0);
 	    rt_thread_mdelay(500);
 	}
