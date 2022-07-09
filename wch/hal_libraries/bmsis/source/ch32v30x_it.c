@@ -32,18 +32,21 @@ void NMI_Handler(void)
 * Input          : None
 * Return         : None
 *******************************************************************************/
-void HardFault_Handler(void)
+void HardFault_Handler_Base(void) __attribute__((interrupt("machine")));
+void HardFault_Handler_Base(void)
 {
-    GET_INT_SP();
-    rt_interrupt_enter();
-    rt_kprintf(" hardfult\r\n");
-    rt_kprintf("mepc:%08x\r\n",__get_MEPC());
-    rt_kprintf("mcause:%08x\r\n",__get_MCAUSE());
-    rt_kprintf("mtval:%08x\r\n",__get_MTVAL());
-    while(1);
-    rt_interrupt_leave();
-    FREE_INT_SP();
-
+    // GET_INT_SP();
+    // rt_interrupt_enter();
+    // rt_kprintf(" hardfult\r\n");
+    // rt_kprintf("mepc:%08x\r\n",__get_MEPC());
+    // rt_kprintf("mcause:%08x\r\n",__get_MCAUSE());
+    // rt_kprintf("mtval:%08x\r\n",__get_MTVAL());
+    // rt_interrupt_leave();
+    // FREE_INT_SP();
+    // __asm__ volatile ( "csrr ra, mepc" );
+    while(1) {
+        __asm__ volatile("ebreak");
+    }
 }
 
 

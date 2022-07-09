@@ -55,6 +55,21 @@ void usb_dc_low_level_init(void)
 #endif
 }
 
+static void usb_thread(void *unused)
+{
+    (void) unused;
+    extern void cdc_acm_init(void);
+    extern void cdc_acm_data_send_with_dtr_test();
+    cdc_acm_init();
+
+    while (1) {
+        if (usb_device_is_configured()) {
+            cdc_acm_data_send_with_dtr_test();
+        }
+	    rt_thread_mdelay(500);
+    }
+}
+
 int main(void)
 {
     rt_kprintf("\r\n MCU: CH32V307\r\n");
@@ -62,21 +77,13 @@ int main(void)
     rt_kprintf(" www.wch.cn\r\n");
 	LED1_BLINK_INIT();
 
-    extern void cdc_acm_init(void);
-    cdc_acm_init();
-
-    while (!usb_device_is_configured()) {
-    }
+    rt_thread_t usbtask = rt_thread_create("usb", usb_thread, RT_NULL, 4096, RT_MAIN_THREAD_PRIORITY+1, 10);
+    rt_thread_startup(usbtask);
 
 	GPIO_ResetBits(GPIOA,GPIO_Pin_0);
 	while(1)
 	{
-        extern void cdc_acm_data_send_with_dtr_test();
-        cdc_acm_data_send_with_dtr_test();
-	    GPIO_SetBits(GPIOA,GPIO_Pin_0);
-	    rt_thread_mdelay(500);
-        cdc_acm_data_send_with_dtr_test();
-	    GPIO_ResetBits(GPIOA,GPIO_Pin_0);
+        GPIO_WriteBit(GPIOA, GPIO_Pin_0, !GPIO_ReadInputDataBit(GPIOA, GPIO_Pin_0));
 	    rt_thread_mdelay(500);
 	}
 }

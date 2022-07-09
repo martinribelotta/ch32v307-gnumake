@@ -37,7 +37,7 @@ __attribute__((aligned(4))) uint8_t EP5_DatabufHD[64 + 64]; //ep5_out(64)+ep5_in
 __attribute__((aligned(4))) uint8_t EP6_DatabufHD[64 + 64]; //ep6_out(64)+ep6_in(64)
 __attribute__((aligned(4))) uint8_t EP7_DatabufHD[64 + 64]; //ep7_out(64)+ep7_in(64)
 
-void USBD_IRQHandler(void) __attribute__((interrupt("WCH-Interrupt-fast")));
+// void USBD_IRQHandler(void) __attribute__((interrupt("WCH-Interrupt-fast")));
 
 volatile uint8_t mps_over_flag = 0;
 

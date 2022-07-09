@@ -19,5 +19,6 @@
         "core_riscv.h": "c",
         "ch32v30x_usart.h": "c",
         "system_ch32v30x.h": "c"
-    }
+    },
+    "cortex-debug.registerUseNaturalFormat": false
 }
