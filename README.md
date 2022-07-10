@@ -1,8 +1,18 @@
 # CH32V307 floss tools project template
 
 This project provide a functional cmake/ninja project for
-ch32v307 MCU using gnu make, standard risc-v gcc toolchain
-and (for now) WCH openOCD (with wlink and ch32xxx flash support)
+ch32v307 MCU using standard risc-v gcc toolchain and (for
+now) WCH openOCD (with wlink and ch32xxx flash support)
+
+## Software provides
+
+- RT-Thread 4.0.4 port for risc-v rv32imafc using QingKeV4 (a.k.a. RISC-V4F in WCH literature)
+- FPU support (F) and compressed mode support (C)
+- Support RISC-V4F fast stack saving/restore on interrupt without the WCH propietary gcc extensions
+- UART1 serial over WCHLink
+- USB Device support (implementing USB CDC example) via CherryUSB
+- Implemented RT-Thread drivers: ADC, DAC, GPIO, SoftI2C, UART
+- FinSH shell over UART1
 
 ## Requeriments
 
