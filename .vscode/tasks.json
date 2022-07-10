@@ -35,7 +35,8 @@
             "args": [
                 "-f${workspaceFolder}/wch/wch-riscv.cfg",
                 "-f${workspaceFolder}/wch/wch-program.cfg",
-            ]
+            ],
+            "dependsOn": "cmake build"
         },
         {
             "label": "rebuild",
