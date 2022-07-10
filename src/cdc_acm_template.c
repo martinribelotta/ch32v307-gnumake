@@ -1,6 +1,8 @@
 #include "usbd_core.h"
 #include "usbd_cdc.h"
 
+#include <rtthread.h>
+
 /*!< endpoint address */
 #define CDC_IN_EP  0x81
 #define CDC_OUT_EP 0x02
@@ -107,13 +109,15 @@ void usbd_cdc_acm_out(uint8_t ep)
     uint32_t read_byte;
 
     usbd_ep_read(ep, data, 64, &read_byte);
-    printf("read len:%d\r\n", read_byte);
+    rt_kprintf("read len:%d\r\n", read_byte);
+    for (uint32_t i = 0; i < read_byte; i++)
+        rt_kprintf("%02X ", data[i]);
     usbd_ep_read(ep, NULL, 0, NULL);
 }
 
 void usbd_cdc_acm_in(uint8_t ep)
 {
-    printf("in\r\n");
+    // rt_kprintf("in\r\n");
 }
 
 /*!< endpoint call back */
@@ -156,7 +160,7 @@ void usbd_cdc_acm_set_dtr(bool dtr)
 void cdc_acm_data_send_with_dtr_test(void)
 {
     if (dtr_enable) {
-        uint8_t data_buffer[10] = { 0x31, 0x32, 0x33, 0x34, 0x35, 0x31, 0x32, 0x33, 0x34, 0x35 };
-        usbd_ep_write(CDC_IN_EP, data_buffer, 10, NULL);
+        static const uint8_t data_buffer[] = "Hello world\r\n";
+        usbd_ep_write(CDC_IN_EP, data_buffer, sizeof(data_buffer) - 1, NULL);
     }
 }
