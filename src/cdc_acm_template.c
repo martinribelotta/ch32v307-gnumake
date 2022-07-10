@@ -8,9 +8,9 @@
 #define CDC_OUT_EP 0x02
 #define CDC_INT_EP 0x83
 
-#define USBD_VID           0xFFFF
-#define USBD_PID           0xFFFF
-#define USBD_MAX_POWER     100
+#define USBD_VID           0x16c0
+#define USBD_PID           0x05e1
+#define USBD_MAX_POWER     500
 #define USBD_LANGID_STRING 1033
 
 /*!< config descriptor size */
