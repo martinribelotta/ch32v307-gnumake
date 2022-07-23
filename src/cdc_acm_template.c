@@ -3,6 +3,8 @@
 
 #include <rtthread.h>
 
+#include <ctype.h>
+
 /*!< endpoint address */
 #define CDC_IN_EP  0x81
 #define CDC_OUT_EP 0x02
@@ -111,7 +113,7 @@ void usbd_cdc_acm_out(uint8_t ep)
     usbd_ep_read(ep, data, 64, &read_byte);
     rt_kprintf("read len:%d\r\n", read_byte);
     for (uint32_t i = 0; i < read_byte; i++)
-        rt_kprintf("%02X ", data[i]);
+        rt_kprintf("%02X %c\n", data[i], isprint(data[i])? data[i] : '?');
     usbd_ep_read(ep, NULL, 0, NULL);
 }
 

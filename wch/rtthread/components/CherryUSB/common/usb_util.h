@@ -274,7 +274,7 @@
  * CYAN     36
  * WHITE    37
  */
-#define _USB_PRINTF printf
+#define _USB_PRINTF(...)
 #define _USB_DBG_COLOR(n) _USB_PRINTF("\033[" #n "m")
 #define _USB_DBG_LOG_HDR(lvl_name, color_n) \
     _USB_PRINTF("\033[" #color_n "m[" lvl_name "/" USB_DBG_TAG "] ")

@@ -426,5 +426,4 @@ void USBD_IRQHandler(void)
         usbd_event_notify_handler(USBD_EVENT_RESET, NULL);
         USBHS_DEVICE->INT_FG = USBHS_DETECT_FLAG;
     }
-    printf("reset\r\n");
 }
