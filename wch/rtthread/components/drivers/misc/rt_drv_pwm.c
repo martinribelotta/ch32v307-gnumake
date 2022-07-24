@@ -315,7 +315,7 @@ static int pwm_get(int argc, char **argv)
         rt_kprintf("Get info of device: [%s]:\n", argv[1]);
         rt_kprintf("period     : %d\n", cfg.period);
         rt_kprintf("pulse      : %d\n", cfg.pulse);
-        rt_kprintf("Duty cycle : %d%%\n", (int)(((double)(cfg.pulse)/(cfg.period)) * 100));
+        rt_kprintf("Duty cycle : %d%%\n", (int)(((float)(cfg.pulse)/(cfg.period)) * 100));
     }
 
 _exit:
