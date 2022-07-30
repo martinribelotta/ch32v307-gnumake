@@ -11,6 +11,9 @@ set(PKG_CHERRYUSB_DEVICE_CDC ON)
 set(PKG_CHERRYUSB_DEVICE_CH32VXXX ON)
 set(PKG_CHERRYUSB_RTTHREAD ON)
 
+set(RT_USING_DFS ON)
+set(RT_USING_DFS_DEVFS ON)
+
 add_subdirectory(wch)
 
 target_link_libraries(${TARGET_ELF} m)

@@ -42,6 +42,7 @@ target_include_directories(${TARGET_ELF} PUBLIC
 )
 
 add_subdirectory(components/CherryUSB)
+add_subdirectory(components/dfs)
 
 # CSRC+=$(wildcard $(rt_thread_dir)/components/drivers/*/*.c)
 # CSRC+=$(wildcard $(rt_thread_dir)/components/finsh/*.c)
