@@ -75,6 +75,8 @@
 /* end of Command shell */
 
 /* Device virtual file system */
+#define DFS_FILESYSTEM_TYPES_MAX 4
+#define DFS_USING_WORKDIR
 
 /* end of Device virtual file system */
 
