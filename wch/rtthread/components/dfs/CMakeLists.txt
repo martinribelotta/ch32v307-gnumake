@@ -29,9 +29,11 @@ if (${RT_USING_DFS})
     endif()
     if(${RT_USING_DFS_ROMFS})
         target_compile_definitions(${TARGET_ELF} PUBLIC RT_USING_DFS_ROMFS)
+        target_include_directories(${TARGET_ELF} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/filesystems/romfs/)
         target_sources(${TARGET_ELF} PUBLIC
-            ${CMAKE_CURRENT_SOURCE_DIR}/filesystems/romfs/romfs.c
-            ${CMAKE_CURRENT_SOURCE_DIR}/filesystems/romfs/romfs.h
+            ${CMAKE_CURRENT_SOURCE_DIR}/filesystems/romfs/dfs_romfs.c
+            ${CMAKE_CURRENT_SOURCE_DIR}/filesystems/romfs/dfs_romfs.h
+            ${CMAKE_BINARY_DIR}/romfs.c
         )
     endif()
 endif()

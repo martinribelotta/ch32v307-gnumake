@@ -15,6 +15,10 @@
 #include "usbd_core.h"
 #include "usbd_cdc.h"
 
+#include <dfs.h>
+#include <dfs_fs.h>
+#include <dfs_romfs.h>
+
 /* Global typedef */
 
 /* Global define */
@@ -76,6 +80,12 @@ int main(void)
 	rt_kprintf(" SysClk: %dHz\r\n",SystemCoreClock);
     rt_kprintf(" www.wch.cn\r\n");
 	LED1_BLINK_INIT();
+
+    rt_kprintf("Mounting romfs\r\n");
+    if (dfs_mount(RT_NULL, "/", "rom", 0, &(romfs_root)) != 0)
+    {
+        rt_kprintf("rom mount to '/' failed!\r\n");
+    }
 
     rt_thread_t usbtask = rt_thread_create("usb", usb_thread, RT_NULL, 4096, RT_MAIN_THREAD_PRIORITY+1, 10);
     rt_thread_startup(usbtask);
