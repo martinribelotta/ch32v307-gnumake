@@ -39,6 +39,20 @@
             "dependsOn": "cmake build"
         },
         {
+            "label": "reset device",
+            "type": "shell",
+            "linux": {
+                "command": "${config:cortex-debug.openocdPath.linux}",
+            },
+            "windows": {
+                "command": "${config:cortex-debug.openocdPath.windows}",
+            },
+            "args": [
+                "-f${workspaceFolder}/wch/wch-riscv.cfg",
+                "-f${workspaceFolder}/wch/wch-reset.cfg"
+            ]
+        },
+        {
             "label": "rebuild",
             "dependsOrder": "sequence",
             "dependsOn": [
