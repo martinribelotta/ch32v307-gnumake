@@ -1,0 +1,10 @@
+option(RT_USING_I2C "Using I2c BitOps" FALSE)
+option(RT_USING_I2C_BITOPS "Using I2c BitOps" FALSE)
+
+if(${RT_USING_I2C})
+    target_sources(${TARGET_ELF} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/i2c_core.c)
+    target_sources(${TARGET_ELF} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/i2c_dev.c)
+    if(${RT_USING_I2C_BITOPS})
+        target_sources(${TARGET_ELF} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/i2c-bit-ops.c)
+    endif()
+endif()

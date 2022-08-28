@@ -233,6 +233,18 @@
 
 #define BSP_USING_UART
 #define BSP_USING_UART1
+
+#define RT_USING_ADC
+#define BSP_USING_ADC1
+
+#define RT_USING_DAC
+#define BSP_USING_DAC_CHANNEL1
+#define BSP_USING_DAC_CHANNEL2
+
+#define RT_USING_I2C
+#define RT_USING_I2C_BITOPS
+#define BSP_USING_I2C1
+
 /* end of On-chip Peripheral Drivers */
 
 /* Onboard Peripheral Drivers */
