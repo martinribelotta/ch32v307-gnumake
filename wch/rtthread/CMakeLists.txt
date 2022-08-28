@@ -1,5 +1,3 @@
-
-file(GLOB DRIVER_SRC ${CMAKE_CURRENT_SOURCE_DIR}/components/drivers/*/*.c)
 file(GLOB FINSH_SRC ${CMAKE_CURRENT_SOURCE_DIR}/components/finsh/*.c)
 
 target_sources(${TARGET_ELF} PUBLIC
@@ -41,8 +39,12 @@ target_include_directories(${TARGET_ELF} PUBLIC
     ${CMAKE_CURRENT_SOURCE_DIR}/components/finsh
 )
 
+target_compile_definitions(${TARGET_ELF} PUBLIC -DUSE_PLIC -DUSE_M_TIME -DNO_INIT)
+
+add_subdirectory(components/libc)
 add_subdirectory(components/CherryUSB)
 add_subdirectory(components/dfs)
+add_subdirectory(components/drivers)
 
 # CSRC+=$(wildcard $(rt_thread_dir)/components/drivers/*/*.c)
 # CSRC+=$(wildcard $(rt_thread_dir)/components/finsh/*.c)

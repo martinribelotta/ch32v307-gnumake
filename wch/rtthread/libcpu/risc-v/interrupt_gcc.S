@@ -10,9 +10,9 @@
  
 #include "cpuport.h"
 
-.global SW_handler_Base
-.align 3
-SW_handler_Base:
+.global SW_handler
+.align 2
+SW_handler:
     /* save all from thread context */
 #ifdef ARCH_RISCV_FPU
     addi    sp, sp, -32 * FREGBYTES
@@ -53,8 +53,7 @@ SW_handler_Base:
     addi sp, sp, -32 * REGBYTES
     STORE x5,   5 * REGBYTES(sp)
 
-    /* saved mstatus */
-#    csrr t0,    mstatus
+    /* saved MPIE */
  	li    t0,   0x80
     STORE t0,   2 * REGBYTES(sp)
 
@@ -105,7 +104,6 @@ SW_handler_Base:
     lw    s2, 0(s0)
     beqz  s2, 1f
     sw    zero, 0(s0)
-
 #1:
     csrr  a0, mepc
     STORE a0, 0 * REGBYTES(sp)
@@ -121,11 +119,8 @@ SW_handler_Base:
     LOAD  a0,  0 * REGBYTES(sp)
     csrw  mepc, a0
 
-1:
-    LOAD  x1,   1 * REGBYTES(sp)
+1:  LOAD  x1,   1 * REGBYTES(sp)
 
-#    LOAD  t0,   2 * REGBYTES(sp)
-#	csrw   mstatus, t0
 	li t0,0x7800
 	csrs mstatus, t0
 	LOAD t0, 2*REGBYTES(sp)

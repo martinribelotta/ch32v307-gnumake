@@ -13,9 +13,13 @@
 #define RT_THREAD_PRIORITY_MAX 32
 #define RT_TICK_PER_SECOND 1000
 #define RT_USING_HOOK
+#define RT_HOOK_USING_FUNC_PTR
 #define RT_USING_IDLE_HOOK
 #define RT_IDLE_HOOK_LIST_SIZE 4
-#define IDLE_THREAD_STACK_SIZE 1024
+#define IDLE_THREAD_STACK_SIZE 2048
+#define RT_USING_TIMER_SOFT
+#define RT_TIMER_THREAD_PRIO 4
+#define RT_TIMER_THREAD_STACK_SIZE 2048
 
 /* kservice optimization */
 
@@ -33,6 +37,7 @@
 /* Memory Management */
 
 #define RT_USING_SMALL_MEM
+#define RT_USING_SMALL_MEM_AS_HEAP
 #define RT_USING_HEAP
 /* end of Memory Management */
 
@@ -43,47 +48,40 @@
 #define RT_CONSOLEBUF_SIZE 128
 #define RT_CONSOLE_DEVICE_NAME "uart1"
 /* end of Kernel Device Object */
-#define RT_VER_NUM 0x40004
+#define RT_VER_NUM 0x40101
 /* end of RT-Thread Kernel */
+#define ARCH_RISCV
 
 /* RT-Thread Components */
 
 #define RT_USING_COMPONENTS_INIT
 #define RT_USING_USER_MAIN
-#define RT_MAIN_THREAD_STACK_SIZE 1024
-#define RT_MAIN_THREAD_PRIORITY 5
-
-/* C++ features */
-
-/* end of C++ features */
-
-/* Command shell */
-
+#define RT_MAIN_THREAD_STACK_SIZE 2048
+#define RT_MAIN_THREAD_PRIORITY 10
+#define RT_USING_MSH
 #define RT_USING_FINSH
+#define FINSH_USING_MSH
 #define FINSH_THREAD_NAME "tshell"
+#define FINSH_THREAD_PRIORITY 20
+#define FINSH_THREAD_STACK_SIZE 2048
 #define FINSH_USING_HISTORY
 #define FINSH_HISTORY_LINES 5
 #define FINSH_USING_SYMTAB
-#define FINSH_USING_DESCRIPTION
-#define FINSH_THREAD_PRIORITY 11
-#define FINSH_THREAD_STACK_SIZE 2048
 #define FINSH_CMD_SIZE 80
-#define FINSH_USING_MSH
-#define FINSH_USING_MSH_DEFAULT
-#define FINSH_USING_MSH_ONLY
-#define FINSH_ARG_MAX 8
-/* end of Command shell */
-
-/* Device virtual file system */
-#define DFS_FILESYSTEM_TYPES_MAX 4
+#define MSH_USING_BUILT_IN_COMMANDS
+#define FINSH_USING_DESCRIPTION
+#define FINSH_ARG_MAX 10
+#define RT_USING_DFS
+#define DFS_USING_POSIX
 #define DFS_USING_WORKDIR
-
-/* end of Device virtual file system */
+#define DFS_FILESYSTEMS_MAX 4
+#define DFS_FILESYSTEM_TYPES_MAX 4
+#define DFS_FD_MAX 16
+#define RT_USING_DFS_DEVFS
 
 /* Device Drivers */
 
 #define RT_USING_DEVICE_IPC
-#define RT_PIPE_BUFSZ 512
 #define RT_USING_SERIAL
 #define RT_USING_SERIAL_V1
 #define RT_SERIAL_RB_BUFSZ 64
@@ -94,86 +92,34 @@
 /* end of Using USB */
 /* end of Device Drivers */
 
-/* POSIX layer and C standard library */
+/* C/C++ and POSIX layer */
 
-#define RT_USING_LIBC
-#define RT_LIBC_FIXED_TIMEZONE 8
-/* end of POSIX layer and C standard library */
+#define RT_LIBC_DEFAULT_TIMEZONE 8
+
+/* POSIX (Portable Operating System Interface) layer */
+
+
+/* Interprocess Communication (IPC) */
+
+
+/* Socket is in the 'Network' category */
+
+/* end of Interprocess Communication (IPC) */
+/* end of POSIX (Portable Operating System Interface) layer */
+/* end of C/C++ and POSIX layer */
 
 /* Network */
 
-/* Socket abstraction layer */
-
-#if 0
-/* end of Socket abstraction layer */
-
-/* Network interface device */
-
-#define RT_USING_NETDEV
-#define NETDEV_USING_IFCONFIG
-#define NETDEV_USING_PING
-#define NETDEV_USING_NETSTAT
-#define NETDEV_USING_AUTO_DEFAULT
-#define NETDEV_IPV4 1
-#define NETDEV_IPV6 0
-/* end of Network interface device */
-
-/* light weight TCP/IP stack */
-
-#define RT_USING_LWIP
-#define RT_USING_LWIP212
-#define RT_LWIP_MEM_ALIGNMENT 4
-#define RT_LWIP_IGMP
-#define RT_LWIP_ICMP
-#define RT_LWIP_DNS
-
-/* Static IPv4 Address */
-
-#define RT_LWIP_IPADDR "192.168.1.30"
-#define RT_LWIP_GWADDR "192.168.1.1"
-#define RT_LWIP_MSKADDR "255.255.255.0"
-/* end of Static IPv4 Address */
-#define RT_LWIP_UDP
-#define RT_LWIP_TCP
-#define RT_LWIP_RAW
-#define RT_MEMP_NUM_NETCONN 8
-#define RT_LWIP_PBUF_NUM 16
-#define RT_LWIP_RAW_PCB_NUM 4
-#define RT_LWIP_UDP_PCB_NUM 8
-#define RT_LWIP_TCP_PCB_NUM 8
-#define RT_LWIP_TCP_SEG_NUM 16
-#define RT_LWIP_TCP_SND_BUF (TCP_MSS * 2)
-#define RT_LWIP_TCP_WND TCP_MSS
-#define RT_LWIP_TCPTHREAD_PRIORITY 4
-#define RT_LWIP_TCPTHREAD_MBOX_SIZE 32
-#define RT_LWIP_TCPTHREAD_STACKSIZE 1024
-#define RT_LWIP_ETHTHREAD_PRIORITY 6
-#define RT_LWIP_ETHTHREAD_STACKSIZE 1024
-#define RT_LWIP_ETHTHREAD_MBOX_SIZE 32
-#define LWIP_NETIF_STATUS_CALLBACK 1
-#define LWIP_NETIF_LINK_CALLBACK 1
-#define SO_REUSE 1
-#define LWIP_SO_RCVTIMEO 1
-#define LWIP_SO_SNDTIMEO 1
-#define LWIP_SO_RCVBUF 1
-#define LWIP_SO_LINGER 0
-#define LWIP_NETIF_LOOPBACK 0
-#define RT_LWIP_USING_PING
-/* end of light weight TCP/IP stack */
-#endif
-/* AT commands */
-
-/* end of AT commands */
 /* end of Network */
-
-/* VBUS(Virtual Software BUS) */
-
-/* end of VBUS(Virtual Software BUS) */
 
 /* Utilities */
 
 /* end of Utilities */
 /* end of RT-Thread Components */
+
+/* RT-Thread Utestcases */
+
+/* end of RT-Thread Utestcases */
 
 /* RT-Thread online packages */
 
@@ -202,6 +148,13 @@
 
 /* language packages */
 
+/* JSON: JavaScript Object Notation, a lightweight data-interchange format */
+
+/* end of JSON: JavaScript Object Notation, a lightweight data-interchange format */
+
+/* XML: Extensible Markup Language */
+
+/* end of XML: Extensible Markup Language */
 /* end of language packages */
 
 /* multimedia packages */
@@ -256,6 +209,10 @@
 
 /* miscellaneous packages */
 
+/* project laboratory */
+
+/* end of project laboratory */
+
 /* samples: kernel and components samples */
 
 /* end of samples: kernel and components samples */
@@ -265,36 +222,23 @@
 /* end of entertainment: terminal games and other interesting software packages */
 /* end of miscellaneous packages */
 /* end of RT-Thread online packages */
+#define SOC_RISCV_FAMILY_CH32
+#define SOC_RISCV_SERIES_CH32V3
 
 /* Hardware Drivers Config */
 
-/* Onboard Peripheral Drivers */
+#define SOC_CH32V307VC
 
 /* On-chip Peripheral Drivers */
 
 #define BSP_USING_UART
 #define BSP_USING_UART1
-#define BSP_UART1_FIFO_SIZE 10
-#define BSP_USING_ETH
 /* end of On-chip Peripheral Drivers */
+
+/* Onboard Peripheral Drivers */
 
 /* Board extended module Drivers */
 
-#define RT_USING_I2C
-#define RT_USING_I2C_BITOPS
-#define BSP_USING_I2C1
-// #define BSP_USING_I2C2
-#define BSP_USING_ADC1
-
-#define RT_USING_DAC
-#define BSP_USING_DAC_CHANNEL1
-#define BSP_USING_DAC_CHANNEL2
-
-#define RT_USING_ADC
-#define RT_USING_CPUTIME
-#define RT_USING_HWTIMER
-
 /* end of Hardware Drivers Config */
-#define BOARD_CH32V307V_R0
 
 #endif

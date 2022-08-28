@@ -11,10 +11,10 @@ if (${RT_USING_DFS})
         ${CMAKE_CURRENT_SOURCE_DIR}/src/dfs_fs.c
         ${CMAKE_CURRENT_SOURCE_DIR}/src/dfs_posix.c
     )
-    target_compile_definitions(${TARGET_ELF} PUBLIC RT_USING_DFS)
+    # target_compile_definitions(${TARGET_ELF} PUBLIC RT_USING_DFS)
     target_include_directories(${TARGET_ELF}  PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/include)
     if(${RT_USING_DFS_DEVFS})
-        target_compile_definitions(${TARGET_ELF} PUBLIC RT_USING_DFS_DEVFS)
+        # target_compile_definitions(${TARGET_ELF} PUBLIC RT_USING_DFS_DEVFS)
         target_sources(${TARGET_ELF} PUBLIC 
             ${CMAKE_CURRENT_SOURCE_DIR}/filesystems/devfs/devfs.c
             ${CMAKE_CURRENT_SOURCE_DIR}/filesystems/devfs/devfs.h

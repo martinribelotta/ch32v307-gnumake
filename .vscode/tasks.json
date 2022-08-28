@@ -11,7 +11,8 @@
         {
             "label": "cmake build",
             "type": "cmake",
-            "command": "build"
+            "command": "build",
+            "problemMatcher": "$gcc"
         },
         {
             "label": "cmake remove build",

@@ -88,10 +88,11 @@ rt_hw_context_switch:
 
 	csrr  t0,  mstatus
 	andi  t0, t0, 8
+	/* if MIE be enabled,set MPIE */
 	beqz  t0, 1f
 	li    t0, 0x80
-1:
-	STORE t0,   2 * REGBYTES(sp)
+
+1:  STORE t0,   2 * REGBYTES(sp)
 	STORE x4,   4 * REGBYTES(sp)
 
 	STORE x6,   6 * REGBYTES(sp)
@@ -121,7 +122,7 @@ rt_hw_context_switch:
     STORE x30, 30 * REGBYTES(sp)
     STORE x31, 31 * REGBYTES(sp)
 
-	/* get to thread sp */
+	/* get "to" thread sp */
 	LOAD  sp,  0(a1)
 	j  rt_hw_context_switch_exit
 
@@ -135,11 +136,10 @@ rt_hw_context_switch_exit:
 
     LOAD x1,   1 * REGBYTES(sp)
 
-#    LOAD a0,   2 * REGBYTES(sp)
-# 	csrw mstatus ,a0
-
+	/* keep machine mode */
 	li    a0,      0x7800
 	csrs  mstatus, a0
+	/* resume MPIE */
 	LOAD  a0,      2*REGBYTES(sp)
     csrs  mstatus, a0
 
