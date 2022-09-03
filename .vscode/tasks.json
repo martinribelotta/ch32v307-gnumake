@@ -6,12 +6,12 @@
         {
             "label": "cmake clean",
             "type": "shell",
-            "command": "sh -c \"${command:cmake.tasksBuildCommand} -t clean\"",
+            "command": "cmake --build ${command:cmake.buildDirectory} --config Debug --target clean",
         },
         {
             "label": "cmake build",
-            "type": "cmake",
-            "command": "build",
+            "type": "shell",
+            "command": "cmake --build ${command:cmake.buildDirectory} --config Debug --target all",
             "problemMatcher": "$gcc"
         },
         {

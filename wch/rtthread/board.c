@@ -69,7 +69,7 @@ void rt_hw_board_init()
 
 }
 
-void SysTick_Handler(void) __attribute__((interrupt("machine")));
+//void SysTick_Handler(void) __attribute__((interrupt("machine")));
 void SysTick_Handler(void)
 {
     GET_INT_SP();

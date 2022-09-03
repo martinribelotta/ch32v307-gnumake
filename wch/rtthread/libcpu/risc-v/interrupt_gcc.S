@@ -10,9 +10,9 @@
  
 #include "cpuport.h"
 
-.global SW_handler
+.global SW_handler_Raw
 .align 2
-SW_handler:
+SW_handler_Raw:
     /* save all from thread context */
 #ifdef ARCH_RISCV_FPU
     addi    sp, sp, -32 * FREGBYTES

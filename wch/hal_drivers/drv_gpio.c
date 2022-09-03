@@ -431,12 +431,12 @@ void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)
     pin_irq_hdr(bit2bitno(GPIO_Pin));
 }
 
-void EXTI0_IRQHandler(void) __attribute__((interrupt("machine")));
-void EXTI1_IRQHandler(void) __attribute__((interrupt("machine")));
-void EXTI2_IRQHandler(void) __attribute__((interrupt("machine")));
-void EXTI3_IRQHandler(void) __attribute__((interrupt("machine")));
-void EXTI4_IRQHandler(void) __attribute__((interrupt("machine")));
-void EXTI9_5_IRQHandler(void) __attribute__((interrupt("machine")));
+// void EXTI0_IRQHandler(void) __attribute__((interrupt("machine")));
+// void EXTI1_IRQHandler(void) __attribute__((interrupt("machine")));
+// void EXTI2_IRQHandler(void) __attribute__((interrupt("machine")));
+// void EXTI3_IRQHandler(void) __attribute__((interrupt("machine")));
+// void EXTI4_IRQHandler(void) __attribute__((interrupt("machine")));
+// void EXTI9_5_IRQHandler(void) __attribute__((interrupt("machine")));
 
 void EXTI0_IRQHandler(void)
 {
