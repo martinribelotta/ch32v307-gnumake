@@ -113,7 +113,7 @@ void usbd_cdc_acm_out(uint8_t ep)
     usbd_ep_read(ep, data, 64, &read_byte);
     rt_kprintf("read len:%d\r\n", read_byte);
     for (uint32_t i = 0; i < read_byte; i++)
-        rt_kprintf("%02X %c\n", data[i], isprint(data[i])? data[i] : '?');
+        rt_kprintf("%02X %c\n", data[i], isprint(data[i]) ? data[i] : '?');
     usbd_ep_read(ep, NULL, 0, NULL);
 }
 
@@ -143,7 +143,7 @@ void cdc_acm_init(void)
     /*!< interface add endpoint */
     usbd_interface_add_endpoint(&cdc_data_intf, &cdc_out_ep);
     usbd_interface_add_endpoint(&cdc_data_intf, &cdc_in_ep);
-    
+
     extern int usb_dc_init(void);
     usb_dc_init();
 }
