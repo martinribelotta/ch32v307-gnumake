@@ -12,7 +12,7 @@
 #define CPUPORT_H__
 
 /* bytes of register width  */
-#define ARCH_RISCV_FPU
+//#define ARCH_RISCV_FPU
 #define ARCH_RISCV_FPU_S
 
 #ifdef ARCH_CPU_64BIT

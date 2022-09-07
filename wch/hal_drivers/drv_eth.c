@@ -706,7 +706,7 @@ struct pbuf *rt_ch32_eth_rx(rt_device_t dev)
  }
 
 /* interrupt service routine */
-void ETH_IRQHandler(void) __attribute__((interrupt("WCH-Interrupt-fast")));
+// void ETH_IRQHandler(void) __attribute__((interrupt("machine")));
 void ETH_IRQHandler(void)
 {
     GET_INT_SP();

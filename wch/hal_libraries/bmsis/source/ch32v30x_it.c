@@ -8,8 +8,8 @@
 #include "ch32v30x_it.h"
 #include "board.h"
 #include <rtthread.h>
-// void NMI_Handler(void) __attribute__((interrupt("WCH-Interrupt-fast")));
-// void HardFault_Handler(void) __attribute__((interrupt("WCH-Interrupt-fast")));
+// void NMI_Handler(void) __attribute__((interrupt("machine")));
+// void HardFault_Handler(void) __attribute__((interrupt("machine")));
 
 /*******************************************************************************
 * Function Name  : NMI_Handler
@@ -32,8 +32,8 @@ void NMI_Handler(void)
 * Input          : None
 * Return         : None
 *******************************************************************************/
-void HardFault_Handler_Base(void) __attribute__((interrupt("machine")));
-void HardFault_Handler_Base(void)
+void HardFault_Handler_Raw(void) __attribute__((interrupt("machine")));
+void HardFault_Handler_Raw(void)
 {
     // GET_INT_SP();
     // rt_interrupt_enter();

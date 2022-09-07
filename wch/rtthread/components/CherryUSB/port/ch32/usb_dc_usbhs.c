@@ -34,7 +34,7 @@ __attribute__ ((aligned(4))) uint8_t EP1_DatabufHD[512+512];  //ep1_out(64)+ep1_
 __attribute__ ((aligned(4))) uint8_t EP2_DatabufHD[512+512];  //ep2_out(64)+ep2_in(64)
 // clang-format on
 
-// void USBHS_IRQHandler(void) __attribute__((interrupt("WCH-Interrupt-fast")));
+// void USBHS_IRQHandler(void) __attribute__((interrupt("machine")));
 
 volatile uint8_t mps_over_flag = 0;
 volatile uint8_t USBHS_Dev_Endp0_Tog = 0x01; /* USB2.0�����豸�˵�0ͬ����־ */
