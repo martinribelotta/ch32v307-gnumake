@@ -87,8 +87,8 @@ int main(void)
         rt_kprintf("rom mount to '/' failed!\r\n");
     }
 
-    // rt_thread_t usbtask = rt_thread_create("usb", usb_thread, RT_NULL, 4096, RT_MAIN_THREAD_PRIORITY+1, 10);
-    // rt_thread_startup(usbtask);
+    rt_thread_t usbtask = rt_thread_create("usb", usb_thread, RT_NULL, 4096, RT_MAIN_THREAD_PRIORITY+1, 10);
+    rt_thread_startup(usbtask);
 
 	GPIO_ResetBits(GPIOA,GPIO_Pin_0);
 	while(1)
