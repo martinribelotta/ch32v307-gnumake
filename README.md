@@ -6,7 +6,7 @@ now) WCH openOCD (with wlink and ch32xxx flash support)
 
 ## Software provides
 
-- RT-Thread 4.0.4 port for risc-v rv32imafc using QingKeV4 (a.k.a. RISC-V4F in WCH literature)
+- RT-Thread 4.1.1 port for risc-v rv32imafc using QingKeV4 (a.k.a. RISC-V4F in WCH literature)
 - FPU support (F) and compressed mode support (C)
 - Support RISC-V4F fast stack saving/restore on interrupt without the WCH propietary gcc extensions
 - UART1 serial over WCHLink
