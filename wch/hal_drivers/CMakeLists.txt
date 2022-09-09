@@ -1,4 +1,6 @@
 target_sources(${TARGET_ELF} PUBLIC
+    ${CMAKE_CURRENT_SOURCE_DIR}/drv_common.c
+    ${CMAKE_CURRENT_SOURCE_DIR}/drv_common.h
     ${CMAKE_CURRENT_SOURCE_DIR}/drv_adc.c
     ${CMAKE_CURRENT_SOURCE_DIR}/drv_adc.h
     ${CMAKE_CURRENT_SOURCE_DIR}/drv_dac.c

@@ -1,8 +1,6 @@
 file(GLOB FINSH_SRC ${CMAKE_CURRENT_SOURCE_DIR}/components/finsh/*.c)
 
 target_sources(${TARGET_ELF} PUBLIC
-    ${CMAKE_CURRENT_SOURCE_DIR}/board.c
-    ${CMAKE_CURRENT_SOURCE_DIR}/board.h
     ${CMAKE_CURRENT_SOURCE_DIR}/cconfig.h
     ${CMAKE_CURRENT_SOURCE_DIR}/rtconfig_preinc.h
     ${CMAKE_CURRENT_SOURCE_DIR}/rtconfig.h

@@ -11,7 +11,7 @@
 #ifndef __DRV_GPIO_H__
 #define __DRV_GPIO_H__
 
-#include <board.h>
+#include <drv_common.h>
 #include <rtthread.h>
 #include "rtdevice.h"
 #include <rthw.h>

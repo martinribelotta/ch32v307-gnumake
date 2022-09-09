@@ -8,7 +8,7 @@
  * 2022-08-23     liYony       first version
  */
 
-#include "board.h"
+#include "drv_common.h"
 #include <stdint.h>
 #include "drv_usart.h"
 #include <rthw.h>

@@ -16,7 +16,7 @@
  * 2017-11-15     ZYH          update to 3.0.0
  */
 
-#include "board.h"
+#include "drv_common.h"
 #include <rtdevice.h>
 #include <drv_usart.h>
 
