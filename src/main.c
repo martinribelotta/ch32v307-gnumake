@@ -76,15 +76,13 @@ static void usb_thread(void *unused)
 
 int main(void)
 {
-    rt_kprintf("\r\n MCU: CH32V307\r\n");
-    rt_kprintf(" SysClk: %dHz\r\n", SystemCoreClock);
-    rt_kprintf(" www.wch.cn\r\n");
+    rt_kprintf("\n MCU: CH32V307\n");
+    rt_kprintf(" SysClk: %dHz\n", SystemCoreClock);
+    rt_kprintf(" www.wch.cn\n\n");
     LED1_BLINK_INIT();
 
-    rt_kprintf("Mounting romfs\r\n");
-    if (dfs_mount(RT_NULL, "/", "rom", 0, &(romfs_root)) != 0) {
-        rt_kprintf("rom mount to '/' failed!\r\n");
-    }
+    if (dfs_mount(RT_NULL, "/", "rom", 0, &(romfs_root)) != 0)
+        rt_kprintf("rom mount to '/' failed!\n");
 
     rt_thread_t usbtask = rt_thread_create("usb", usb_thread, RT_NULL, 4096, RT_MAIN_THREAD_PRIORITY + 1, 10);
     rt_thread_startup(usbtask);
@@ -101,14 +99,14 @@ int led(void)
     rt_uint8_t count;
 
     rt_pin_mode(LED0_PIN, PIN_MODE_OUTPUT);
-    rt_kprintf("led_SP:%08x\r\n", __get_SP());
+    rt_kprintf("led_SP:%08x\n", __get_SP());
     for (count = 0; count < 10; count++) {
         rt_pin_write(LED0_PIN, PIN_LOW);
-        rt_kprintf("led on, count : %d\r\n", count);
+        rt_kprintf("led on, count : %d\n", count);
         rt_thread_mdelay(500);
 
         rt_pin_write(LED0_PIN, PIN_HIGH);
-        rt_kprintf("led off\r\n");
+        rt_kprintf("led off\n");
         rt_thread_mdelay(500);
     }
     return 0;
