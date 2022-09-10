@@ -14,7 +14,7 @@ else()
   set(CMAKE_CXX_COMPILER ${CROSS_CXX})
 endif()
 
-set(CPU_FLAGS "-march=rv32imfc -mabi=ilp32f -msmall-data-limit=8 -mno-save-restore")
+set(CPU_FLAGS "-march=rv32imafc -mabi=ilp32f -msmall-data-limit=8 -mno-save-restore")
 
 set(COMMON_FLAGS "-fdata-sections -ffunction-sections -ffreestanding")
 
