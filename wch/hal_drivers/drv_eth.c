@@ -12,7 +12,7 @@
  * 2021-09-09     WCH        the first version
  */
 
-#include "board.h"
+#include "drv_common.h"
 #include <rtdevice.h>
 
 

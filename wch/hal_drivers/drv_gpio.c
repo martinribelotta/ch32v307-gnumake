@@ -8,7 +8,7 @@
  * 2022-08-25     liYony       first version
  */
 
-#include <board.h>
+#include <drv_common.h>
 #include "drv_gpio.h"
 
 #ifdef RT_USING_PIN

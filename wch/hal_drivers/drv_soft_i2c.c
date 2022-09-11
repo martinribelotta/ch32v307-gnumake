@@ -8,7 +8,7 @@
  * 2021-09-09     WCH        the first version
  */
 
-#include <board.h>
+#include <drv_common.h>
 #include "drv_soft_i2c.h"
 
 #ifdef RT_USING_I2C

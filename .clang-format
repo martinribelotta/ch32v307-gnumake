@@ -1,0 +1,14 @@
+---
+BasedOnStyle: WebKit
+AlignConsecutiveMacros: true
+AlignEscapedNewlines: Left
+AlignTrailingComments: true
+BreakBeforeBraces: Linux
+ColumnLimit: 0
+IndentWidth: 4
+Language: Cpp
+TabWidth: 4
+UseTab: Never
+SortIncludes: false
+PointerAlignment: Right
+...
