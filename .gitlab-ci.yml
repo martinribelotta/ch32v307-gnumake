@@ -7,7 +7,7 @@ build-job:       # This job runs in the build stage, which runs first.
   stage: build
   script:
     - mkdir build
-    - cd build && cmake .. -G Ninja
+    - cd build && cmake .. -G Ninja -DUSE_WCH_TOOLCHAIN=TRUE
     - ninja -t clean
     - ninja -j8
   artifacts:
