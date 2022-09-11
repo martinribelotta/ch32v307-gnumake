@@ -21,7 +21,8 @@
         "system_ch32v30x.h": "c",
         "dfs_romfs.h": "c",
         "time.h": "c",
-        "types.h": "c"
+        "types.h": "c",
+        "thread": "cpp"
     },
     "cortex-debug.registerUseNaturalFormat": false
 }

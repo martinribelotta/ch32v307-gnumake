@@ -4,7 +4,7 @@ set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
 project(firmware)
 set(TARGET_ELF ${PROJECT_NAME}.elf)
-add_executable(${TARGET_ELF} src/main.c src/donut.c src/cdc_acm_template.c)
+add_executable(${TARGET_ELF} src/main.c src/donut.c src/cdc_acm_template.c src/cxx_test.cpp)
 enable_language(C CXX ASM)
 
 set(PKG_CHERRYUSB_DEVICE_CDC ON)
