@@ -4,8 +4,9 @@ set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
 project(firmware)
 set(TARGET_ELF ${PROJECT_NAME}.elf)
-add_executable(${TARGET_ELF} src/main.c src/donut.c src/cdc_acm_template.c src/cxx_test.cpp)
+add_executable(${TARGET_ELF} src/main.c src/donut.c src/cdc_acm_template.c src/cxx_test.cpp src/Pin.hpp)
 enable_language(C CXX ASM)
+target_compile_features(${TARGET_ELF} PRIVATE cxx_std_17)
 
 set(PKG_CHERRYUSB_DEVICE_CDC ON)
 set(PKG_CHERRYUSB_DEVICE_CH32VXXX ON)
@@ -19,6 +20,7 @@ set(RT_USING_ADC ON)
 set(RT_USING_DAC ON)
 set(RT_USING_I2C ON)
 set(RT_USING_I2C_BITOPS ON)
+set(RT_USING_RTC ON)
 set(RT_DFS_ROMFS_PATH ${CMAKE_CURRENT_SOURCE_DIR}/rootfs)
 
 add_subdirectory(wch)
@@ -33,7 +35,7 @@ add_custom_command(
     OUTPUT ${CMAKE_CURRENT_BINARY_DIR}/romfs.c
     COMMAND python ${CMAKE_CURRENT_SOURCE_DIR}/wch/rtthread/tools/mkromfs.py ${RT_DFS_ROMFS_PATH} ${CMAKE_CURRENT_BINARY_DIR}/romfs.c)
 add_custom_command(TARGET ${TARGET_ELF} POST_BUILD
-    COMMAND ${CROSS_OBJDUMP} "-dSx" $<TARGET_FILE:${TARGET_ELF}> > $<TARGET_FILE:${TARGET_ELF}>.lst
+    COMMAND ${CROSS_OBJDUMP} "-CdSx" $<TARGET_FILE:${TARGET_ELF}> > $<TARGET_FILE:${TARGET_ELF}>.lst
     COMMENT "Generating disassembler file")
 add_custom_command(TARGET ${TARGET_ELF} POST_BUILD
     COMMAND ${CROSS_OBJCOPY} "-Obinary" $<TARGET_FILE:${TARGET_ELF}> $<TARGET_FILE:${TARGET_ELF}>.bin
