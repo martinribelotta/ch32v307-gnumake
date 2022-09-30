@@ -33,7 +33,7 @@ endif()
 
 set(CPU_FLAGS "-march=rv32imafc -mabi=ilp32f -msmall-data-limit=8 -mno-save-restore")
 
-set(COMMON_FLAGS "-fdata-sections -ffunction-sections -ffreestanding")
+set(COMMON_FLAGS "-fdata-sections -ffunction-sections")
 
 set(FLAGS_DEBUG "-Og -g3")
 set(FLAGS_RELEASE "-O3")

@@ -1,8 +1,8 @@
 {
     "makefile.extensionOutputFolder": "./.vscode",
     "cortex-debug.openocdPath.linux": "/opt/openocd-wch/bin/wch-openocd",
-    "cortex-debug.gdbPath.linux": "/opt/xpack-riscv-none-embed-gcc-10.2.0-1.2/bin/riscv-none-embed-gdb",
-    "cortex-debug.objdumpPath.linux": "/opt/xpack-riscv-none-embed-gcc-10.2.0-1.2/bin/riscv-none-embed-objdump",
+    "cortex-debug.gdbPath.linux": "/opt/xpack-riscv-none-elf-gcc-12.2.0-1/bin/riscv-none-elf-gdb",
+    "cortex-debug.objdumpPath.linux": "/opt/xpack-riscv-none-elf-gcc-12.2.0-1/bin/riscv-none-elf-objdump",
     "cortex-debug.openocdPath.windows": "C:\\openocd-wch\\bin\\swch-openocd",
     "cortex-debug.gdbPath.windows": "C:\\xpack-riscv-none-embed-gcc-10.2.0-1.2\\bin\\riscv-none-embed-gdb",
     "cortex-debug.objdumpPath.windows": "C:\\xpack-riscv-none-embed-gcc-10.2.0-1.2\\bin\\riscv-none-embed-objdump",
@@ -21,7 +21,8 @@
         "system_ch32v30x.h": "c",
         "dfs_romfs.h": "c",
         "time.h": "c",
-        "types.h": "c"
+        "types.h": "c",
+        "thread": "cpp"
     },
     "cortex-debug.registerUseNaturalFormat": false
 }

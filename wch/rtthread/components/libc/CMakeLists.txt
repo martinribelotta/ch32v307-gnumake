@@ -11,8 +11,11 @@ file(GLOB_RECURSE LIBC_SRC
 )
 
 target_compile_definitions(${TARGET_ELF} PUBLIC
--DRT_USING_NEWLIB
--DRT_USING_LIBC
--D_POSIX_C_SOURCE=1)
+    -DRT_USING_NEWLIB
+    -DRT_USING_LIBC
+    -D_POSIX_C_SOURCE=1
+)
+
+add_subdirectory(cplusplus)
 
 target_sources(${TARGET_ELF} PUBLIC ${LIBC_SRC})
